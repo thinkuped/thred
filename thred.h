@@ -675,7 +675,8 @@ enum{			//feather fill types
 	FTHFAZ,		//phase
 };
 
-#pragma pack(1)
+/* winemaker: #pragma pack(1) */
+#include <pshpack1.h>
 
 //pcs file header structure
 typedef struct _hed{
@@ -1471,7 +1472,9 @@ typedef struct _grdcod{
 	unsigned col;
 }GRDCOD;
 
-#pragma pack()
+/* winemaker: #pragma pack() */
+/* winemaker:warning: Using 4 as the default alignment */
+#include <pshpack4.h>
 
 //form types
 enum{
