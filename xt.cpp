@@ -1952,11 +1952,24 @@ void durec(OREC* prec)
 
 OREC*	recref(const void* arg)
 {
-	_asm
+#if !defined(GCC__)
+	__asm
 	{
 			mov		eax,arg
 			mov		eax,[eax]
 	}
+#else
+	__asm__ __volatile__
+	(
+
+	"	mov		eax,%[arg]\n"
+	"	mov		eax,[eax]\n"
+
+	:
+	:	[arg] "m" (arg)
+	:	"eax"
+	);
+#endif
 }
 
 int recmp(const void *arg1, const void *arg2)
@@ -2326,7 +2339,8 @@ srtskp:;
 
 unsigned dutyp(unsigned tat)
 {
-	_asm
+#if !defined(GCC__)
+	__asm
 	{
 			xor		eax,eax
 			mov		ebx,tat
@@ -2341,6 +2355,29 @@ unsigned dutyp(unsigned tat)
 			mov		al,1
 dutypx:		and		eax,0xf
 	}
+#else
+	__asm__ __volatile__
+	(
+
+	"	xor		eax,eax\n"
+	"	mov		ebx,%[tat]\n"
+	"	and		ebx,%[SRTYPMSK]\n"
+	"	bsr		eax,ebx\n"
+	"	je		short dutypx\n"
+	"	sub		al,18\n"
+	"	cmp		al,12\n"
+	"	jne		short dutypx\n"
+	"	test	ebx,0x20000000\n"
+	"	je		short dutypx\n"
+	"	mov		al,1\n"
+	"dutypx: 	and		eax,0xf\n"
+
+	:
+	:	[SRTYPMSK] "m" (SRTYPMSK),
+		[tat] "m" (tat)
+	:	"eax", "al", "ebx"
+	);
+#endif
 }
 
 void filim(FRMLIM* flim,unsigned * lmap)
@@ -2414,7 +2451,8 @@ void filim(FRMLIM* flim,unsigned * lmap)
 
 unsigned frstmap(unsigned* map)
 {
-	_asm
+#if !defined(GCC__)
+	__asm
 	{
 			xor		eax,eax
 			mov		ecx,map
@@ -2425,6 +2463,24 @@ unsigned frstmap(unsigned* map)
 			mov		[ecx],ebx
 fmapx:
 	}
+#else
+	__asm__ __volatile__
+	(
+
+	"	xor		eax,eax\n"
+	"	mov		ecx,%[map]\n"
+	"	mov		ebx,[ecx]\n"
+	"	bsf		eax,ebx\n"
+	"	je		short fmapx\n"
+	"	btr		ebx,eax\n"
+	"	mov		[ecx],ebx\n"
+	"fmapx:\n"
+
+	:
+	:	[map] "m" (map)
+	:	"ecx", "eax", "memory", "ebx"
+	);
+#endif
 }
 
 #ifdef _DEBUG
