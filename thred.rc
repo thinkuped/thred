@@ -1,0 +1,1144 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU DISCARDABLE 
+BEGIN
+    POPUP "file"
+    BEGIN
+        MENUITEM "New",                         ID_FILE_NEW1
+        MENUITEM "&Open (O)",                   ID_FILE_OPEN1
+        MENUITEM "Close",                       ID_CLOSE
+        MENUITEM "Thumbnails (T)",              ID_THUM
+        MENUITEM "Open PCS file",               ID_OPNPCD
+        MENUITEM "PES2Card (W+Cntrl)",          ID_PES2CRD
+        MENUITEM "Insert",                      ID_INSFIL
+        MENUITEM "Overlay",                     ID_OVRLAY
+        MENUITEM "Save (^S, F7)",               ID_FILE_SAVE2
+        MENUITEM "Save As (F8)",                ID_FILE_SAVE3
+        MENUITEM "Load Bitmap",                 ID_LODBIT
+        MENUITEM "Save Bitmap",                 ID_SAVMAP
+        MENUITEM "Hide Bitmap (Shift+X)",       ID_HIDBITF, CHECKED
+        MENUITEM "Remove Bitmap",               ID_DELMAP
+        POPUP "Delete Backups"
+        BEGIN
+            MENUITEM "Backups for the selected file", ID_PURG
+            MENUITEM "All backups in the selected directory", ID_PURGDIR
+        END
+        MENUITEM "Locking",                     ID_FLOK
+    END
+    POPUP "view"
+    BEGIN
+        MENUITEM "Movie (I)",                   ID_RUNPAT
+        POPUP "Set"
+        BEGIN
+            MENUITEM "Applique Color",              ID_SETAP
+            MENUITEM "Background Color",            ID_VIEW_STCHBAK
+            MENUITEM "Bit Map Color",               ID_BITCOL
+            MENUITEM "Clipboard Fill  Spacing",     ID_CLPSPAC
+            POPUP "Data Check"
+            BEGIN
+                MENUITEM "Off",                         ID_CHKOF, CHECKED
+                MENUITEM "On",                          ID_CHKON, CHECKED
+                MENUITEM "Auto Repair",                 ID_CHKREP, CHECKED
+                MENUITEM "Auto Repair with Message",    ID_CHKREPMSG
+                , CHECKED
+                MENUITEM "",                            ID_VIEW_SET_DATACHECK
+
+            END
+            MENUITEM "Default Preferences",         ID_SETPREF
+            POPUP "Fill at Select"
+            BEGIN
+                MENUITEM "On",                          ID_FIL2SEL_ON
+                MENUITEM "Off",                         ID_FIL2SEL_OFF
+            END
+            POPUP "Form Cursor"
+            BEGIN
+                MENUITEM "Box",                         ID_FRMBOX
+                MENUITEM "Cross",                       ID_FRMX
+            END
+            POPUP "Grid Mask"
+            BEGIN
+                MENUITEM "High",                        ID_GRDHI
+                MENUITEM "Medium",                      ID_GRDMED
+                MENUITEM "Default",                     ID_GRDEF
+                MENUITEM "UnRed",                       ID_GRDRED
+                MENUITEM "UnBlue",                      ID_GRDBLU
+                MENUITEM "UnGreen",                     ID_GRDGRN
+            END
+            POPUP "Line Border Spacing"
+            BEGIN
+                MENUITEM "Exact",                       ID_LINBEXACT
+                MENUITEM "Even",                        ID_LINBEVEN
+            END
+            POPUP "Machine File Type"
+            BEGIN
+                MENUITEM "Pfaff PCS ",                  ID_AUXPCS
+                MENUITEM "Tajima DST",                  ID_AUXDST
+            END
+            POPUP "Needle Cursor"
+            BEGIN
+                MENUITEM "On",                          ID_SETNEDL
+                MENUITEM "Off",                         ID_RSTNEDL
+            END
+            MENUITEM "Nudge Pixels",                ID_NUDGPIX
+            POPUP "PCS Bitmap Save"
+            BEGIN
+                MENUITEM "On",                          ID_BSAVON
+                MENUITEM "Off",                         ID_BSAVOF
+            END
+            POPUP "Point Size"
+            BEGIN
+                MENUITEM "Stitch Point Boxes",          ID_STCHPIX
+                MENUITEM "Form Point Triangles",        ID_FRMPIX
+                MENUITEM "Form Box",                    ID_FRMPBOX
+            END
+            POPUP "Remove Mark"
+            BEGIN
+                MENUITEM "Escape",                      ID_MARKESC, CHECKED
+                MENUITEM "Q",                           ID_MARKQ, CHECKED
+            END
+            POPUP "Rotate Machine File"
+            BEGIN
+                MENUITEM "On",                          ID_ROTAUXON
+                MENUITEM "Off",                         ID_ROTAUXOFF
+            END
+            POPUP "Underlay"
+            BEGIN
+                MENUITEM "Angle",                       ID_UANG
+                MENUITEM "Indent",                      ID_WIND
+                MENUITEM "Spacing",                     ID_USPAC
+                MENUITEM "Stitch Length",               ID_USTCH
+            END
+            MENUITEM "Warn if edited",              ID_WARNOF, CHECKED
+        END
+        MENUITEM "Backups",                     ID_VUBAK
+        MENUITEM "Zoom Full (X)",               VU_ZUMFUL
+        POPUP "Thread Size"
+        BEGIN
+            MENUITEM "30",                          ID_SIZ30
+            MENUITEM "40",                          ID_SIZ40
+            MENUITEM "60",                          ID_SIZ60
+            MENUITEM "Set Defaults",                ID_TSIZDEF
+        END
+        MENUITEM "Show Threads (F6)",           ID_VUTHRDS
+        MENUITEM "Show Threds for Selected Color", ID_VUSELTHRDS
+        MENUITEM "Design Information (')",      ID_DESIZ
+        POPUP "Knots"
+        BEGIN
+            MENUITEM "On",                          ID_KNOTON
+            MENUITEM "Off",                         ID_KNOTOF
+        END
+        MENUITEM "Retrive Mark (B+Shift)",      ID_BAKMRK
+        MENUITEM "About Thred",                 ID_ABOUT
+    END
+    MENUITEM "form",                        ID_FORM
+    POPUP "edit"
+    BEGIN
+        POPUP "Center"
+        BEGIN
+            MENUITEM "Horizontal (- +Shift)",       ID_CNTRH
+            MENUITEM "Vertical (- +Control)",       ID_CNTRV
+            MENUITEM "Both (-)",                    ID_CNTRX
+            MENUITEM "Entire Design",               ID_CENTIRE
+            MENUITEM "Forms (L)",                   ID_CNTR
+        END
+        MENUITEM "Check Range",                 ID_CHK
+        POPUP "Convert"
+        BEGIN
+            MENUITEM "to Feather Ribbon (F+shift)", ID_2FTHR
+            MENUITEM "to Satin Ribbon (C+shift)",   ID_RIBON
+            MENUITEM "to Bean",                     ID_DUBEAN
+            MENUITEM "from Bean to Line",           ID_UNBEAN
+            MENUITEM "Stitches to Form",            ID_STCHS2FRM
+        END
+        POPUP "Copy to Layer"
+        BEGIN
+            MENUITEM "0",                           ID_LAYCPY0
+            MENUITEM "1",                           ID_LAYCPY1
+            MENUITEM "2",                           ID_LAYCPY2
+            MENUITEM "3",                           ID_LAYCPY3
+            MENUITEM "4",                           ID_LAYCPY4
+        END
+        MENUITEM "Crop to Form (W+Shift)",      ID_CROP
+        POPUP "Delete"
+        BEGIN
+            MENUITEM "All Forms",                   ID_DELFRMS
+            MENUITEM "All Forms and Stitches (Delete+Cntrl+Shift)", 
+                                                    ID_DELTOT
+            MENUITEM "All Stitches (L+shift)",      ID_DELSTCH
+            MENUITEM "Free Stitches",               ID_DELFRE
+            MENUITEM "Knots",                       ID_DELKNOT
+            MENUITEM "Large Stitches (F11+shift)",  ID_REMBIG
+            MENUITEM "Select (delete)",             ID_DELETE
+            MENUITEM "Small Stitches (F11)",        ID_REMZERO
+        END
+        POPUP "Flip"
+        BEGIN
+            MENUITEM "Horizontal",                  ID_FLIPH
+            MENUITEM "Vertical",                    ID_FLIPV
+            MENUITEM "Order",                       ID_FLPORD
+        END
+        POPUP "&Form Update"
+        BEGIN
+            POPUP "&Border"
+            BEGIN
+                MENUITEM "&Color",                      ID_SETBCOL
+                MENUITEM "&Maximum Stitch Length",      ID_MAXBLEN
+                MENUITEM "m&Inimum Stitch Length",      ID_MINBLEN
+                MENUITEM "&Stitch Length",              ID_SETBLEN
+                MENUITEM "s&Pacing",                    ID_SETBSPAC
+            END
+            POPUP "&Center Walk"
+            BEGIN
+                MENUITEM "&On",                         ID_SETCWLK
+                MENUITEM "o&Ff",                        ID_NOTCWLK
+            END
+            POPUP "&Edge Walk"
+            BEGIN
+                MENUITEM "&On",                         ID_SETWLK
+                MENUITEM "o&Ff",                        ID_NOTWLK
+            END
+            POPUP "&Fill"
+            BEGIN
+                MENUITEM "&Ang",                        ID_SETFANG
+                MENUITEM "&Color",                      ID_SETFCOL
+                MENUITEM "&Maximum Stitch Length",      ID_MAXFLEN
+                MENUITEM "m&Inimum Stitch Length",      ID_MINFLEN
+                MENUITEM "&Stitch Length",              ID_SETFLEN
+                MENUITEM "s&Pacing",                    ID_SETFSPAC
+            END
+            MENUITEM "&Height",                     ID_FRMHI
+            MENUITEM "&Indent",                     ID_FRMIND
+            POPUP "&Underlay"
+            BEGIN
+                MENUITEM "&On",                         ID_SETUND
+                MENUITEM "o&Ff",                        ID_NOTUND
+                MENUITEM "&Angle",                      ID_SETUANG
+                MENUITEM "&Color",                      ID_SETUCOL
+                MENUITEM "&Spacing",                    ID_SETUSPAC
+            END
+            MENUITEM "under &Stitch length",        ID_UNDLEN
+            MENUITEM "&Width",                      ID_FRMWID
+        END
+        POPUP "Move"
+        BEGIN
+            MENUITEM "to Start",                    ID_MV2FRNT
+            MENUITEM "to Mark (;)",                 ID_MOVMRK
+            MENUITEM "to End",                      ID_MV2BAK
+        END
+        POPUP "Move to Layer"
+        BEGIN
+            MENUITEM "0",                           ID_LAYMOV0
+            MENUITEM "1",                           ID_LAYMOV1
+            MENUITEM "2",                           ID_LAYMOV2
+            MENUITEM "3",                           ID_LAYMOV3
+            MENUITEM "4",                           ID_LAYMOV4
+        END
+        MENUITEM "Refill All (J)",              ID_REFILAL
+        MENUITEM "Repair Data",                 ID_REPAIR
+        MENUITEM "Reset Colors",                ID_EDIT_RESET_COL
+        MENUITEM "Retrace",                     ID_RETRACE
+        MENUITEM "Retreive Clipboard Stitches (F4)", ID_RTRVCLP
+        POPUP "Rotate"
+        BEGIN
+            MENUITEM "Again",                       ID_ROTAGAIN
+            MENUITEM "and Duplicate",               ID_ROTDUP
+            MENUITEM "and Duplicate  Again",        ID_DUPAGAIN
+            MENUITEM "Command",                     ID_ROTCMD
+        END
+        POPUP "Select"
+        BEGIN
+            MENUITEM "All Forms",                   ID_ALFRM
+            MENUITEM "All Forms and Stitches (A+Shift)", ID_SELAL
+            MENUITEM "All Stitches A+Cntrl",        ID_SELALSTCH
+            MENUITEM "Color",                       ID_EDIT_SELECTCOLOR
+            MENUITEM "Form Applique Stitches",      ID_SELAP
+            MENUITEM "Form Border Stitches",        ID_SELBRD
+            MENUITEM "Form Edge Walk Stitches",     ID_SELWLK
+            MENUITEM "Form Fill Stitches",          ID_SELFIL
+            MENUITEM "Form Stitches",               ID_SELFSTCHS
+            MENUITEM "Form Underlay Stitches",      ID_SELUND
+        END
+        POPUP "Set"
+        BEGIN
+            MENUITEM "Designer Name",               ID_DESNAM
+            MENUITEM "Design Size",                 ID_SETSIZ
+            MENUITEM "Feather Defaults",            ID_FTHDEF
+            MENUITEM "Fill Start Point (<)",        ID_FILSTRT
+            MENUITEM "Fill End Point (>)",          ID_FILEND
+            MENUITEM "Form Number (/)",             ID_FRMNUM
+            MENUITEM "Form Color to  Stich Color",  ID_FRM2COL
+            MENUITEM "Form Zero Point",             ID_FRM0
+            MENUITEM "Knots",                       ID_KNOTS
+            MENUITEM "Knot at Selected Stitch (K+Cntrl)", ID_KNOTAT
+            MENUITEM "Order Mark (.)",              ID_SETMRK
+            MENUITEM "Range Ends for Clip Board Fills", ID_CLPADJ
+            POPUP "Rotation"
+            BEGIN
+                MENUITEM "Angle (R+Cntrl)",             ID_SETROT
+                MENUITEM "Angle from Mark (R+Shift)",   ID_ROTMRK
+                MENUITEM "Segments (R)",                ID_ROTSEG
+            END
+            MENUITEM "Selected",                    65535
+            MENUITEM "Zoom Mark at Center (M+Shift)", ID_MRKCNTR
+            MENUITEM "Zoom Mark at Selected Point (M+Cntrl)", ID_MRKPNT
+        END
+        MENUITEM "Shrink Clipboard Border",     ID_SHRINK
+        POPUP "Snap"
+        BEGIN
+            MENUITEM "Together [F2]",               ID_SNAP2
+            MENUITEM "to Grid [S+shift]",           ID_SNAP2GRD
+        END
+        POPUP "Sort"
+        BEGIN
+            MENUITEM "Auto (F3)",                   ID_SORT
+            MENUITEM "by Color then Form (F3+Shift)", ID_SRTBF
+            MENUITEM "by Form (F3+Cntrl)",          ID_SRTF
+        END
+        MENUITEM "Split Form",                  ID_SPLTFRM
+        POPUP "Trace"
+        BEGIN
+            MENUITEM "Find Edges (U+control)",      ID_TRDIF
+            MENUITEM "Hide Bitmap (X+shift)",       ID_HIDBIT, CHECKED
+            MENUITEM "Reset Form Pixels (H)",       ID_BLAK
+            MENUITEM "Select Colors (H+control)",   ID_TRCSEL
+            MENUITEM "Trace Mode (T+Control)",      ID_TRACE
+            MENUITEM "Show Traced Edges (right or left click)", ID_TRACEDG
+        END
+        POPUP "Ungroup"
+        BEGIN
+            MENUITEM "First{[)",                    ID_UNGRPLO
+            MENUITEM "Last (])",                    ID_UNGRPHI
+        END
+    END
+    MENUITEM "in",                          ZUMIN
+    MENUITEM "out",                         ID_ZUMOUT
+    MENUITEM "undo",                        ID_BACK, GRAYED
+    MENUITEM "redo",                        ID_REDO, GRAYED
+    MENUITEM "rot",                         ID_ROT
+    MENUITEM "pref",                        ID_PREF
+    POPUP "fill"
+    BEGIN
+        MENUITEM "Fan",                         ID_FILSAT
+        MENUITEM "Feather",                     ID_FETHR
+        MENUITEM "Vertical",                    ID_FILL_VERT
+        MENUITEM "Horizontal",                  ID_FILL_HOR
+        MENUITEM "Angle",                       ID_FILANG
+        POPUP "Clipboard"
+        BEGIN
+            MENUITEM "Fan",                         ID_CLPFIL
+            MENUITEM "Vertical",                    ID_VRTCLP
+            MENUITEM "Horizontal",                  ID_HORCLP
+            MENUITEM "Angle",                       ID_ANGCLP
+        END
+        MENUITEM "Contour",                     ID_CONTF
+        MENUITEM "Texture Editor",              ID_TXFIL
+        POPUP "Border"
+        BEGIN
+            MENUITEM "Line",                        ID_FILIN
+            MENUITEM "Bean",                        ID_BOLD
+            MENUITEM "Angle Satin",                 ID_SATBRD
+            MENUITEM "Perpendicular Satin",         ID_PERP
+            MENUITEM "Applique",                    ID_APLIQ
+            MENUITEM "BH",                          ID_FILBUT
+            MENUITEM "Clipboard",                   ID_FILCLP
+            MENUITEM "Clipboard, Even",             ID_FILCLPX
+            MENUITEM "Picot",                       ID_PICOT
+            MENUITEM "Double",                      ID_DUBFIL
+            MENUITEM "Line chain",                  ID_LINCHN
+            MENUITEM "Open chain",                  ID_OPNCHN
+        END
+        MENUITEM "Unfill",                      ID_UNFIL
+        MENUITEM "Refil (F5)",                  ID_REFILF
+    END
+    MENUITEM "add",                         ID_ADEND
+    MENUITEM "frm+",                        ID_FRMOF
+    MENUITEM "all",                         ID_LA
+    MENUITEM "1",                           ID_L1
+    MENUITEM "2",                           ID_L2
+    MENUITEM "3",                           ID_L3
+    MENUITEM "4",                           ID_L4
+    MENUITEM "help",                        ID_HLP
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 3,0,9,2
+ PRODUCTVERSION 3,0,9,2
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "Thredworks\0"
+            VALUE "FileDescription", "Thred\0"
+            VALUE "FileVersion", "3.092\0"
+            VALUE "InternalName", "Thred\0"
+            VALUE "LegalCopyright", "Copyright © 1999, 2000, 2001,2002,2003\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "Thred3.exe\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "Thred\0"
+            VALUE "ProductVersion", "3.092\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON    DISCARDABLE     "icon1.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DLOCK DIALOG DISCARDABLE  0, 0, 288, 206
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Lock Thred Files"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,150,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,90,7,50,14
+    PUSHBUTTON      "Lock All",IDC_LOCKAL,30,7,50,14
+    PUSHBUTTON      "Unlock All",IDC_UNLOCKAL,210,7,50,14
+    LISTBOX         IDC_LOCKED,7,43,115,156,LBS_NOINTEGRALHEIGHT | 
+                    LBS_EXTENDEDSEL | WS_VSCROLL | WS_TABSTOP
+    LISTBOX         IDC_UNLOCKED,166,43,115,156,LBS_NOINTEGRALHEIGHT | 
+                    LBS_EXTENDEDSEL | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Locked Files",IDC_STATIC,43,29,45,8
+    LTEXT           "Unlocked Files",IDC_STATIC,205,31,50,8
+    PUSHBUTTON      "<<",IDC_LOCK,126,49,36,14
+    PUSHBUTTON      ">>",IDC_UNLOCK,126,73,36,14
+END
+
+IDD_TEAR DIALOGEX 0, 0, 144, 196
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Tear Setup"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,32,177,79,14
+    PUSHBUTTON      "Cancel",IDCANCEL,47,7,50,14
+    PUSHBUTTON      "Default Tear",IDC_DEFTEAR,14,27,115,14
+    PUSHBUTTON      "Default Paisley",IDC_DEFPAIS,14,47,115,14
+    RTEXT           "Points",IDC_TEARPNTS,7,70,78,14,SS_CENTERIMAGE,
+                    WS_EX_RIGHT
+    EDITTEXT        IDC_TEARSIDS,97,70,40,14,ES_AUTOHSCROLL
+    RTEXT           "Tear Ratio",IDC_RATLAB,7,96,78,14,SS_CENTERIMAGE,
+                    WS_EX_RIGHT
+    EDITTEXT        IDC_TEARAT,97,96,40,14,ES_AUTOHSCROLL
+    GROUPBOX        "Twist Setup",IDC_TWSTLAB,7,111,130,61
+    RTEXT           "Twist Step",IDC_TWRATLAB,7,122,78,14,SS_CENTERIMAGE,
+                    WS_EX_RIGHT
+    EDITTEXT        IDC_TWSTSTP,97,122,40,14,ES_AUTOHSCROLL
+    RTEXT           "Twist Ratio",IDC_TWRAT,7,148,78,14,SS_CENTERIMAGE,
+                    WS_EX_RIGHT
+    EDITTEXT        IDC_TWSTRAT,97,148,40,14,ES_AUTOHSCROLL
+END
+
+IDD_WAV DIALOG DISCARDABLE  0, 0, 118, 158
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Wave Form Setup"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,39,137,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,40,7,50,14
+    RTEXT           "Points",IDC_WPNTXT,7,32,56,14,SS_CENTERIMAGE
+    EDITTEXT        IDC_WAVPNTS,69,32,40,14,ES_AUTOHSCROLL
+    RTEXT           "Start",IDC_WAVSTRTXT,7,53,56,14,SS_CENTERIMAGE
+    EDITTEXT        IDC_WAVSTRT,69,53,40,14,ES_AUTOHSCROLL
+    RTEXT           "End",IDC_WAVENDTXT,7,74,56,14,SS_CENTERIMAGE
+    EDITTEXT        IDC_WAVEND,69,74,40,14,ES_AUTOHSCROLL
+    RTEXT           "Waves",IDC_WAVSTXT,7,95,56,14,SS_CENTERIMAGE
+    EDITTEXT        IDC_WAVS,69,95,40,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Default Wave Form",IDC_DEFWAV,7,117,102,14
+END
+
+IDD_FETHDEF DIALOG DISCARDABLE  0, 0, 81, 166
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Feather Fill Setup"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,7,145,67,14
+    PUSHBUTTON      "Cancel",IDCANCEL,7,7,67,14
+    CONTROL         "Blend",IDC_FDBLND,"Button",BS_AUTOCHECKBOX | 
+                    BS_LEFTTEXT | BS_RIGHT | BS_VCENTER | WS_TABSTOP,7,23,36,
+                    14
+    CONTROL         "Up",IDC_FDUP,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | 
+                    BS_RIGHT | BS_VCENTER | WS_TABSTOP,7,39,36,14
+    EDITTEXT        IDC_DFUPCNT,49,39,25,14,ES_AUTOHSCROLL
+    CONTROL         "Down",IDC_FDWN,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | 
+                    BS_RIGHT | BS_VCENTER | WS_TABSTOP,7,57,36,14
+    EDITTEXT        IDC_DFDWNCNT,49,57,25,14,ES_AUTOHSCROLL
+    COMBOBOX        IDC_FDTYP,16,75,48,68,CBS_DROPDOWNLIST | WS_TABSTOP
+    RTEXT           "Size",IDC_SFDRAT,7,91,36,14,SS_CENTERIMAGE
+    EDITTEXT        IDC_DFRAT,49,91,25,14,ES_AUTOHSCROLL
+    RTEXT           "Steps",IDC_SDFNUM,7,109,36,14,SS_CENTERIMAGE
+    EDITTEXT        IDC_DFNUM,49,109,25,14,ES_AUTOHSCROLL
+    RTEXT           "Floor",IDC_SFDFLR,7,127,36,14,SS_CENTERIMAGE
+    EDITTEXT        IDC_DFLR,49,129,25,14,ES_AUTOHSCROLL
+END
+
+IDD_DASY DIALOG DISCARDABLE  0, 0, 102, 246
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Daisy Form Setup"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,7,225,88,14
+    PUSHBUTTON      "Cancel",IDCANCEL,7,7,88,14
+    RTEXT           "Petals",IDC_STATIC,7,26,48,14,SS_CENTERIMAGE
+    EDITTEXT        IDC_PETALS,66,26,29,14,ES_RIGHT | ES_AUTOHSCROLL
+    RTEXT           "Petal Points",IDC_STATIC,7,45,48,14,SS_CENTERIMAGE
+    EDITTEXT        IDC_PETLPNTS,66,45,29,14,ES_RIGHT | ES_AUTOHSCROLL
+    RTEXT           "Mirror Points",IDC_STATIC,20,64,38,14,SS_CENTERIMAGE
+    EDITTEXT        IDC_DAZPCNT,66,64,29,14,ES_RIGHT | ES_AUTOHSCROLL
+    RTEXT           "Inner Petal Points",IDC_STATIC,7,83,56,14,
+                    SS_CENTERIMAGE
+    EDITTEXT        IDC_INPNTS,66,83,29,14,ES_RIGHT | ES_AUTOHSCROLL
+    RTEXT           "Center Size",IDC_STATIC,7,102,48,14,SS_CENTERIMAGE
+    EDITTEXT        IDC_CNTLEN,66,102,29,14,ES_RIGHT | ES_AUTOHSCROLL
+    RTEXT           "Petal Size",IDC_STATIC,7,121,48,14,SS_CENTERIMAGE
+    EDITTEXT        IDC_PETLEN,66,121,29,14,ES_RIGHT | ES_AUTOHSCROLL
+    CONTROL         "Hole",IDC_HOLE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,
+                    140,31,10
+    CONTROL         "D-lines",IDC_DLIN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    64,140,31,10
+    RTEXT           "Hole Size",IDC_STATIC,7,155,48,14,SS_CENTERIMAGE
+    EDITTEXT        IDC_HOLSIZ,66,155,29,14,ES_RIGHT | ES_AUTOHSCROLL
+    CTEXT           "Petal Type",IDC_STATIC,28,176,41,8
+    COMBOBOX        IDC_DAZTYP,7,188,88,104,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "Reset",IDC_DAZRST,7,206,88,14
+END
+
+IDD_SIZ DIALOG DISCARDABLE  0, 0, 90, 119
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Set Design Size"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,21,98,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,20,7,50,14
+    RTEXT           "Width",IDC_STATIC,7,26,29,14
+    EDITTEXT        IDC_DESWID,43,26,40,14,ES_AUTOHSCROLL
+    RTEXT           "Height",IDC_STATIC,7,45,29,14
+    EDITTEXT        IDC_DESHI,43,45,40,14,ES_AUTOHSCROLL
+    CONTROL         "Refill Forms",IDC_REFILF,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,21,65,52,10
+    PUSHBUTTON      "Restore Aspect",IDC_DUASP,21,79,50,14
+END
+
+IDD_DESNAM DIALOG DISCARDABLE  0, 0, 165, 62
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Enter Designer Name"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,108,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,7,7,50,14
+    EDITTEXT        IDC_DESED,7,41,151,14,ES_AUTOHSCROLL
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_DLOCK, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 281
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 199
+    END
+
+    IDD_TEAR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 137
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 191
+    END
+
+    IDD_WAV, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 109
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 151
+    END
+
+    IDD_FETHDEF, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 74
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 159
+    END
+
+    IDD_DASY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 95
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 239
+    END
+
+    IDD_SIZ, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 83
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 112
+    END
+
+    IDD_DESNAM, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 158
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 55
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_FETHDEF DLGINIT
+BEGIN
+    IDC_FDTYP, 0x403, 6, 0
+0x7543, 0x7672, 0x0065, 
+    IDC_FDTYP, 0x403, 7, 0
+0x7543, 0x7672, 0x3265, "\000" 
+    IDC_FDTYP, 0x403, 5, 0
+0x694c, 0x656e, "\000" 
+    IDC_FDTYP, 0x403, 7, 0
+0x6950, 0x6b63, 0x7465, "\000" 
+    IDC_FDTYP, 0x403, 7, 0
+0x6152, 0x6767, 0x6465, "\000" 
+    IDC_FDTYP, 0x403, 5, 0
+0x6152, 0x706d, "\000" 
+    IDC_FDTYP, 0x403, 1, 0
+"\000" 
+    IDC_FDTYP, 0x403, 1, 0
+"\000" 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_FSELB               "No border stiches"
+    IDS_FSELF               "No fill stitches"
+    IDS_FSELA               "No applique stitches"
+    IDS_FSELM               "No stitches"
+    IDS_SEL1FRM             "Select a form to use this function"
+    IDS_PIKOL               "pick color"
+    IDS_UPON                "up to: on"
+    IDS_UPOF                "up to: off"
+    IDS_FGRPF               "a form, a group of forms, or a group of stitches"
+    IDS_ALL                 "all forms and stitches, a form,\na group of forms, or a group of stitches"
+    IDS_AUXTXT              "Open %s file"
+    IDS_CPYRIT              "Thred Digitizing Program for Machine Embroidery\n(c)2000 Marion and Alfie McCoskey 1201 Locust Ave., Shasta Lake, CA\nAll rights reserved\nVersion: 3.092"
+    IDS_PNT                 "Please enter the points for the %s"
+    IDS_HUP0                "Set Custom"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_HUP1                "Small Pfaff"
+    IDS_HUP2                "Large Pfaff"
+    IDS_HUP3                "100mm"
+    IDS_HUP4                "Custom"
+    IDS_KEY                 "Thred, trial version\n\nYou can register your copy of Thred at:\nhttp://www.Thredworks.com\n\n"
+    IDS_CLP                 "Clipboard data too small for clipboard fill"
+    IDS_EXP                 "This key will expire in %d days"
+    IDS_XPIRAD              "This key has expired"
+    IDS_CNTR                "Design re-centered"
+    IDS_MAPLOD              "You must have a bitmap loaded\nto use the autotrace functions"
+    IDS_FRMOVR              "Too many form points"
+    IDS_ROTIN               "The rotate angle is tiny"
+    IDS_SELC                "You must select more than one form to center forms"
+    IDS_NSEL                "Nothing to select"
+    IDS_CONT                "A form must have at least five sides for the contour fill"
+    IDS_ROTA                "Please enter a rotate angle.\nThe current value is: %.2f"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_FRM2                "A form must have more than two sides\nfor Convert to Satin Ribbon"
+    IDS_FRML                "Please enter a form number less than %d"
+    IDS_FRM3                "Can't create a form with less than two points"
+    IDS_STMAX               "Can't convert more than 12,000 stitches"
+    IDS_FRMN1               "Form number too large"
+    IDS_COLU                "Color in use"
+    IDS_COLAL               "All colors used"
+    IDS_MRK                 "Mark wasn't set"
+    IDS_FRMNO               "No forms"
+    IDS_FRM2L               "Traced form too large"
+    IDS_NOTHR               "Not a THR file"
+    IDS_FNOPN               "Couldn't open file: %s"
+    IDS_REM1                "To remove large stitches,\nset user stitch length less than maximum stitch length"
+    IDS_DST1                "The destination is within the move range"
+    IDS_BAKDT               "Backups deleted"
+    IDS_BAKDEL              "Deleting backups"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_FDEL                "Delete form?"
+    IDS_DELFRM              "Delete forms?"
+    IDS_END                 "The End"
+    IDS_INSF                "To insert an entire file please select insert from the file menu"
+    IDS_PFAF2L              "WARNING\nDesign too large for Pfaff large hoop"
+    IDS_DST2S               "Dst file header too short"
+    IDS_BMAP                "Thred only displays monochrome\nor 24 bit color bitmaps"
+    IDS_SHOMAP              "No bitmap to save"
+    IDS_MAPCHG              "Bitmap not changed"
+    IDS_SAVMAP              "Save bitmap is only available for 24 bit color bitmaps"
+    IDS_FILSTCH             "fill stitches"
+    IDS_BRDSTCH             "border stitches"
+    IDS_APSTCH              "applique stitches"
+    IDS_FRMSEL              "form select %s"
+    IDS_FRM1MSG             "a form"
+    IDS_GRPMSG              "a group of stitches"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ROTAGIN             "Rotate Again"
+    IDS_SHOSEL              "Select %s\n to use %s"
+    IDS_REGP                "regular polygon"
+    IDS_STAR                "star"
+    IDS_SPIR                "spiral"
+    IDS_HEART               "heart"
+    IDS_LENS                "lens"
+    IDS_EGG                 "egg"
+    IDS_CLPS                "Put stitches on the clipboard to use this fill\nSelect a form that is filled and hit control C\nor select a group of stitches and hit control C"
+    IDS_FRM3X               "Can't use this type of fill\non a form with less than three points"
+    IDS_ANGS                "Please use the angle satin fill\nfor a line form with only two points"
+    IDS_FILSEL              "To use a fill,\n right click near a form point to select the form"
+    IDS_FILCR               "To use a fill, create a form\nby selecting ""form"" on the main menu"
+    IDS_FGRPS               "a group of stitches or a form"
+    IDS_UNGRP               "ungroup"
+    IDS_NOGRP               "Can't find stitches for the selected form"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_NOHLP               "HTML Help is not available\nthred.chm needs to be in the same directory as thred.exe\nand Internet Explorer version 3.0 or greater\nneeds to be installed on your computer"
+    IDS_SAVDISC             "Save changes to %s"
+    IDS_UNFIL               "Stitches in the form are edited, unfill anyway?"
+    IDS_REFIL               "Stitches in the form are edited, refill anyway?"
+    IDS_SNAP2GRD            "Snap to Grid"
+    IDS_RETRAC              "Retrace"
+    IDS_STCH_FRM            "a stich point or a form point"
+    IDS_SETMRK              "Set Mark at Selected Point"
+    IDS_FSZ                 "a form or a group of stitches\n and set the zoom mark"
+    IDS_SETROTM             "Set Rotation Angle from Mark"
+    IDS_RNGEND              "Set Range Ends For Clipboard Fills"
+    IDS_ROT                 "Rotate"
+    IDS_ROTCMD              "Rotate Command"
+    IDS_CONVRIB             "Convert to Ribbon"
+    IDS_ROTDUP              "Rotate and Duplicate"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CROP                "Crop"
+    IDS_STCH2FRM            "Convert Stitches to Form"
+    IDS_FRMGUID             "a form point with an interior satin guidline\nor a point in a line form"
+    IDS_SPLT                "Split Form"
+    IDS_CENT                "Center"
+    IDS_SETFRM              "Set Form Number"
+    IDS_FRMCLP              "a form with a clipboard border fill"
+    IDS_SHRNK               "Shrink Clipboard Border"
+    IDS_PRT                 "Partial file read"
+    IDS_SHRTF               "File too short"
+    IDS_TRC0                "find edges"
+    IDS_TRC1S               "show bmap"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TRC2                "rst frm pix"
+    IDS_TRC3                "sel colors"
+    IDS_TRC4                "show edges"
+    IDS_TRC1H               "hide bmap"
+    IDS_SRCH                "search"
+    IDS_NUMPNT              "pnt"
+    IDS_NUMFRM              "frm"
+    IDS_NUMSEL              "sel"
+    IDS_NUMSCH              "sch"
+    IDS_NUMFORM             "form"
+    IDS_BOXSEL              "box select"
+    IDS_RITER               "PCS file write error"
+    IDS_SAVFIL              "Save File %s"
+    IDS_CLOS                "Closing Thred"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TOT                 "tot %d"
+    IDS_LAYR                "layer %d"
+    IDS_CREAT               "Couldn't create file %s"
+    IDS_FNOPNA              "Couldn't open file %s\nTry closing Thred and opening the file again"
+    IDS_NOTVER              "This THR file is a newer version\nthan this copy of Thread can read.\nPlease download the latest version\nof Thred from Thredworks.com to read this file"
+    IDS_BADFIL              "Corrupted Thred file: %s"
+    IDS_ZEROL               "Zero length file: %s"
+    IDS_OVRLOK              "%s is locked\nOverwrite anyway"
+    IDS_OVRIT               "Overwrite locked file"
+    IDS_FILROT              "File: %s was rotated"
+    IDS_THRED               "Thred: %s"
+    IDS_NUFIL               "nufil.thr"
+    IDS_SIZ                 "Enter a new size for #%s thread\nThe current size is %.2f millimeters"
+    IDS_TRIAL               "Trial Version"
+    IDS_EMB                 "Thred: Embird File Exchange"
+    IDS_ON                  "on"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_OFF                 "off"
+    IDS_FMEN                "Line (E)\nFree Hand (F)\nRegular Polygon (R)\nStar (S)\nSpiral (A)\nHeart (H)\nLens (L)\nEgg (G)\nTear (T)\nZig-Zag (Z)\nWave (W)\nDaisy (D)"
+    IDS_TXT0                "Form"
+    IDS_TXT1                "Layer"
+    IDS_TXT2                "Fill"
+    IDS_TXT3                "Fill color"
+    IDS_TXT4                "Fill spacing"
+    IDS_TXT5                "Fill stitch length"
+    IDS_TXT6                "Fill Angle"
+    IDS_TXT7                "Border"
+    IDS_TXT8                "Border color"
+    IDS_TXT9                "Border spacing"
+    IDS_TXT10               "Border stitch length"
+    IDS_TXT11               "Border width"
+    IDS_TXT12               "Applique color"
+    IDS_TXT13               "BH corner"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TXT14               "Start"
+    IDS_TXT15               "End"
+    IDS_TXT16               "Pico Spacing"
+    IDS_TXT17               "Underlay"
+    IDS_TXT18               "Fill phase"
+    IDS_TXT19               "Chain Position"
+    IDS_FIL0                "None"
+    IDS_FIL1                "Vertical"
+    IDS_FIL2                "Horizontal"
+    IDS_FIL3                "Angle"
+    IDS_FIL4                "Fan"
+    IDS_FIL5                "Fan clip"
+    IDS_FIL6                "Contour"
+    IDS_FIL7                "Vrt clip"
+    IDS_FIL8                "Hor clip"
+    IDS_FIL9                "Ang clip"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_EDG0                "None"
+    IDS_EDG1                "Line"
+    IDS_EDG2                "Bean"
+    IDS_EDG3                "Clipboard"
+    IDS_EDG4                "Ang Satin"
+    IDS_EDG5                "Applique"
+    IDS_EDG6                "Prp Satin"
+    IDS_EDG7                "BH"
+    IDS_EDG8                "Picot"
+    IDS_EDG9                "Double"
+    IDS_EDG10               "Lin chain"
+    IDS_EDG11               "Opn chain"
+    IDS_PRF0                "Fill spacing"
+    IDS_PRF1                "Fill angle"
+    IDS_PRF2                "Fill ends"
+    IDS_PRF3                "Border width"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PRF4                "Stitch length, maximum"
+    IDS_PRF5                "Stitch length, user"
+    IDS_PRF6                "Stitch length, minimum"
+    IDS_PRF7                "Grid cutoff"
+    IDS_PRF8                "Stitch box cutoff"
+    IDS_PRF9                "Small stitch size"
+    IDS_PRF10               "Applique color"
+    IDS_PRF11               "Snap to size"
+    IDS_PRF12               "Star ratio"
+    IDS_PRF13               "Spiral wrap"
+    IDS_PRF14               "Button corner length"
+    IDS_PRF15               "Satin form Ends"
+    IDS_PRF16               "Picot spacing"
+    IDS_PRF17               "Hoop Type"
+    IDS_PRF18               "Hoop Width"
+    IDS_PRF19               "Satin Underlay"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PRF20               "Grid Size"
+    IDS_PRF21               "Clipboard offset"
+    IDS_PRF22               "Clipboard phase"
+    IDS_PRF23               "Chain fill length"
+    IDS_PRF24               "Chain fill position"
+    IDS_PRF25               "Nudge"
+    IDS_PRF26               "Egg ratio"
+    IDS_PRF27               "Hoop Height"
+    IDS_FRMPLUS             "frm+"
+    IDS_FRMINUS             "frm-"
+    IDS_OKENT               "OK=Enter or `"
+    IDS_CANCEL              "Cancel"
+    IDS_APCOL               "Applique color number has been set to %d"
+    IDS_FREH                "Free Hand"
+    IDS_BLUNT               "Blunt"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TAPR                "Tapered"
+    IDS_PNTD                "Pointed"
+    IDS_SQR                 "Square"
+    IDS_DELST2              "Delete stitches too? (S to delete)"
+    IDS_NCOLCHG             "%d colors changed"
+    IDS_SAV                 "Save"
+    IDS_DISC                "Discard"
+    IDS_THRDBY              "Thred: %s by %s"
+    IDS_STCHOUT             "WARNING\nStitches outside of hoop\n\n"
+    IDS_STCHS               "Stitches: %d\nStitch Width: %.2f mm, %.2f in\nStitch Height: %.2f mm, %.2f in\n\n"
+    IDS_FORMS               "Forms: %d\nForms Width: %.2f mm, %.2f in\nForms Height: %.2f mm, %.2f in\n\n"
+    IDS_HUPWID              "Hoop Width: %.2f mm\nHoop Height: %.2f mm\n\n"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CREATBY             "Created by: %s\nModified by: %s"
+    IDS_CUSTHUP             "Custom Hoop\n%.2f\n%.2f"
+    IDS_STCHP               "Enter stitch point pixels\ncurrently: %d"
+    IDS_FRMP                "Enter form point pixels\ncurrently: %d"
+    IDS_ENTROT              "Please enter rotate segments.\nThe current value is: %.2f"
+    IDS_NUDG                "Enter nudge pixels\ncurrently: %d"
+    IDS_NOSTCHSEL           "No stitch selected"
+    IDS_ZIG                 "Zig-Zag"
+    IDS_EDG12               "Even Clip"
+    IDS_TXT20               "Max Fill Stitch"
+    IDS_TXT21               "Min Fill Stitch"
+    IDS_TXT22               "Max Border Stitch"
+    IDS_TXT23               "Min Border Stitch"
+    IDS_ALLX                "all forms and stitches, a form,\na group of forms, a group of form points,\n or a group of stitches"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_FTH0                "Curve"
+    IDS_FTH1                "Curve2"
+    IDS_FTH2                "Line"
+    IDS_FTH3                "Ragged"
+    IDS_FTH4                "Ramp"
+    IDS_FTH5                "Picket"
+    IDS_FIL10               "Feather"
+    IDS_FTHCOL              "Feather color"
+    IDS_FTHTYP              "Feather type"
+    IDS_FTHBLND             "Feather Blend"
+    IDS_FTHUP               "Feather up"
+    IDS_FTHBOTH             "Feather both"
+    IDS_FTHSIZ              "Feather size"
+    IDS_FTHNUM              "Feather steps"
+    IDS_FTHFLR              "Feather floor"
+    IDS_FTHUPCNT            "Feather up count"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_FTHDWNCNT           "Feather down count"
+    IDS_SETSTCH             "Left click to set stitches"
+    IDS_P2CMSG              "Can't locate PES2Card Software.\nWould you like to browse for\nComputerservice file: LinkP2C.exe?\n"
+    IDS_P2CTITL             "PES2Card Software Not Found"
+    IDS_P2CNODAT            "No data to send to PES2Card"
+    IDS_CLPSPAC             "Enter clipboard fill spacing\ncurrently: %.2f"
+    IDS_CHANSMAL            "Chain stitch length too large for form"
+    IDS_FSTRT               "Fill Start"
+    IDS_FEND                "Fill end"
+    IDS_FORMP               "a form point"
+    IDS_WLKIND              "Edge walk/underlay indent\ncurrently %.2f"
+    IDS_WLKLEN              "Edge Walk/Underlay stitch length\ncurrently %.2f"
+    IDS_UANG                "Underlay angle\ncurrently %.2f"
+    IDS_USPAC               "Underlay spacing\ncurrently %.2f"
+    IDS_WALK                "Edge walk"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_UWLKIND             "Indent"
+    IDS_WLKCOL              "Edge walk color"
+    IDS_UND                 "Underlay"
+    IDS_UNDCOL              "Underlay color"
+    IDS_ULEN                "Underlay stitch length"
+    IDS_FUANG               "Underlay angle"
+    IDS_FUSPAC              "Underlay spacing"
+    IDS_KEYVER              "This version of Thred is newer than your Thred key\n\n"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_DAZCRV              "Curve"
+    IDS_DAZSAW              "Side Point"
+    IDS_DAZRMP              "Center Point"
+    IDS_DAZRAG              "Ragged"
+    IDS_DAZCOG              "Cog"
+    IDS_CWLK                "Center Walk"
+    IDS_UCOL                "Underlay Color"
+    IDS_SETULEN             "Underlay Stitch Length"
+    IDS_SRTER               "Color order error in form %d"
+    IDS_SETUSPAC            "Underlay Spacing"
+    IDS_SETUANG             "Underlay Angle"
+    IDS_SETFLEN             "Stitch Length"
+    IDS_SETFSPAC            "Spacing"
+    IDS_SETFANG             "Angle"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_COL                 "Color"
+    IDS_WID                 "Width"
+    IDS_HI                  "Height"
+    IDS_FRMBOX              "Form box pixels\nCurrently %d"
+    IDS_HSIZ                "Hoop size changed to %d wide by %d high"
+    IDS_DAZHART             "Mirror"
+    IDS_CLEAR               "Clear"
+    IDS_TXHI                "hi: %.2f"
+    IDS_TXWID               "wid: %.2f"
+    IDS_TXSPAC              "spc: %.2f"
+    IDS_TXVRT               "vert"
+    IDS_TXHOR               "horz"
+    IDS_TXANG               "angle"
+    IDS_FIL11               "Vrt txtr"
+    IDS_FIL12               "Hor txtr"
+    IDS_FIL13               "Ang txt"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TXOF                "Texture offset"
+    IDS_TXMIR               "mirror"
+    IDS_BADFLT              "Form point data error\n"
+    IDS_BADCLP              "Clipboard data error\n"
+    IDS_BADSAT              "D-line data error\n"
+    IDS_BADTX               "Texture data error\n"
+    IDS_FRMDAT              "Form point"
+    IDS_CLPDAT              "Clipboard"
+    IDS_SATDAT              "D-line"
+    IDS_TXDAT               "Texture"
+    IDS_NOTREP              " data not repaired in %d forms\n"
+    IDS_DATREP              "Data Repaired"
+    IDS_UNAM                "Uknown Designer"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
