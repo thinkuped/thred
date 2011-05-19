@@ -1,3 +1,4 @@
 *.o
 *.res
 thred.exe.so
+thred.ini
