@@ -650,27 +650,26 @@ void duinf(FRMHED* hed){
 	__asm__ __volatile__
 	(
 
-	"	mov		ebx,%[hed]\n"
-	"	mov		eax,[ebx]\n"
-	"	mov		ebx,offset %[finfo]\n"
+	"	mov		edx,%[hed]\n"
+	"	mov		eax,[edx]\n"
+	"	mov		edx, offset finfo\n"
 	"	xor		ecx,ecx\n"
 	"	mov		cl,al\n"
 	"	and		cl,0xf\n"
-	"	mov		[ebx],ecx\n"
-	"	add		ebx,4\n"
+	"	mov		[edx],ecx\n"
+	"	add		edx,4\n"
 	"	mov		cl,al\n"
 	"	shr		ecx,4\n"
 	"	and		cl,0xf\n"
-	"	mov		[ebx],ecx\n"
-	"	add		ebx,4\n"
+	"	mov		[edx],ecx\n"
+	"	add		edx,4\n"
 	"	shr		eax,8\n"
 	"	and		eax,0xffff\n"
-	"	mov		[ebx],eax\n"
+	"	mov		[edx],eax\n"
 
 	:
-	:	[finfo] "m" (finfo),
-		[hed] "m" (hed)
-	:	"cl", "ecx", "eax", "memory", "ebx"
+	:	[hed] "m" (hed)
+	:	"cl", "ecx", "eax", "memory", "edx"
 	);
 #endif
 }
@@ -717,10 +716,10 @@ cmpx:
 #else
 	__asm__ __volatile__
 	(
-	"	mov		ebx,%[arg2]\n"
-	"	mov		ebx,[ebx]\n"
-	"	add		ebx,8\n"
-	"	fld		qword ptr[ebx]\n"
+	"	mov		edx,%[arg2]\n"
+	"	mov		edx,[edx]\n"
+	"	add		edx,8\n"
+	"	fld		qword ptr[edx]\n"
 	"	mov		ecx,%[arg1]\n"
 	"	mov		ecx,[ecx]\n"
 	"	add		ecx,8\n"
@@ -735,8 +734,8 @@ cmpx:
 	"	dec		eax\n"
 	"	jmp		short cmpx\n"
 	"cmp1: 	sub		ecx,8\n"
-	"	sub		ebx,8\n"
-	"	fld		qword ptr[ebx]\n"
+	"	sub		edx,8\n"
+	"	fld		qword ptr[edx]\n"
 	"	fld		qword ptr[ecx]\n"
 	"	fucompp\n"
 	"	fstsw	ax\n"
@@ -755,7 +754,7 @@ cmpx:
 	:
 	:	[arg2] "m" (arg2),
 		[arg1] "m" (arg1)
-	:	"ecx", "ax", "ah", "eax", "memory", "ebx"
+	:	"ecx", "ax", "ah", "eax", "memory", "edx"
 	);
 #endif
 #pragma warning(disable:4035;once:)
@@ -780,12 +779,11 @@ unsigned satind(SATCON* pnt){
 	(
 
 	"	mov		eax,%[pnt]\n"
-	"	sub		eax,offset %[satks]\n"
+	"	sub		eax,offset satks\n"
 	"	shr		eax,2\n"
 
 	:
-	:	[pnt] "m" (pnt),
-		[satks] "m" (satks)
+	:	[pnt] "m" (pnt)
 	:	"eax"
 	);
 #endif
@@ -1002,12 +1000,11 @@ unsigned fltind(FLPNT* pnt){
 	(
 
 	"	mov		eax,%[pnt]\n"
-	"	sub		eax,offset %[flts]\n"
+	"	sub		eax,offset flts\n"
 	"	shr		eax,3\n"
 
 	:
-	:	[flts] "m" (flts),
-		[pnt] "m" (pnt)
+	:	[pnt] "m" (pnt)
 	:	"eax"
 	);
 #endif
@@ -1027,12 +1024,11 @@ unsigned sacind(SATCON* pnt){
 	(
 
 	"	mov		eax,%[pnt]\n"
-	"	sub		eax,offset %[satks]\n"
+	"	sub		eax, offset satks\n"
 	"	shr		eax,2\n"
 
 	:
-	:	[pnt] "m" (pnt),
-		[satks] "m" (satks)
+	:	[pnt] "m" (pnt)
 	:	"eax"
 	);
 #endif
@@ -1052,12 +1048,11 @@ unsigned clpind(FLPNT* pnt){
 	(
 
 	"	mov		eax,%[pnt]\n"
-	"	sub		eax,offset %[clps]\n"
+	"	sub		eax,offset clps\n"
 	"	shr		eax,3\n"
 
 	:
-	:	[pnt] "m" (pnt),
-		[clps] "m" (clps)
+	:	[pnt] "m" (pnt)
 	:	"eax"
 	);
 #endif
@@ -3586,9 +3581,9 @@ setseqx:
 	__asm__ __volatile__
 	(
 	"	xor		eax,eax\n"
-	"	mov		ebx,%[seqmap]\n"
+	"	mov		edx,%[seqmap]\n"
 	"	mov		ecx,%[bpnt]\n"
-	"	bts		[ebx],ecx\n"
+	"	bts		[edx],ecx\n"
 	"	jnc		short setseqx\n"
 	"	inc		eax\n"
 	"setseqx:\n"
@@ -3596,7 +3591,7 @@ setseqx:
 	:
 	:	[bpnt] "m" (bpnt),
 		[seqmap] "m" (seqmap)
-	:	"ecx", "eax", "memory", "ebx"
+	:	"ecx", "eax", "memory", "edx"
 	);
 #endif
 }
@@ -5296,13 +5291,13 @@ scmpx:
 	(
 
 	"	xor		eax,eax\n"
-	"	mov		ebx,%[arg2]\n"
-	"	mov		ebx,[ebx]\n"
-	"	mov		bx,[ebx]\n"
+	"	mov		edx,%[arg2]\n"
+	"	mov		edx,[edx]\n"
+	"	mov		dx,[edx]\n"
 	"	mov		ecx,%[arg1]\n"
 	"	mov		ecx,[ecx]\n"
 	"	mov		cx,[ecx]\n"
-	"	cmp		bx,cx\n"
+	"	cmp		dx,cx\n"
 	"	je		short scmpx\n"
 	"	jc		short scmp1\n"
 	"	dec		eax\n"
@@ -5313,7 +5308,7 @@ scmpx:
 	:
 	:	[arg2] "m" (arg2),
 		[arg1] "m" (arg1)
-	:	"ecx", "bx", "cx", "eax", "ebx"
+	:	"ecx", "dx", "cx", "eax", "edx"
 	);
 #endif
 #pragma warning(disable:4035;once:)
@@ -5335,9 +5330,9 @@ setcx:
 	__asm__ __volatile__
 	(
 	"	xor		eax,eax\n"
-	"	mov		ebx,%[chkmap]\n"
+	"	mov		edx,%[chkmap]\n"
 	"	mov		ecx,%[bPnt]\n"
-	"	bts		[ebx],ecx\n"
+	"	bts		[edx],ecx\n"
 	"	jnc		short setcx\n"
 	"	dec		eax\n"
 	"setcx:\n"
@@ -5345,7 +5340,7 @@ setcx:
 	:
 	:	[chkmap] "m" (chkmap),
 		[bPnt] "m" (bPnt)
-	:	"ecx", "eax", "memory", "ebx"
+	:	"ecx", "eax", "memory", "edx"
 	);
 #endif
 }
@@ -5366,9 +5361,9 @@ ccx:
 	__asm__ __volatile__
 	(
 	"	xor		eax,eax\n"
-	"	mov		ebx,%[chkmap]\n"
+	"	mov		edx,%[chkmap]\n"
 	"	mov		ecx,%[ind]\n"
-	"	bt		[ebx],ecx\n"
+	"	bt		[edx],ecx\n"
 	"	jc		short ccx\n"
 	"	dec		eax\n"
 	"ccx:\n"
@@ -5376,7 +5371,7 @@ ccx:
 	:
 	:	[ind] "m" (ind),
 		[chkmap] "m" (chkmap)
-	:	"ecx", "eax", "ebx"
+	:	"ecx", "eax", "edx"
 	);
 #endif
 }
@@ -5402,22 +5397,22 @@ nxtcx:
 	__asm__ __volatile__
 	(
 	"	xor		eax,eax\n"
-	"	mov		ebx,%[ind]\n"
-	"	shl		ebx,2\n"
-	"	add		ebx,%[chkmap]\n"
-	"	mov		ecx,[ebx]\n"
+	"	mov		edx,%[ind]\n"
+	"	shl		edx,2\n"
+	"	add		edx,%[chkmap]\n"
+	"	mov		ecx,[edx]\n"
 	"	bsf		eax,ecx\n"
 	"	jne		short nxtc1\n"
 	"	dec		eax\n"
 	"	jmp		short nxtcx\n"
 	"nxtc1: 	btr		ecx,eax\n"
-	"	mov		[ebx],ecx\n"
+	"	mov		[edx],ecx\n"
 	"nxtcx:\n"
 
 	:
 	:	[chkmap] "m" (chkmap),
 		[ind] "m" (ind)
-	:	"ecx", "eax", "memory", "ebx"
+	:	"ecx", "eax", "memory", "edx"
 	);
 #endif
 }
@@ -5443,22 +5438,22 @@ prvcx:
 	__asm__ __volatile__
 	(
 	"	xor		eax,eax\n"
-	"	mov		ebx,%[ind]\n"
-	"	shl		ebx,2\n"
-	"	add		ebx,%[chkmap]\n"
-	"	mov		ecx,[ebx]\n"
+	"	mov		edx,%[ind]\n"
+	"	shl		edx,2\n"
+	"	add		edx,%[chkmap]\n"
+	"	mov		ecx,[edx]\n"
 	"	bsr		eax,ecx\n"
 	"	jne		short prvc1\n"
 	"	dec		eax\n"
 	"	jmp		short prvcx\n"
 	"prvc1: 	btr		ecx,eax\n"
-	"	mov		[ebx],ecx\n"
+	"	mov		[edx],ecx\n"
 	"prvcx:\n"
 
 	:
 	:	[chkmap] "m" (chkmap),
 		[ind] "m" (ind)
-	:	"ecx", "eax", "memory", "ebx"
+	:	"ecx", "eax", "memory", "edx"
 	);
 #endif
 }
@@ -7082,18 +7077,7 @@ void satout(double satwid){
 	frmlin(ipnts,sids);
 	Polyline(rsdc,flin,sids+1);
 	SetROP2(rsdc,R2_COPYPEN);
-#if !defined(GCC__)
-	__asm {
-		nop
-	}*/
-#else
-	__asm__ __volatile__
-	(
-	"	nop\n"
-
-
-	);
-#endif
+	_asm nop;*/
 }
 
 void clpout(){
@@ -10615,7 +10599,7 @@ void snp(unsigned strt,unsigned fin){
 	chkrng(&rsiz);
 	xpnts=(unsigned*)bseq;
 	ZeroMemory(bseq,65536*sizeof(unsigned));
-	xhst=txhst=new unsigned[rsiz.x+1];
+	xhst=txhst=new unsigned[(int)rsiz.x+1];
 	for(ind=0;ind<rsiz.x;ind++)
 		xhst[ind]=0;
 	if(chkMap(FORMSEL)){
@@ -10704,13 +10688,13 @@ void setcmap(unsigned bpnt){
 	__asm__ __volatile__
 	(
 	"	mov		eax,%[colmap]\n"
-	"	mov		ebx,%[bpnt]\n"
-	"	bts		eax,ebx\n"
+	"	mov		edx,%[bpnt]\n"
+	"	bts		eax,edx\n"
 	"	mov		%[colmap],eax\n"
 
 	:	[colmap] "=m" (colmap)
 	:	[bpnt] "m" (bpnt)
-	:	"eax", "ebx"
+	:	"eax", "edx"
 	);
 #endif
 }
@@ -10736,21 +10720,21 @@ nxtcolx:	btc		ebx,eax
 	__asm__ __volatile__
 	(
 	"	xor		eax,eax\n"
-	"	mov		ebx,%[colmap]\n"
+	"	mov		edx,%[colmap]\n"
 	"	mov		ecx,%[apcol]\n"
-	"	bt		ebx,ecx\n"
+	"	bt		edx,ecx\n"
 	"	jnc		short nxtcol1\n"
 	"	mov		eax,ecx\n"
 	"	jmp		short nxtcolx\n"
-	"nxtcol1: 	bsf		eax,ebx\n"
+	"nxtcol1: 	bsf		eax,edx\n"
 	"	jne		short nxtcolx\n"
 	"	dec		eax\n"
-	"nxtcolx: 	btc		ebx,eax\n"
-	"	mov		%[colmap],ebx\n"
+	"nxtcolx: 	btc		edx,eax\n"
+	"	mov		%[colmap],edx\n"
 
 	:	[colmap] "=m" (colmap)
 	:	[apcol] "m" (apcol)
-	:	"ecx", "eax", "ebx"
+	:	"ecx", "eax", "edx"
 	);
 #endif
 }
@@ -10773,17 +10757,16 @@ chkdunx:
 	(
 
 	"	xor		eax,eax\n"
-	"	mov		ebx,offset %[dunmap]\n"
+	"	mov		edx,offset dunmap\n"
 	"	mov		ecx,%[bpnt]\n"
-	"	bt		[ebx],ecx\n"
+	"	bt		[edx],ecx\n"
 	"	jc		short chkdunx\n"
 	"	inc		eax\n"
 	"chkdunx:\n"
 
 	:
-	:	[bpnt] "m" (bpnt),
-		[dunmap] "m" (dunmap)
-	:	"ecx", "eax", "ebx"
+	:	[bpnt] "m" (bpnt)
+	:	"ecx", "eax", "edx"
 	);
 #endif
 }
@@ -10799,14 +10782,13 @@ unsigned setdun(unsigned bpnt){
 #else
 	__asm__ __volatile__
 	(
-	"	mov		ebx,offset %[dunmap]\n"
+	"	mov		edx,offset dunmap\n"
 	"	mov		ecx,%[bpnt]\n"
-	"	bts		[ebx],ecx\n"
+	"	bts		[edx],ecx\n"
 
 	:
-	:	[bpnt] "m" (bpnt),
-		[dunmap] "m" (dunmap)
-	:	"ecx", "memory", "ebx"
+	:	[bpnt] "m" (bpnt)
+	:	"ecx", "memory", "edx"
 	);
 #endif
 }
@@ -10829,17 +10811,16 @@ isrtx:
 	(
 
 	"	xor		eax,eax\n"
-	"	mov		ebx,offset %[srtmsk]\n"
+	"	mov		edx,offset srtmsk\n"
 	"	mov		ecx,%[bpnt]\n"
-	"	bt		[ebx],ecx\n"
+	"	bt		[edx],ecx\n"
 	"	jnc		isrtx\n"
 	"	inc		eax\n"
 	"isrtx:\n"
 
 	:
-	:	[srtmsk] "m" (srtmsk),
-		[bpnt] "m" (bpnt)
-	:	"ecx", "eax", "ebx"
+	:	[bpnt] "m" (bpnt)
+	:	"ecx", "eax", "edx"
 	);
 #endif
 }
@@ -11337,14 +11318,13 @@ void setr(unsigned pbit){
 	__asm__ __volatile__
 	(
 
-	"	mov		ebx,offset %[rmap]\n"
+	"	mov		edx,offset rmap\n"
 	"	mov		eax,%[pbit]\n"
-	"	bts		[ebx],eax\n"
+	"	bts		[edx],eax\n"
 
 	:
-	:	[pbit] "m" (pbit),
-		[rmap] "m" (rmap)
-	:	"eax", "memory", "ebx"
+	:	[pbit] "m" (pbit)
+	:	"eax", "memory", "edx"
 	);
 #endif
 }
@@ -11365,13 +11345,12 @@ void clRmap(unsigned len){
 
 	"	xor		eax,eax\n"
 	"	mov		ecx,%[len]\n"
-	"	mov		edi,offset %[rmap]\n"
+	"	mov		edi,offset rmap\n"
 	"	rep\n"
 	"	stosd\n"
 
 	:
-	:	[len] "m" (len),
-		[rmap] "m" (rmap)
+	:	[len] "m" (len)
 	:	"ecx", "edi", "eax", "memory"
 	);
 #endif
@@ -11397,7 +11376,7 @@ setrcx:
 	(
 
 	"	xor		eax,eax\n"
-	"	mov		ebx,offset %[rmap]\n"
+	"	mov		ebx,offset rmap\n"
 	"	mov		ecx,%[pbit]\n"
 	"	bts		[ebx],ecx\n"
 	"	jnc		short setrcx\n"
@@ -11405,8 +11384,7 @@ setrcx:
 	"setrcx:\n"
 
 	:
-	:	[pbit] "m" (pbit),
-		[rmap] "m" (rmap)
+	:	[pbit] "m" (pbit)
 	:	"ecx", "eax", "memory", "ebx"
 	);
 #endif
@@ -11432,16 +11410,15 @@ chkrx:
 
 	"	xor		eax,eax\n"
 	"	mov		ecx,%[pbit]\n"
-	"	mov		ebx,offset %[rmap]\n"
-	"	bt		[ebx],ecx\n"
+	"	mov		edx,offset rmap\n"
+	"	bt		[edx],ecx\n"
 	"	jnc		chkrx\n"
 	"	inc		eax\n"
 	"chkrx:\n"
 
 	:
-	:	[rmap] "m" (rmap),
-		[pbit] "m" (pbit)
-	:	"ecx", "eax", "ebx"
+	:	[pbit] "m" (pbit)
+	:	"ecx", "eax", "edx"
 	);
 #endif
 }
@@ -11596,28 +11573,29 @@ notf1:		inc		eax
 notfx:
 	}
 #else
-	__asm__ __volatile__
-	(
-	"	xor		eax,eax\n"
-	"	mov		ebx,%[at]\n"
-	"	test	ebx,%[TYPMSK]\n"
-	"	je		short notf1\n"
-	"	mov		ecx,%[clofind]\n"
-	"	shl		ecx,4\n"
-	"	and		ebx,%[FRMSK]\n"
-	"	cmp		ecx,ebx\n"
-	"	je		short notfx\n"
-	"notf1: 	inc		eax\n"
-	"notfx:\n"
+       __asm__ __volatile__
+       (
+       "       xor             eax,eax\n"
+       "       mov             ebx,%[at]\n"
+       "       test    ebx,%[TYPMSK]\n"
+       "       je              short notf1\n"
+       "       mov             ecx,%[clofind]\n"
+       "       shl             ecx,4\n"
+       "       and             ebx,%[FRMSK]\n"
+       "       cmp             ecx,ebx\n"
+       "       je              short notfx\n"
+       "notf1:         inc             eax\n"
+       "notfx:\n"
 
-	:
-	:	[FRMSK] "m" (FRMSK),
-		[clofind] "m" (clofind),
-		[at] "m" (at),
-		[TYPMSK] "m" (TYPMSK)
-	:	"ecx", "eax", "ebx"
-	);
+       :
+       :       [FRMSK] "m" (FRMSK),
+               [clofind] "m" (clofind),
+               [at] "m" (at),
+               [TYPMSK] "m" (TYPMSK)
+       :       "ecx", "eax", "ebx"
+       );
 #endif
+
 }*/
 
 BOOL notfstch(unsigned at)
@@ -12613,21 +12591,17 @@ void mvfrms(FRMHED* dst,FRMHED* src,unsigned cnt){
 	__asm__ __volatile__
 	(
 
-	"	mov		esi,%[src]\n"
-	"	mov		edi,%[dst]\n"
-	"	mov		eax,%[cnt]\n"
-	"	mov		ecx,%[fsizeof]\n"
 	"	mul		ecx\n"
 	"	mov		ecx,eax\n"
 	"	rep\n"
 	"	movsd\n"
 
 	:
-	:	[src] "m" (src),
-		[fsizeof] "m" (fsizeof),
-		[dst] "m" (dst),
-		[cnt] "m" (cnt)
-	:	"ecx", "edx", "esi", "edi", "eax", "memory"
+	:	[src] "S" (src),
+		[fsizeof] "c" (fsizeof),
+		[dst] "D" (dst),
+		[cnt] "a" (cnt)
+	:	"edx", "memory"
 	);
 #endif
 }
@@ -12681,19 +12655,19 @@ void stchfrm(unsigned fnum,unsigned* at){
 	(
 
 	"	mov		eax,%[fnum]\n"
-	"	shl		eax,%[FRMSHFT]\n"
-	"	mov		ebx,%[at]\n"
-	"	mov		ecx,[ebx]\n"
-	"	and		ecx,%[NFRMSK]\n"
+	"	shl		eax,%[frmshft]\n"
+	"	mov		edx,%[at]\n"
+	"	mov		ecx,[edx]\n"
+	"	and		ecx,%[nfrmsk]\n"
 	"	or		ecx,eax\n"
-	"	mov		[ebx],ecx\n"
+	"	mov		[edx],ecx\n"
 
 	:
 	:	[fnum] "m" (fnum),
-		[FRMSHFT] "m" (FRMSHFT),
+		[frmshft] "p" (FRMSHFT),
 		[at] "m" (at),
-		[NFRMSK] "m" (NFRMSK)
-	:	"ecx", "eax", "memory", "ebx"
+		[nfrmsk] "p" (NFRMSK)
+	:	"ecx", "eax", "memory", "edx"
 	);
 #endif
 }
@@ -12795,19 +12769,19 @@ unsigned duat(unsigned at){
 	(
 
 	"	mov		eax,%[at]\n"
-	"	mov		ebx,eax\n"
-	"	shr		eax,%[TYPSHFT]\n"
+	"	mov		edx,eax\n"
+	"	shr		eax,%[typshft]\n"
 	"	inc		eax\n"
 	"	and		al,3\n"
-	"	and		ebx,%[FRMSK]\n"
-	"	shr		ebx,2\n"
-	"	or		eax,ebx\n"
+	"	and		edx,%[frmsk]\n"
+	"	shr		edx,2\n"
+	"	or		eax,edx\n"
 
 	:
-	:	[FRMSK] "m" (FRMSK),
+	:	[frmsk] "p" (FRMSK),
 		[at] "m" (at),
-		[TYPSHFT] "m" (TYPSHFT)
-	:	"eax", "al", "ebx"
+		[typshft] "p" (TYPSHFT)
+	:	"eax", "al", "edx"
 	);
 #endif
 }
@@ -13176,7 +13150,6 @@ void mvfrmsb(FRMHED* dst,FRMHED* src,unsigned cnt){
 	(
 
 	"	std\n"
-	"	mov		eax,%[fsizeof]\n"
 	"	mul		%[cnt]\n"
 	"	mov		ecx,eax\n"
 	"	mov		edi,%[dst]\n"
@@ -13189,10 +13162,10 @@ void mvfrmsb(FRMHED* dst,FRMHED* src,unsigned cnt){
 
 	:
 	:	[src] "m" (src),
-		[fsizeof] "m" (fsizeof),
+		[fsizeof] "a" (fsizeof),
 		[dst] "m" (dst),
 		[cnt] "m" (cnt)
-	:	"ecx", "esi", "edx", "edi", "cc", "eax", "memory"
+	:	"ecx", "esi", "edx", "edi", "cc", "memory"
 	);
 #endif
 }
@@ -13507,15 +13480,15 @@ lcmpx:
 #else
 	__asm__ __volatile__
 	(
-	"	mov		ebx,%[arg1]\n"
-	"	mov		ebx,[ebx]\n"
-	"	fld		dword ptr[ebx]\n"
-	"	mov		ebx,%[arg2]\n"
-	"	mov		ebx,[ebx]\n"
-	"	fld		dword ptr[ebx]\n"
+	"	mov		edx,%[arg1]\n"
+	"	mov		edx,[edx]\n"
+	"	fld		dword ptr[edx]\n"
+	"	mov		edx,%[arg2]\n"
+	"	mov		edx,[edx]\n"
+	"	fld		dword ptr[edx]\n"
 	"	fcompp\n"
 	"	fstsw	ax\n"
-	"	mov		ebx,eax\n"
+	"	mov		edx,eax\n"
 	"	xor		eax,eax\n"
 	"	test	bh,6\n"
 	"	jne		short lcmpx\n"
@@ -13529,7 +13502,7 @@ lcmpx:
 	:
 	:	[arg2] "m" (arg2),
 		[arg1] "m" (arg1)
-	:	"ax", "eax", "memory", "ebx"
+	:	"ax", "eax", "memory", "edx"
 	);
 #endif
 }
@@ -13793,15 +13766,15 @@ clpcmpx:
 	(
 
 	"	xor		eax,eax\n"
-	"	mov		ebx,%[arg1]\n"
+	"	mov		edi,%[arg1]\n"
 	"	mov		esi,%[arg2]\n"
-	"	mov		ecx,[ebx]\n"
+	"	mov		ecx,[edi]\n"
 	"	mov		edx,[esi]\n"
 	"	cmp		ecx,edx\n"
 	"	jne		short clpcmp1\n"
-	"	add		ebx,4\n"
+	"	add		edi,4\n"
 	"	add		esi,4\n"
-	"	mov		ecx,[ebx]\n"
+	"	mov		ecx,[edi]\n"
 	"	mov		edx,[esi]\n"
 	"	cmp		ecx,edx\n"
 	"	je		short clpcmpx\n"
@@ -13814,7 +13787,7 @@ clpcmpx:
 	:
 	:	[arg2] "m" (arg2),
 		[arg1] "m" (arg1)
-	:	"ecx", "edx", "esi", "eax", "ebx"
+	:	"ecx", "edx", "esi", "eax", "edi"
 	);
 #endif
 }
@@ -14047,7 +14020,7 @@ vscmpx:
 	"	mov		edi,%[ine]\n"
 	"	shl		esi,3\n"
 	"	shl		edi,3\n"
-	"	mov		ecx,offset %[oseq]\n"
+	"	mov		ecx,offset oseq\n"
 	"	add		esi,ecx\n"
 	"	add		edi,ecx\n"
 	"	mov		ecx,[esi]\n"
@@ -14064,8 +14037,7 @@ vscmpx:
 	"vscmpx:\n"
 
 	:
-	:	[oseq] "m" (oseq),
-		[ine] "m" (ine),
+	:	[ine] "m" (ine),
 		[ind] "m" (ind)
 	:	"ecx", "esi", "edi", "eax"
 	);

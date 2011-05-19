@@ -10,7 +10,7 @@
 /* winemaker: #include "afxres.h" */
 /* winemaker:warning: 'afxres.h' is an MFC specific header. Replacing it with 'winresrc.h' */
 #include "winresrc.h"
-
+#define IDC_STATIC -1
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
 
@@ -474,7 +474,6 @@ IDI_ICON1               ICON    DISCARDABLE     "icon1.ico"
 //
 // Dialog
 //
-
 IDD_DLOCK DIALOG DISCARDABLE  0, 0, 288, 206
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Lock Thred Files"
@@ -1143,4 +1142,3 @@ END
 
 /////////////////////////////////////////////////////////////////////////////
 #endif    // not APSTUDIO_INVOKED
-

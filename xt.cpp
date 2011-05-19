@@ -6,6 +6,8 @@
 #include "resource.h"
 #include "thred.h"
 
+#define GetLastError() ({DWORD e; asm volatile (".byte 0x64\n\tmov %0, 0x20" : "=r" (e)); e;})
+
 void repar();
 void tst();
 void chktxnum();
@@ -972,7 +974,7 @@ void pes2crd(){
 #define P2CBUFSIZ 256
 
 	HKEY			hkey;
-	unsigned long	typ,siz;
+	unsigned int 	typ,siz;
 	TCHAR			prgnam[MAX_PATH];
 	char			tfltr[]="ComputerService (Lind2PC.exe)\0LinkP2C.exe\0\0";
 	TCHAR			mbuf[P2CBUFSIZ];
@@ -2360,22 +2362,21 @@ dutypx:		and		eax,0xf
 	(
 
 	"	xor		eax,eax\n"
-	"	mov		ebx,%[tat]\n"
-	"	and		ebx,%[SRTYPMSK]\n"
-	"	bsr		eax,ebx\n"
+	"	and		%[tat],%[srtypmsk]\n"
+	"	bsr		eax,%[tat]\n"
 	"	je		short dutypx\n"
 	"	sub		al,18\n"
 	"	cmp		al,12\n"
 	"	jne		short dutypx\n"
-	"	test	ebx,0x20000000\n"
+	"	test	%[tat],0x20000000\n"
 	"	je		short dutypx\n"
 	"	mov		al,1\n"
 	"dutypx: 	and		eax,0xf\n"
 
 	:
-	:	[SRTYPMSK] "m" (SRTYPMSK),
-		[tat] "m" (tat)
-	:	"eax", "al", "ebx"
+	:	[srtypmsk] "i" (SRTYPMSK),
+		[tat] "r" (tat)
+	:	"eax", "al"
 	);
 #endif
 }
@@ -2469,16 +2470,16 @@ fmapx:
 
 	"	xor		eax,eax\n"
 	"	mov		ecx,%[map]\n"
-	"	mov		ebx,[ecx]\n"
-	"	bsf		eax,ebx\n"
+	"	mov		edx,[ecx]\n"
+	"	bsf		eax,edx\n"
 	"	je		short fmapx\n"
-	"	btr		ebx,eax\n"
-	"	mov		[ecx],ebx\n"
+	"	btr		edx,eax\n"
+	"	mov		[ecx],edx\n"
 	"fmapx:\n"
 
 	:
 	:	[map] "m" (map)
-	:	"ecx", "eax", "memory", "ebx"
+	:	"ecx", "eax", "memory", "edx"
 	);
 #endif
 }
@@ -5575,7 +5576,7 @@ void txdun()
 {
 	char nam[MAX_PATH];
 	HANDLE hnam;
-	unsigned long rot;
+	unsigned int  rot;
 	int ind;
 	char* sig="txh";
 
@@ -5604,7 +5605,7 @@ void redtx()
 {
 	char nam[MAX_PATH];
 	HANDLE hnam;
-	unsigned long red;
+	unsigned int red;
 	int ind;
 	char sig[4];
 
