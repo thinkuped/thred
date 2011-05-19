@@ -25031,7 +25031,3 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 	}
 	return -1;
 }
-
-extern "C" {
-void HtmlHelpA() {}
-}

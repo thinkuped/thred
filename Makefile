@@ -23,8 +23,8 @@ DEFINES               = -DWIN32 -D_DEBUG -D_WINDOWS -D_MBCS -DGCC__
 INCLUDE_PATH          =
 DLL_PATH              = 
 DLL_IMPORTS           =
-LIBRARY_PATH          =
-LIBRARIES             =  -lkernel32 -luser32 -lgdi32 -lwinspool -lcomdlg32 -ladvapi32 -lshell32 -lole32 -loleaut32 -luuid -lodbc32 -lodbccp32 #-lhtmlhelp
+LIBRARY_PATH          = -L.
+LIBRARIES             =  -lkernel32 -luser32 -lgdi32 -lwinspool -lcomdlg32 -ladvapi32 -lshell32 -lole32 -loleaut32 -luuid -lodbc32 -lodbccp32 -lhtmlhelp
 
 
 ### thred.exe sources and settings
