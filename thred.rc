@@ -1125,7 +1125,7 @@ BEGIN
     IDS_TXDAT               "Texture"
     IDS_NOTREP              " data not repaired in %d forms\n"
     IDS_DATREP              "Data Repaired"
-    IDS_UNAM                "Uknown Designer"
+    IDS_UNAM                "Unknown Designer"
 END
 
 #endif    // English (U.S.) resources
