@@ -5,6 +5,7 @@ SRCDIR                = .
 SUBDIRS               =
 DLLS                  =
 EXES                  = thred.exe
+DESTDIR               = /usr/local
 
 
 
@@ -74,7 +75,7 @@ all: $(SUBDIRS) $(DLLS:%=%.so) $(EXES:%=%.so)
 
 ### Build rules
 
-.PHONY: all clean dummy
+.PHONY: all clean dummy install
 
 $(SUBDIRS): dummy
 	@cd $@ && $(MAKE)
@@ -103,7 +104,7 @@ CLEAN_FILES     = y.tab.c y.tab.h lex.yy.c core *.orig *.rej \
 
 clean:: $(SUBDIRS:%=%/__clean__) $(EXTRASUBDIRS:%=%/__clean__)
 	$(RM) $(CLEAN_FILES) $(RC_SRCS:.rc=.res) $(C_SRCS:.c=.o) $(CXX_SRCS:.cpp=.o)
-	$(RM) $(DLLS:%=%.so) $(EXES:%=%.so) $(EXES:%.exe=%)
+	$(RM) $(DLLS:%=%.so) $(EXES:%=%.so) 
 
 $(SUBDIRS:%=%/__clean__): dummy
 	cd `dirname $@` && $(MAKE) clean
@@ -117,4 +118,6 @@ DEFLIB = $(LIBRARY_PATH) $(LIBRARIES) $(DLL_PATH) $(DLL_IMPORTS:%=-l%)
 $(thred_exe_MODULE).so: $(thred_exe_OBJS)
 	$(CXX) $(thred_exe_LDFLAGS) -o $@ $(thred_exe_OBJS) $(thred_exe_LIBRARY_PATH) $(DEFLIB) $(thred_exe_DLLS:%=-l%) $(thred_exe_LIBRARIES:%=-l%)
 
-
+install: all
+	mkdir -p ${DESTDIR}/bin
+	install -t ${DESTDIR}/bin thred thred.exe.so 
