@@ -2,3 +2,4 @@
 *.res
 thred.exe.so
 thred.ini
+tchar.h

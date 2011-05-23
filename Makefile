@@ -118,6 +118,12 @@ DEFLIB = $(LIBRARY_PATH) $(LIBRARIES) $(DLL_PATH) $(DLL_IMPORTS:%=-l%)
 $(thred_exe_MODULE).so: $(thred_exe_OBJS)
 	$(CXX) $(thred_exe_LDFLAGS) -o $@ $(thred_exe_OBJS) $(thred_exe_LIBRARY_PATH) $(DEFLIB) $(thred_exe_DLLS:%=-l%) $(thred_exe_LIBRARIES:%=-l%)
 
+#patch tchar.h
+tchar.h: /usr/include/wine/windows/tchar.h
+	sed -e 's/#if defined(_UNICODE) || defined(_MBCS)/#if (defined(_UNICODE) || defined(_MBCS)) \&\& !defined(__MSVCRT__)/' /usr/include/wine/windows/tchar.h > tchar.h
+
+form.o hlp.o thred.o xt.o: tchar.h
+
 install: all
 	mkdir -p ${DESTDIR}/bin
 	install -t ${DESTDIR}/bin thred thred.exe.so 

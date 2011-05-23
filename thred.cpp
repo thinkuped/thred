@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <float.h>
-#include <tchar.h>
+#include "tchar.h"
 #include "lang.h"
 #include "resource.h"
 #include "thred.h"

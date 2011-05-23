@@ -1,7 +1,7 @@
 #include <windows.h>
 #include <stdio.h>
 #include <math.h>
-#include <tchar.h>
+#include "tchar.h"
 #include "lang.h"
 #include "resource.h"
 #include "thred.h"
