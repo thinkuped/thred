@@ -15360,31 +15360,31 @@ chklup3:	rol		eax,16
 	__asm__ __volatile__
 	(
 	"	mov		eax,%[uref]\n"
-	"	cmp		al,cl\n"
+	"	cmp		al,%b[dref]\n"
 	"	jc		short chklup1\n"
 	"	mov		dl,al\n"
-	"	mov		al,cl\n"
-	"	mov		cl,dl\n"
-	"chklup1: 	cmp		ah,ch\n"
+	"	mov		al,%b[dref]\n"
+	"	mov		%b[dref],dl\n"
+	"chklup1: 	cmp		ah,%h[dref]\n"
 	"	jc		short chklup2\n"
 	"	mov		dl,ah\n"
-	"	mov		ah,ch\n"
-	"	mov		ch,dl\n"
+	"	mov		ah,%h[dref]\n"
+	"	mov		%h[dref],dl\n"
 	"chklup2: 	ror		eax,16\n"
 	"	ror		%[dref],16\n"
-	"	cmp		al,cl\n"
+	"	cmp		al,%b[dref]\n"
 	"	jc		short chklup3\n"
 	"	mov		dl,al\n"
-	"	mov		al,cl\n"
-	"	mov		cl,dl\n"
+	"	mov		al,%b[dref]\n"
+	"	mov		%b[dref],dl\n"
 	"chklup3: 	rol		eax,16\n"
 	"	rol		%[dref],16\n"
 	"	mov		%[uref],eax\n"
 
 	:	[uref] "=m" (uref),
-		[dref] "+r" (dref)
+		[dref] "+q" (dref)
 	:
-	:	"dl", "cl", "ch", "ah", "al", "ecx", "eax"
+	:	"dl", "ah", "al", "eax"
 	);
 #endif
 }
