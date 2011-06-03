@@ -6,6 +6,7 @@
 #include "lang.h"
 #include "resource.h"
 #include "thred.h"
+#include "bits.h"
 
 void flipv();
 void duangs();
@@ -3280,41 +3281,8 @@ BOOL unvis(){
 	return 0;
 }
 
-static inline bool bt(unsigned &v, unsigned bit) {
-	unsigned mask = 1 << bit;
-
-	return v & mask;
-}
-
-static inline bool bts(unsigned &v, unsigned bit) {
-	unsigned mask = 1 << bit;
-
-	bool ret = v & mask;
-	v |= mask;
-
-	return ret;
-}
-
-static inline bool btr(unsigned &v, unsigned bit) {
-	unsigned mask = 1 << bit;
-
-	bool ret = v & mask;
-	v &= ~mask;
-
-	return ret;
-}
-
-static inline bool btc(unsigned &v, unsigned bit) {
-	unsigned mask = 1 << bit;
-
-	bool ret = v & mask;
-	v ^= mask;
-
-	return ret;
-}
-
 unsigned setseq(unsigned bpnt){
-	return bts(*seqmap, bpnt) ? 0 : 1;
+	return bts(seqmap, bpnt) ? 0 : 1;
 }
 
 void rspnt(float fx,float fy){
@@ -4973,11 +4941,11 @@ int scomp(const void *arg1, const void *arg2){
 }
 
 unsigned setchk(unsigned bPnt){
-	return bts(*chkmap, bPnt) ? 0xFFFFFFFF : 0;
+	return bts(chkmap, bPnt) ? 0xFFFFFFFF : 0;
 }
 
 unsigned chkchk(unsigned ind){
-	return bt(*chkmap, ind) ? 0xFFFFFFFF : 0;
+	return bt(chkmap, ind) ? 0xFFFFFFFF : 0;
 }
 
 unsigned nxtchk(unsigned ind){
@@ -4986,7 +4954,7 @@ unsigned nxtchk(unsigned ind){
 	if (bit == 0)
 		 return 0xffffffff;
 
-	btr(chkmap[ind], --bit);
+	btr(chkmap+ind, --bit);
 
 	return bit;
 }
@@ -4997,7 +4965,7 @@ unsigned prvchk(unsigned ind){
 
 	int bit = __builtin_clz(chkmap[ind]) ^ 31;
 
-	btr(chkmap[ind], bit);
+	btr(chkmap+ind, bit);
 
 	return bit;
 }
@@ -10208,12 +10176,12 @@ void snap(){
 }
 
 void setcmap(unsigned bpnt){
-	bts(colmap, bpnt);
+	bts(&colmap, bpnt);
 }
 
 unsigned nxtcol(){
 	unsigned col;
-	if (bt(colmap, apcol)) {
+	if (bt(&colmap, apcol)) {
 		col = apcol;
 	} else {
 		col = ffs(colmap);
@@ -10223,17 +10191,17 @@ unsigned nxtcol(){
 		}  
 	}
 
-	btc(colmap, col);
+	btc(&colmap, col);
 
 	return col;
 }
 
 unsigned chkdun(unsigned bpnt){
-	return bt(*dunmap, bpnt) ? 0 : 1;
+	return bt(dunmap, bpnt) ? 0 : 1;
 }
 
 unsigned isrt(unsigned bpnt){
-	return bt(srtmsk, bpnt) ? 1 : 0;
+	return bt(&srtmsk, bpnt) ? 1 : 0;
 }
 
 unsigned prgflg(unsigned ind){
@@ -10717,7 +10685,7 @@ void frmadj(unsigned find){
 }
 
 void setr(unsigned pbit){
-	bts(*rmap, pbit);
+	bts(rmap, pbit);
 }
 
 void clRmap(unsigned len){
@@ -10727,12 +10695,12 @@ void clRmap(unsigned len){
 #if PESACT
 
 BOOL setrc(unsigned pbit){
-	return bts(*rmap, pbit) ? 1 : 0;
+	return bts(rmap, pbit) ? 1 : 0;
 }
 #endif
 
 BOOL chkr(unsigned pbit){
-	return bt(*rmap, pbit) ? 1 : 0;
+	return bt(rmap, pbit) ? 1 : 0;
 }
 
 void frmsadj(){

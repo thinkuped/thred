@@ -123,6 +123,7 @@ tchar.h: /usr/include/wine/windows/tchar.h
 	sed -e 's/#if defined(_UNICODE) || defined(_MBCS)/#if (defined(_UNICODE) || defined(_MBCS)) \&\& !defined(__MSVCRT__)/' /usr/include/wine/windows/tchar.h > tchar.h
 
 form.o hlp.o thred.o xt.o: tchar.h
+form.o: bits.h
 
 install: all
 	mkdir -p ${DESTDIR}/bin
