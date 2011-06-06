@@ -15602,18 +15602,16 @@ difbts:		mov		esi,bpnt
 #else
 	__asm__ __volatile__
 	(
-	"	push ebx\n"
 	"	jmp		short difbts\n"
 
 	"difsub: 	mov		eax,[%[bpnt]]\n"
-	"	shr		eax,cl\n"
-	"	and		eax,ebx\n"
-	"	mov		[edi],eax\n"
-	"	add		edi,4\n"
+	"	shr		eax,%b[shft]\n"
+	"	and		eax,%[ff]\n"
+	"	mov		[%[tradj]],eax\n"
+	"	add		%[tradj],4\n"
 	"	ret\n"
 
-	"difbts: 	mov		edi,offset tradj\n"
-	"	shl		%[bwid],2\n"
+	"difbts:	shl		%[bwid],2\n"
 	"	call	difsub\n"
 	"	sub		%[bpnt],%[bwid]\n"
 	"	call	difsub\n"
@@ -15631,13 +15629,14 @@ difbts:		mov		esi,bpnt
 	"	call	difsub\n"
 	"	add		%[bpnt],4\n"
 	"	call	difsub\n"
-	"	pop ebx"
 
 	:
-	:	[bwid] "d" (bwid),
-		[bpnt] "S" (bpnt),
-		[shft] "c" (shft)
-	:	"memory", "edi", "eax"
+	:	[bwid] "r" (bwid),
+		[bpnt] "r" (bpnt),
+		[shft] "q" (shft),
+		[tradj] "r" (&tradj),
+		[ff] "ri" (0xff)
+	:	"memory", "eax"
 	);
 #endif
 }
