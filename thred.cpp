@@ -2,10 +2,13 @@
 #include <stdio.h>
 #include <math.h>
 #include <float.h>
+#include <byteswap.h>
+#include <fenv.h>
 #include "tchar.h"
 #include "lang.h"
 #include "resource.h"
 #include "thred.h"
+#include "bits.h"
 
 #define GetLastError() ({DWORD e; asm volatile (".byte 0x64\n\tmov %0, 0x20" : "=r" (e)); e;})
 
@@ -1905,356 +1908,52 @@ unsigned			fthtyps[]={FTHSIN,FTHSIN2,FTHLIN,FTHPSG,FTHRMP,FTHFAZ};
 
 //bitmap functions
 unsigned setMap(unsigned bPnt){
-
-#if !defined(GCC__)
-	__asm{
-
-			xor		eax,eax
-			mov		ebx,offset map
-			mov		ecx,bPnt
-			bts		[ebx],ecx
-			jnc		short setx
-			dec		eax
-setx:
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	xor		eax,eax\n"
-	"	bts		%[map],%[bPnt]\n"
-	"	jnc		short setx\n"
-	"	dec		eax\n"
-	"setx:\n"
-
-	:	[map] "=m" (map)
-	:       [bPnt] "Ir" (bPnt)
-	:	"cc", "eax" 
-	);
-#endif
-#pragma warning(disable:4035;once:)
+	return bts(map, bPnt) ? 0xffffffff : 0;
 }
 
 void clrMap(unsigned len){
-
-#if !defined(GCC__)
-	__asm{
-
-			mov		edi,offset map
-			mov		ecx,len
-			xor		eax,eax
-			rep		stosd
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	mov		edi,offset map\n"
-	"	mov		ecx,%[len]\n"
-	"	xor		eax,eax\n"
-	"	rep\n"
-	"	stosd\n"
-
-	:
-	:	[len] "m" (len)
-	:	"ecx", "edi", "eax", "memory"
-	);
-#endif
+	memset(map, 0, sizeof(*map) * len);
 }
 
 unsigned rstMap(unsigned bPnt){
-
-#if !defined(GCC__)
-	__asm{
-
-			xor		eax,eax
-			mov		ebx,offset map
-			mov		ecx,bPnt
-			btr		[ebx],ecx
-			jnc		short rstx
-			dec		eax
-rstx:
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	xor		eax,eax\n"
-	"	btr		%[map],%[bPnt]\n"
-	"	jnc		short rstx\n"
-	"	dec		eax\n"
-	"rstx:\n"
-
-	:	[map] "=m" (map)
-	:	[bPnt] "Ir" (bPnt)
-	:	"cc", "eax"
-	);
-#endif
-#pragma warning(disable:4035;once:)
+	return btr(map, bPnt) ? 0xffffffff : 0;
 }
 
 unsigned toglMap(unsigned bPnt){
-
-#if !defined(GCC__)
-	__asm{
-
-			xor		eax,eax
-			mov		ebx,offset map
-			mov		edx,bPnt
-			btc		[ebx],edx
-			jnc		short toglx
-			dec		eax
-toglx:
-#pragma warning(disable:4035;once:)
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	xor		eax,eax\n"
-	"	btc		%[map],%[bPnt]\n"
-	"	jnc		short toglux\n"
-	"	dec		eax\n"
-	"toglux:\n"
-#pragma warning(disable:4035;once:)
-
-	:	[map] "=m" (map)
-	:	[bPnt] "Ir" (bPnt)
-	:	"eax", "cc"
-	);
-#endif
+	return btc(map, bPnt) ? 0xffffffff : 0;
 }
 
 unsigned chkMap(unsigned bPnt){
-
-#if !defined(GCC__)
-	__asm{
-
-			xor		eax,eax
-			mov		ebx,offset map
-			mov		edx,bPnt
-			bt		[ebx],edx
-			jnc		short chkx
-			dec		eax
-chkx:
-#pragma warning(disable:4035;once:)
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	xor		eax,eax\n"
-	"	bt		%[map],%[bPnt]\n"
-	"	jnc		short chkx\n"
-	"	dec		eax\n"
-	"chkx:\n"
-#pragma warning(disable:4035;once:)
-
-	:	[map] "=m" (map)
-	:	[bPnt] "Ir" (bPnt)
-	:	"eax", "cc"
-	);
-#endif
+	return bt(map, bPnt) ? 0xffffffff : 0;
 }
 
 void cpymap(unsigned dst,unsigned src){
-
-#if !defined(GCC__)
-	__asm{
-
-			mov		ebx,offset map
-			mov		eax,dst
-			btr		[ebx],eax
-			mov		edx,src
-			bt		[ebx],edx
-			jnc		short cpx
-			bts		[ebx],eax
-cpx:
+	if (bt(map, src)) {
+		bts(map, dst);
+	} else {
+		btr(map, dst);
 	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	mov		eax,%[dst]\n"
-	"	btr		%[map],eax\n"
-	"	mov		edx,%[src]\n"
-	"	bt		%[map],edx\n"
-	"	jnc		short cpx\n"
-	"	bts		%[map],eax\n"
-	"cpx:\n"
-
-	:	[map] "=m" (map)
-	:	[src] "m" (src),
-		[dst] "m" (dst)
-	:	"edx", "eax", "memory", "cc"
-	);
-#endif
 }
 
 //user bitmap functions
 unsigned setu(unsigned bPnt){
-
-#if !defined(GCC__)
-	__asm{
-
-			xor		eax,eax
-			mov		ebx,offset umap
-			mov		ecx,bPnt
-			bts		[ebx],ecx
-			jnc		short setx
-			dec		eax
-setx:
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	xor		eax,eax\n"
-	"	bts		%[umap],%[bPnt]\n"
-	"	jnc		short setux\n"
-	"	dec		eax\n"
-	"setux:\n"
-
-	:	[umap] "=m" (umap)
-	:	[bPnt] "Ir" (bPnt)
-	:	"cc", "eax"
-	);
-#endif
-#pragma warning(disable:4035;once:)
+	return bts(&umap, bPnt) ? 0xffffffff : 0;
 }
 
 unsigned rstu(unsigned bPnt){
-
-#if !defined(GCC__)
-	__asm{
-
-			xor		eax,eax
-			mov		ebx,offset umap
-			mov		ecx,bPnt
-			btr		[ebx],ecx
-			jnc		short rstx
-			dec		eax
-rstx:
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	xor		eax,eax\n"
-	"	btr		%[umap],%[bPnt]\n"
-	"	jnc		short rstux\n"
-	"	dec		eax\n"
-	"rstux:\n"
-
-	:	[umap] "=m" (umap)
-	:	[bPnt] "Ir" (bPnt)
-	:	"cc", "eax"
-	);
-#endif
-#pragma warning(disable:4035;once:)
+	return btr(&umap, bPnt) ? 0xffffffff : 0;
 }
 
 unsigned chku(unsigned bPnt){
-
-#if !defined(GCC__)
-	__asm{
-
-			xor		eax,eax
-			mov		ebx,offset umap
-			mov		edx,bPnt
-			bt		[ebx],edx
-			jnc		short chkx
-			dec		eax
-chkx:
-#pragma warning(disable:4035;once:)
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	xor		eax,eax\n"
-	"	bt		[umap],%[bPnt]\n"
-	"	jnc		short chkux\n"
-	"	dec		eax\n"
-	"chkux:\n"
-#pragma warning(disable:4035;once:)
-
-	:	[umap] "=m" (umap)
-	:	[bPnt] "Ir" (bPnt)
-	:	"edx", "eax", "cc"
-	);
-#endif
+	return bt(&umap, bPnt) ? 0xffffffff : 0;
 }
 
 unsigned toglu(unsigned bPnt){
-
-#if !defined(GCC__)
-	__asm{
-
-			xor		eax,eax
-			mov		ebx,offset umap
-			mov		edx,bPnt
-			btc		[ebx],edx
-			jnc		short toglux
-			dec		eax
-toglux:
-#pragma warning(disable:4035;once:)
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	xor		eax,eax\n"
-	"	mov		edx,%[bPnt]\n"
-	"	btc		%[umap],edx\n"
-	"	jnc		short toglx\n"
-	"	dec		eax\n"
-	"toglx:\n"
-#pragma warning(disable:4035;once:)
-
-	:	[umap] "=m" (umap)
-	:	[bPnt] "m" (bPnt)
-	:	"edx", "eax", "memory" 
-	);
-#endif
+	return btc(&umap, bPnt) ? 0xffffffff : 0;
 }
 
 unsigned dumsk(unsigned pnt){
-
-#if !defined(GCC__)
-	__asm{
-
-			mov		eax,pnt
-			and		al,31
-			mov		cl,32
-			sub		cl,al
-			xor		eax,eax
-			inc		eax
-			shl		eax,cl
-			dec		eax
-			not		eax
-			bswap	eax
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	mov		eax,%[pnt]\n"
-	"	and		al,31\n"
-	"	mov		cl,32\n"
-	"	sub		cl,al\n"
-	"	xor		eax,eax\n"
-	"	inc		eax\n"
-	"	shl		eax,cl\n"
-	"	dec		eax\n"
-	"	not		eax\n"
-	"	bswap	eax\n"
-
-	:
-	:	[pnt] "m" (pnt)
-	:	"cl", "eax", "al"
-	);
-#endif
+	return bswap_32(0xffffffff << (32 - (pnt & 0x1F)));
 }
 
 BOOL CALLBACK dnamproc(HWND hwndlg,UINT umsg,WPARAM wparam,LPARAM lparam)
@@ -2721,31 +2420,7 @@ void ladj(){
 }
 
 void stchcpy(unsigned siz,SHRTPNT* dst){
-
-#if !defined(GCC__)
-	__asm{
-
-			mov		esi,offset stchs
-			mov		edi,dst
-			mov		ecx,siz
-			rep		movsd
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	mov		esi,offset stchs\n"
-	"	mov		edi,%[dst]\n"
-	"	mov		ecx,%[siz]\n"
-	"	rep\n"
-	"	movsd\n"
-
-	:
-	:	[siz] "m" (siz),
-		[dst] "m" (dst)
-	:	"ecx", "esi", "edi", "memory"
-	);
-#endif
+	memcpy(dst, stchs, siz * 4);
 }
 
 void deldu(){
@@ -2766,65 +2441,12 @@ void deldu(){
 }
 
 TCHAR* mvflpnt(FLPNT* dst,FLPNT* src,unsigned cnt){
-
-#if !defined(GCC__)
-	__asm{
-
-			mov		ecx,cnt
-			shl		ecx,1
-			mov		esi,src
-			mov		edi,dst
-			rep		movsd
-			mov		eax,edi
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	mov		ecx,%[cnt]\n"
-	"	shl		ecx,1\n"
-	"	mov		esi,%[src]\n"
-	"	mov		edi,%[dst]\n"
-	"	rep\n"
-	"	movsd\n"
-	"	mov		eax,edi\n"
-
-	:
-	:	[src] "m" (src),
-		[dst] "m" (dst),
-		[cnt] "m" (cnt)
-	:	"ecx", "esi", "edi", "eax", "memory"
-	);
-#endif
+	memcpy(dst, src, cnt * sizeof(FLPNT));
+	return (TCHAR *) (dst + cnt);
 }
 
 void mvsatk(SATCON* dst,SATCON* src,unsigned cnt){
-
-#if !defined(GCC__)
-	__asm{
-
-			mov		ecx,cnt
-			mov		esi,src
-			mov		edi,dst
-			rep		movsd
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	mov		ecx,%[cnt]\n"
-	"	mov		esi,%[src]\n"
-	"	mov		edi,%[dst]\n"
-	"	rep\n"
-	"	movsd\n"
-
-	:
-	:	[src] "m" (src),
-		[dst] "m" (dst),
-		[cnt] "m" (cnt)
-	:	"ecx", "esi", "edi", "memory"
-	);
-#endif
+	memcpy(dst, src, cnt * sizeof(SATCON));
 }
 
 void dudat(){
@@ -3008,33 +2630,7 @@ nomen:;
 }
 
 void mvstch(SHRTPNT* dst, SHRTPNT* src){
-
-#if !defined(GCC__)
-	__asm{
-
-			mov		esi,src
-			mov		edi,dst
-			xor		ecx,ecx
-			mov		cl,3
-			rep		movsd
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	mov		esi,%[src]\n"
-	"	mov		edi,%[dst]\n"
-	"	xor		ecx,ecx\n"
-	"	mov		cl,3\n"
-	"	rep\n"
-	"	movsd\n"
-
-	:
-	:	[src] "m" (src),
-		[dst] "m" (dst)
-	:	"cl", "ecx", "esi", "edi", "memory"
-	);
-#endif
+	memcpy(dst, src, sizeof(SHRTPNT));
 }
 
 void duzero(){
@@ -3794,110 +3390,16 @@ void ritini(){
 }
 
 BOOL gcmp(void* pnt,unsigned cnt){
-
-#if !defined(GCC__)
-	__asm{
-
-			xor		eax,eax
-			mov		esi,offset bseq
-			mov		edi,pnt
-			mov		ecx,cnt
-			repe	cmpsd
-			je		short gcmpx
-			inc		eax
-gcmpx:
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	xor		eax,eax\n"
-	"	mov		esi,offset bseq\n"
-	"	mov		edi,%[pnt]\n"
-	"	mov		ecx,%[cnt]\n"
-	"	repe\n"
-	"	cmpsd\n"
-	"	je		short gcmpx\n"
-	"	inc		eax\n"
-	"gcmpx:\n"
-
-	:
-	:	[pnt] "m" (pnt),
-		[cnt] "m" (cnt)
-	:	"ecx", "esi", "edi", "eax"
-	);
-#endif
+	return memcmp(bseq, pnt, cnt * 4) == 0 ? 0 : 1;
 }
 
 BOOL gcmpw(short wrd,unsigned ofst){
-
-#if !defined(GCC__)
-	__asm{
-
-			xor		eax,eax
-			mov		ebx,offset bseq
-			add		ebx,ofst
-			mov		bx,[ebx]
-			cmp		bx,wrd
-			je		short gcmpwx
-			inc		eax
-gcmpwx:
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	xor		eax,eax\n"
-	"	mov		ecx,offset bseq\n"
-	"	add		ecx,%[ofst]\n"
-	"	mov		cx,[ecx]\n"
-	"	cmp		cx,%[wrd]\n"
-	"	je		short gcmpwx\n"
-	"	inc		eax\n"
-	"gcmpwx:\n"
-
-	:
-	:	[ofst] "m" (ofst),
-		[wrd] "m" (wrd)
-	:	"cx", "eax", "ecx"
-	);
-#endif
+	char *ptr = ((char *) bseq) + ofst;
+	return (*(short *)ptr == wrd) ? 0 : 1;
 }
 
 BOOL bufcmp(TCHAR* tbuf,unsigned siz){
-
-#if !defined(GCC__)
-	__asm{
-
-			xor		eax,eax
-			mov		esi,tbuf
-			mov		edi,offset bseq
-			mov		ecx,siz
-			repe	cmpsb
-			jne		short bufcmp1
-			inc		eax
-bufcmp1:
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	xor		eax,eax\n"
-	"	mov		esi,%[tbuf]\n"
-	"	mov		edi,offset seq\n"
-	"	mov		ecx,%[siz]\n"
-	"	repe\n"
-	"	cmpsb\n"
-	"	jne		short bufcmp1\n"
-	"	inc		eax\n"
-	"bufcmp1:\n"
-
-	:
-	:	[siz] "m" (siz),
-		[tbuf] "m" (tbuf)
-	:	"ecx", "esi", "edi", "eax"
-	);
-#endif
+	return memcpy(bseq, tbuf, siz) != 0 ? 1 : 0;
 }
 
 BOOL savcmp(){
@@ -5256,31 +4758,7 @@ void delstch1(unsigned ind){
 }
 
 void stchred(unsigned siz,SHRTPNT* src){
-
-#if !defined(GCC__)
-	__asm{
-
-			mov		edi,offset stchs
-			mov		esi,src
-			mov		ecx,siz
-			rep		movsd
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	mov		edi,offset stchs\n"
-	"	mov		esi,%[src]\n"
-	"	mov		ecx,%[siz]\n"
-	"	rep\n"
-	"	movsd\n"
-
-	:
-	:	[siz] "m" (siz),
-		[src] "m" (src)
-	:	"ecx", "esi", "edi", "memory"
-	);
-#endif
+	memcpy(stchs, src, siz * 4);
 }
 
 void redbak(){
@@ -5458,73 +4936,18 @@ BOOL binv(unsigned cnt){
 }
 
 void bitlin(unsigned* src,unsigned* dst,COLORREF fgnd,COLORREF bgnd){
+	for (unsigned i = 0; i < bwid; i++) {
+		unsigned bit = i ^ 0x7;
+		bit &= 31;
 
-#if !defined(GCC__)
-	__asm{
+		*dst = (bt(src, bit)) ? fgnd : bgnd;
 
-			mov		esi,src
-			mov		edi,dst
-			mov		ecx,bwid
-			xor		eax,eax
-blup:		mov		ebx,eax
-			xor		bl,7
-			mov		edx,bgnd
-			bt		[esi],ebx
-			jnc		short blup1
-			mov		edx,fgnd
-blup1:		mov		[edi],edx
-			add		edi,4
-			inc		eax
-			loop	blup
+		dst++;
 	}
-#else
-	__asm__ __volatile__
-	(
-	"	push	ebx\n"
-	"	xor		eax,eax\n"
-	"blup: 	mov		ebx,eax\n"
-	"	xor		bl,7\n"
-	"	mov		edx,DWORD PTR 20[ebp]\n"
-	"	bt		%[src],ebx\n"
-	"	jnc		short blup1\n"
-	"	mov		edx,DWORD PTR 16[ebp]\n"
-	"blup1: 	mov		[%[dst]],edx\n"
-	"	add		%[dst],4\n"
-	"	inc		eax\n"
-	"	loop	blup\n"
-	"	pop ebx\n"
-
-	:
-	:	[src] "S" (src),
-		[bwid] "c" (bwid),
-		[dst] "D" (dst)
-	:	"memory", "edx", "eax"
-	);
-#endif
 }
 
 COLORREF fswap(COLORREF tcol){
-
-#if !defined(GCC__)
-	__asm{
-
-			mov		eax,tcol
-			bswap	eax
-			shr		eax,8
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	mov		eax,%[tcol]\n"
-	"	bswap	eax\n"
-	"	shr		eax,8\n"
-
-	:
-	:	[tcol] "m" (tcol)
-	:	"eax"
-	);
-#endif
+	return bswap_32(tcol) >> 8;
 }
 
 BOOL gudtyp(WORD bcnt){
@@ -5547,38 +4970,14 @@ BOOL gudtyp(WORD bcnt){
 }
 
 void movmap(unsigned cnt){
+	unsigned *src = tracbits;
+	char *dst = (char *) bseq;
 
-#if !defined(GCC__)
-	__asm{
+	for (unsigned i = 0; i < cnt; i++) {
+		*(unsigned *)dst = *(src++);
 
-			mov		ecx,cnt
-			mov		esi,tracbits
-			mov		edi,offset bseq
-movlup:		mov		eax,[esi]
-			add		esi,4
-			mov		[edi],eax
-			add		edi,3
-			loop	movlup
+		dst+=3;
 	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	mov		ecx,%[cnt]\n"
-	"	mov		esi,%[tracbits]\n"
-	"	mov		edi,offset bseq\n"
-	"movlup: 	mov		eax,[esi]\n"
-	"	add		esi,4\n"
-	"	mov		[edi],eax\n"
-	"	add		edi,3\n"
-	"	loop	movlup\n"
-
-	:
-	:	[tracbits] "m" (tracbits),
-		[cnt] "m" (cnt)
-	:	"memory", "ecx", "esi", "edi", "eax"
-	);
-#endif
 }
 
 void savmap(){
@@ -5740,25 +5139,7 @@ void prtred(){
 }
 
 unsigned dtrn(DSTREC* dpnt){
-
-#if !defined(GCC__)
-	__asm{
-
-			mov		eax,dpnt
-			mov		eax,[eax]
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	mov		eax,%[dpnt]\n"
-	"	mov		eax,[eax]\n"
-
-	:
-	:	[dpnt] "m" (dpnt)
-	:	"eax"
-	);
-#endif
+	return *(unsigned *)dpnt;
 }
 
 BOOL colfil(){
@@ -5917,27 +5298,7 @@ void auxmen(){
 #if PESACT
 
 unsigned tripl(TCHAR* dat){
-
-#if !defined(GCC__)
-	__asm{
-
-			mov		eax,dat
-			mov		eax,[eax]
-			and		eax,0xffffff
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	mov		eax,%[dat]\n"
-	"	mov		eax,[eax]\n"
-	"	and		eax,0xffffff\n"
-
-	:
-	:	[dat] "m" (dat)
-	:	"eax"
-	);
-#endif
+	return (*(unsigned *)dat) & 0xffffff;
 }
 
 unsigned pesmtch(COLORREF rcol,unsigned char pcol){
@@ -6582,63 +5943,18 @@ void nuFil(){
 }
 
 void clrfbuf(unsigned siz){
-
-#if !defined(GCC__)
-	__asm{
-
-			mov		edi,filBuf
-			mov		ecx,siz
-			xor		eax,eax
-			rep		stosd
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	mov		edi,%[filBuf]\n"
-	"	mov		ecx,%[siz]\n"
-	"	xor		eax,eax\n"
-	"	rep\n"
-	"	stosd\n"
-
-	:
-	:	[siz] "m" (siz),
-		[filBuf] "m" (filBuf)
-	:	"memory", "ecx", "edi", "eax"
-	);
-#endif
+	memset(filBuf, 0, siz * 4);
 }
 
 unsigned xbits(unsigned src,unsigned dst){
+	unsigned bits = trinum;
 
-#if !defined(GCC__)
-	__asm{
+	bits >>= src & 0xFF;
+	bits &= 3;
 
-			mov		eax,trinum
-			mov		ecx,src
-			shr		eax,cl
-			and		eax,3
-			mov		ecx,dst
-			shl		eax,cl
-	}
-#else
-	__asm__ __volatile__
-	(
+	bits <<= dst & 0xFF;
 
-	"	mov		eax,%[trinum]\n"
-	"	mov		ecx,%[src]\n"
-	"	shr		eax,cl\n"
-	"	and		eax,3\n"
-	"	mov		ecx,%[dst]\n"
-	"	shl		eax,cl\n"
-
-	:
-	:	[trinum] "m" (trinum),
-		[src] "m" (src),
-		[dst] "m" (dst)
-	:	"ecx", "eax"
-	);
-#endif
+	return bits;
 }
 
 unsigned dudbits(POINT dif){
@@ -6647,35 +5963,14 @@ unsigned dudbits(POINT dif){
 }
 
 void savdst(unsigned dat){
+	union {
+		unsigned dat;
+		DSTREC drec;
+	} x;
 
-#if !defined(GCC__)
-	__asm{
-			xor		eax,eax
-			mov		al,3
-			mov		ecx,dstcnt
-			mul		ecx
-			inc		ecx
-			mov		dstcnt,ecx
-			add		eax,drecs
-			mov		ebx,dat
-			mov		[eax],ebx
-	}
-#else
-	__asm__ __volatile__
-	(
-	"	xor		eax,eax\n"
-	"	mov		al,3\n"
-	"	mul		%[dstcnt]\n"
-	"	inc		%[dstcnt]\n"
-	"	add		eax,%[drecs]\n"
-	"	mov		[eax],%[dat]\n"
+	x.dat = dat;
 
-	:	[dstcnt] "+c" (dstcnt)
-	:	[dat] "r" (dat),
-		[drecs] "m" (drecs)
-	:	"memory", "al",  "edx", "eax"
-	);
-#endif
+	drecs[dstcnt++] = x.drec;
 }
 
 void ritdst(){
@@ -8735,25 +8030,7 @@ void rstdu(){
 }
 
 CLPSTCH* deref(void* pnt){
-
-#if !defined(GCC__)
-	__asm{
-
-			mov		eax,pnt
-			mov		eax,[eax]
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	mov		eax,%[pnt]\n"
-	"	mov		eax,[eax]\n"
-
-	:
-	:	[pnt] "m" (pnt)
-	:	"eax"
-	);
-#endif
+	return *(CLPSTCH **)pnt;
 }
 
 void duclp(){
@@ -9238,69 +8515,15 @@ void rtclpfn(unsigned dst,unsigned src){
 }
 
 FRMCLP* frmref(void* pnt){
-
-#if !defined(GCC__)
-	__asm{
-
-			mov		eax,pnt
-			mov		eax,[eax]
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	mov		eax,%[pnt]\n"
-	"	mov		eax,[eax]\n"
-
-	:
-	:	[pnt] "m" (pnt)
-	:	"eax"
-	);
-#endif
+	return *(FRMCLP **)pnt;
 }
 
 FRMSCLP* frmsref(void* pnt){
-
-#if !defined(GCC__)
-	__asm{
-
-			mov		eax,pnt
-			mov		eax,[eax]
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	mov		eax,%[pnt]\n"
-	"	mov		eax,[eax]\n"
-
-	:
-	:	[pnt] "m" (pnt)
-	:	"eax"
-	);
-#endif
+	return *(FRMSCLP **)pnt;
 }
 
 FPCLP* fpref(void* pnt){
-
-#if !defined(GCC__)
-	__asm{
-
-			mov		eax,pnt
-			mov		eax,[eax]
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	mov		eax,%[pnt]\n"
-	"	mov		eax,[eax]\n"
-
-	:
-	:	[pnt] "m" (pnt)
-	:	"eax"
-	);
-#endif
+	return *(FPCLP **)pnt;
 }
 
 unsigned sizfclp()
@@ -9846,121 +9069,14 @@ void delsmal(unsigned ind,unsigned fin){
 }
 
 BOOL cmpstch(unsigned ind0,unsigned ind1){
-
-#if !defined(GCC__)
-	__asm{
-			mov		eax,ind0
-			xor		ecx,ecx
-			mov		cl,12
-			mul		ecx
-			mov		ebx,eax
-			add		ebx,offset stchs
-			mov		eax,ind1
-			mul		ecx
-			add		eax,offset stchs
-			mov		edx,eax
-			mov		eax,[edx]
-			cmp		eax,[ebx]
-			jne		short ncmpx
-			add		edx,4
-			add		ebx,4
-			mov		eax,[edx]
-			cmp		eax,[ebx]
-			jne		short ncmpx
-			mov		al,1
-			jmp		short doscmpx
-ncmpx:		xor		eax,eax
-doscmpx:
-	}
-#else
-	__asm__ __volatile__
-	(
-	"	mov		eax,%[ind0]\n"
-	"	xor		ecx,ecx\n"
-	"	mov		cl,12\n"
-	"	mul		ecx\n"
-	"	mov		esi,eax\n"
-	"	add		esi,offset stchs\n"
-	"	mov		eax,%[ind1]\n"
-	"	mul		ecx\n"
-	"	add		eax,offset stchs\n"
-	"	mov		edx,eax\n"
-	"	mov		eax,[edx]\n"
-	"	cmp		eax,[esi]\n"
-	"	jne		short ncmpx\n"
-	"	add		edx,4\n"
-	"	add		esi,4\n"
-	"	mov		eax,[edx]\n"
-	"	cmp		eax,[esi]\n"
-	"	jne		short ncmpx\n"
-	"	mov		al,1\n"
-	"	jmp		short doscmpx\n"
-	"ncmpx: 	xor		eax,eax\n"
-	"doscmpx:\n"
-
-	:
-	:	[ind1] "m" (ind1),
-		[ind0] "m" (ind0)
-	:	"cl", "al", "esi", "ecx", "edx", "eax"
-	);
-#endif
+	if (stchs[ind0].x != stchs[ind1].x)
+		return 0;
+	
+	return stchs[ind0].y == stchs[ind1].y;
 }
 
 void mvstch(unsigned dst,unsigned src){
-
-#if !defined(GCC__)
-	__asm{
-			mov		eax,dst
-			xor		ecx,ecx
-			mov		cl,12
-			mul		ecx
-			mov		ebx,eax
-			add		ebx,offset stchs
-			mov		eax,src
-			mul		ecx
-			add		eax,offset stchs
-			mov		cl,4
-			mov		edx,[eax]
-			mov		[ebx],edx
-			add		ebx,ecx
-			add		eax,ecx
-			mov		edx,[eax]
-			mov		[ebx],edx
-			add		ebx,ecx
-			add		eax,ecx
-			mov		edx,[eax]
-			mov		[ebx],edx
-	}
-#else
-	__asm__ __volatile__
-	(
-	"	mov		eax,%[dst]\n"
-	"	xor		ecx,ecx\n"
-	"	mov		cl,12\n"
-	"	mul		ecx\n"
-	"	mov		esi,eax\n"
-	"	add		esi,offset stchs\n"
-	"	mov		eax,%[src]\n"
-	"	mul		ecx\n"
-	"	add		eax,offset stchs\n"
-	"	mov		cl,4\n"
-	"	mov		edx,[eax]\n"
-	"	mov		[esi],edx\n"
-	"	add		esi,ecx\n"
-	"	add		eax,ecx\n"
-	"	mov		edx,[eax]\n"
-	"	mov		[esi],edx\n"
-	"	add		esi,ecx\n"
-	"	add		eax,ecx\n"
-	"	mov		edx,[eax]\n"
-	"	mov		[esi],edx\n"
-
-	:
-	:	[src] "m" (src),
-		[dst] "m" (dst)
-	:	"cl", "memory", "esi", "ecx", "esi", "eax"
-	);
-#endif
+	stchs[dst] = stchs[src];
 }
 
 void ofstch(unsigned ind,TCHAR of){
@@ -10360,55 +9476,12 @@ void duver(TCHAR* nam){
 }
 
 void durit(void* src,unsigned cnt){
-
-#if !defined(GCC__)
-	__asm{
-
-			mov		esi,src
-			mov		edi,opnt
-			mov		ecx,cnt
-			rep		movsb
-			mov		opnt,edi
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	mov		esi,%[src]\n"
-	"	mov		edi,%[opnt]\n"
-	"	mov		ecx,%[cnt]\n"
-	"	rep\n"
-	"	movsb\n"
-	"	mov		%[opnt],edi\n"
-
-	:	[opnt] "=m" (opnt)
-	:	[src] "m" (src),
-		[cnt] "m" (cnt)
-	:	"memory", "ecx", "esi", "edi"
-	);
-#endif
+	memcpy(src, (void *) opnt, cnt);
+	opnt += cnt;
 }
 
 unsigned bufref(){
-
-#if !defined(GCC__)
-	__asm{
-
-			mov		eax,opnt
-			sub		eax,offset bseq
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	mov		eax,%[opnt]\n"
-	"	sub		eax,offset bseq\n"
-
-	:
-	:	[opnt] "m" (opnt)
-	:	"eax"
-	);
-#endif
+	return (unsigned)opnt - (unsigned)bseq;
 }
 
 void dubuf(){
@@ -11038,27 +10111,7 @@ void redclp(){
 }
 
 unsigned nxtcrnr(unsigned ind){
-
-#if !defined(GCC__)
-	__asm{
-
-			mov		eax,ind
-			inc		eax
-			and		al,3
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	mov		eax,%[ind]\n"
-	"	inc		eax\n"
-	"	and		al,3\n"
-
-	:
-	:	[ind] "m" (ind)
-	:	"al", "eax"
-	);
-#endif
+	return (ind + 1) & 3;
 }
 
 void drwmrk(HDC dc){
@@ -11965,54 +11018,7 @@ void seldwn(){
 }
 
 void mvstchs(unsigned dst,unsigned src,unsigned cnt){
-
-#if !defined(GCC__)
-	__asm{
-
-			xor		ecx,ecx
-			mov		cl,12
-			mov		eax,dst
-			mul		ecx
-			mov		edi,eax
-			add		edi,offset stchs
-			mov		eax,src
-			mul		ecx
-			mov		esi,eax
-			add		esi,offset stchs
-			mov		cl,3
-			mov		eax,cnt
-			mul		ecx
-			mov		ecx,eax
-			rep		movsd
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	xor		ecx,ecx\n"
-	"	mov		cl,12\n"
-	"	mov		eax,%[dst]\n"
-	"	mul		ecx\n"
-	"	mov		edi,eax\n"
-	"	add		edi,offset stchs\n"
-	"	mov		eax,%[src]\n"
-	"	mul		ecx\n"
-	"	mov		esi,eax\n"
-	"	add		esi,offset stchs\n"
-	"	mov		cl,3\n"
-	"	mov		eax,%[cnt]\n"
-	"	mul		ecx\n"
-	"	mov		ecx,eax\n"
-	"	rep\n"
-	"	movsd\n"
-
-	:
-	:	[src] "m" (src),
-		[dst] "m" (dst),
-		[cnt] "m" (cnt)
-	:	"cl", "memory", "ecx", "esi", "edx", "edi", "eax"
-	);
-#endif
+	memcpy(stchs + dst, stchs + src, cnt * sizeof(*stchs));
 }
 
 BOOL movstchs(unsigned dst,unsigned strt,unsigned fin){
@@ -12538,84 +11544,27 @@ int strcomp( const void *arg1, const void *arg2 ){
 }
 
 void strlcpy(TCHAR* dst,TCHAR* src){
+	for (;;) {
+		TCHAR chr = *(dst++);
 
-#if !defined(GCC__)
-	__asm{
+		if (chr == 0)
+			break;
 
-			mov		ebx,offset upmap
-			mov		ecx,dst
-			mov		edx,src
-			xor		eax,eax
-lup:		mov		al,[edx]
-			inc		edx
-			or		al,al
-			je		lupx
-			and		al,0x7f
-			bt		[ebx],eax
-			jnc		short lup1
-			or		al,0x20
-lup1:		mov		[ecx],al
-			inc		ecx
-			jmp		lup
-lupx:		mov		[ecx],al
+		chr &= 0x7f;
+
+		if (bt(upmap, chr))
+			chr |= 0x20;
+
+		*(dst++) = chr;
 	}
-#else
-	__asm__ __volatile__
-	(
 
-	"	mov		ecx,%[dst]\n"
-	"	mov		edx,%[src]\n"
-	"	xor		eax,eax\n"
-	"lup: 	mov		al,[edx]\n"
-	"	inc		edx\n"
-	"	or		al,al\n"
-	"	je		lupx\n"
-	"	and		al,0x7f\n"
-	"	bt		%[upmap],eax\n"
-	"	jnc		short lup1\n"
-	"	or		al,0x20\n"
-	"lup1: 	mov		[ecx],al\n"
-	"	inc		ecx\n"
-	"	jmp		lup\n"
-	"lupx: 	mov		[ecx],al\n"
-
-	:	[upmap] "=m" (upmap)
-	:	[src] "m" (src),
-		[dst] "m" (dst)
-	:	"memory", "al", "cc", "ecx", "edx", "eax"
-	);
-#endif
+	*dst = 0;
 }
 
 TCHAR lchr(int op){
+	TCHAR chr = op & 0x7f;
 
-#if !defined(GCC__)
-	__asm{
-
-			mov		ebx,offset upmap
-			mov		eax,op
-			and		eax,0x7f
-			bt		[ebx],eax
-			jnc		short lchrx
-			or		al,0x20
-lchrx:		
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	mov		eax,%[op]\n"
-	"	and		eax,0x7f\n"
-	"	bt		%[upmap],eax\n"
-	"	jnc		short lchrx\n"
-	"	or		al,0x20\n"
-	"lchrx:\n"
-
-	:	[upmap] "=m" (upmap)
-	:	[op] "m" (op)
-	:	"al", "cc", "eax"
-	);
-#endif
+	return bt(upmap, chr) ? chr : chr | 0x20;
 }
 
 void barnam(HWND hndl,unsigned fpnt){
@@ -13817,25 +12766,7 @@ void srchk(){
 }
 
 unsigned duswap(unsigned dat){
-
-#if !defined(GCC__)
-	__asm{
-
-		mov		eax,dat
-		bswap	eax
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	mov		eax,%[dat]\n"
-	"	bswap	eax\n"
-
-	:
-	:	[dat] "m" (dat)
-	:	"eax"
-	);
-#endif
+	return bswap_32(dat);
 }
 
 void ritcur(){
@@ -14153,107 +13084,23 @@ void frmcursel(unsigned stat){
 }
 
 void stchsnap(unsigned strt,unsigned fin){
+	SHRTPNT *pnt = stchs + strt;
 
-#if !defined(GCC__)
-	__asm{
-			xor		eax,eax
-			mov		al,12
-			mul		strt
-			mov		ecx,fin
-			sub		ecx,strt
-			je		short stchsnapx
-			add		eax,offset stchs
-			fld		ini.grdsiz
-snplup:		fld		dword ptr[eax]
-			fdiv	st,st(1)
-			frndint
-			fmul	st,st(1)
-			fstp	dword ptr[eax]
-			add		eax,4
-			fld		dword ptr[eax]
-			fdiv	st,st(1)
-			frndint
-			fmul	st,st(1)
-			fstp	dword ptr[eax]
-			add		eax,8
-			loop	snplup
-stchsnapx:
+	for (unsigned i = 0; i < fin - strt; i++) {
+		pnt->x = __builtin_rintf(pnt->x / ini.grdsiz) * ini.grdsiz;
+		pnt->y = __builtin_rintf(pnt->y / ini.grdsiz) * ini.grdsiz;
+
+		pnt++;
 	}
-#else
-	__asm__ __volatile__
-	(
-	"	xor		eax,eax\n"
-	"	mov		al,12\n"
-	"	mul		%[strt]\n"
-	"	mov		ecx,%[fin]\n"
-	"	sub		ecx,%[strt]\n"
-	"	je		short stchsnapx\n"
-	"	add		eax,offset stchs\n"
-	"	fld		%[grdsiz]\n"
-	"snplup: 	fld		dword ptr[eax]\n"
-	"	fdiv	st,st(1)\n"
-	"	frndint\n"
-	"	fmul	st,st(1)\n"
-	"	fstp	dword ptr[eax]\n"
-	"	add		eax,4\n"
-	"	fld		dword ptr[eax]\n"
-	"	fdiv	st,st(1)\n"
-	"	frndint\n"
-	"	fmul	st,st(1)\n"
-	"	fstp	dword ptr[eax]\n"
-	"	add		eax,8\n"
-	"	loop	snplup\n"
-	"stchsnapx:\n"
-
-	:	[grdsiz] "=m" (ini.grdsiz)
-	:	[fin] "m" (fin),
-		[strt] "m" (strt)
-	:	"memory", "al", "ecx", "edx", "eax"
-	);
-#endif
 }
 
 void frmsnap(FLPNT* strt,unsigned cnt){
+	for (unsigned i = 0; i < cnt; i++) {
+		strt->x = __builtin_rintf(strt->x / ini.grdsiz) * ini.grdsiz;
+		strt->y = __builtin_rintf(strt->y / ini.grdsiz) * ini.grdsiz;
 
-#if !defined(GCC__)
-	__asm{
-			mov		eax,strt
-			mov		ecx,cnt
-			shl		ecx,1
-			je		short frmsnapx
-			fld		ini.grdsiz
-snpflup:	fld		dword ptr[eax]
-			fdiv	st,st(1)
-			frndint
-			fmul	st,st(1)
-			fstp	dword ptr[eax]
-			add		eax,4
-			loop	snpflup
-frmsnapx:
+		strt++;
 	}
-#else
-	__asm__ __volatile__
-	(
-	"	mov		eax,%[strt]\n"
-	"	mov		ecx,%[cnt]\n"
-	"	shl		ecx,1\n"
-	"	je		short frmsnapx\n"
-	"	fld		%[grdsiz]\n"
-	"snpflup: 	fld		dword ptr[eax]\n"
-	"	fdiv	st,st(1)\n"
-	"	frndint\n"
-	"	fmul	st,st(1)\n"
-	"	fstp	dword ptr[eax]\n"
-	"	add		eax,4\n"
-	"	loop	snpflup\n"
-	"frmsnapx:\n"
-
-	:	[grdsiz] "=m" (ini.grdsiz)
-	:	[strt] "m" (strt),
-		[cnt] "m" (cnt)
-	:	"memory", "ecx", "eax"
-	);
-#endif
 }
 
 void gsnap(){
@@ -14499,79 +13346,15 @@ unsigned icolsum(COLORREF col){
 }
 
 COLORREF dwnshft(COLORREF col){
-
-#if !defined(GCC__)
-	__asm{
-
-			mov		eax,col
-			shr		eax,1
-			and		eax,0x3f3f3f
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	mov		eax,%[col]\n"
-	"	shr		eax,1\n"
-	"	and		eax,0x3f3f3f\n"
-
-	:
-	:	[col] "m" (col)
-	:	"eax"
-	);
-#endif
+	return (col >> 1) & 0x3f3f3f;
 }
 
 void setrac(unsigned bpnt){
-
-#if !defined(GCC__)
-	__asm{
-
-			mov		eax,bpnt
-			mov		ebx,offset oseq
-			bts		[ebx],eax
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	bts		%[oseq],%[bpnt]\n"
-
-	:	[oseq] "=m" (oseq)
-	:	[bpnt] "Ir" (bpnt)
-	:	"memory", "cc", "eax"
-	);
-#endif
+	bts((unsigned *) oseq, bpnt);
 }
 
 BOOL getrac(unsigned bpnt){
-
-#if !defined(GCC__)
-	__asm{
-
-			xor		eax,eax
-			mov		ecx,bpnt
-			mov		ebx,offset oseq
-			bt		[ebx],ecx
-			jnc		short getracx
-			inc		eax
-getracx:
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	xor		eax,eax\n"
-	"	bt		%[oseq],%[bpnt]\n"
-	"	jnc		short getracx\n"
-	"	inc		eax\n"
-	"getracx:\n"
-
-	:	[oseq] "=m" (oseq)
-	:	[bpnt] "Ir" (bpnt)
-	:	"cc", "eax"
-	);
-#endif
+	return bt((unsigned *)oseq, bpnt) ? 0 : 1;
 }
 
 void shownd(HWND hwnd){
@@ -14665,43 +13448,9 @@ void tracwnd(){
 }
 
 void trcols(COLORREF col){
-
-#if !defined(GCC__)
-	__asm{
-
-			mov		eax,col
-			mov		ecx,offset pxcols
-			movzx	ebx,al
-			mov		[ecx],ebx
-			add		ecx,4
-			movzx	ebx,ah
-			mov		[ecx],ebx
-			shr		eax,8
-			movzx	ebx,ah
-			add		ecx,4
-			mov		[ecx],ebx
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	mov		eax,%[col]\n"
-	"	mov		ecx,offset pxcols\n"
-	"	movzx	edx,al\n"
-	"	mov		[ecx],edx\n"
-	"	add		ecx,4\n"
-	"	movzx	edx,ah\n"
-	"	mov		[ecx],edx\n"
-	"	shr		eax,8\n"
-	"	movzx	edx,ah\n"
-	"	add		ecx,4\n"
-	"	mov		[ecx],edx\n"
-
-	:
-	:	[col] "m" (col)
-	:	"memory", "ecx", "edx", "eax"
-	);
-#endif
+	pxcols[0] = col & 0xff;
+	pxcols[1] = (col & 0xff00) >> 8;
+	pxcols[2] = (col & 0xff0000) >> 16;
 }
 
 BOOL trcin(COLORREF col){
@@ -14849,55 +13598,11 @@ void trace(){
 }
 
 void setedg(unsigned bpnt){
-
-#if !defined(GCC__)
-	__asm{
-
-			mov		eax,bpnt
-			mov		ebx,edgmap
-			bts		[ebx],eax
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	bts		%[edgmap],%[bpnt]\n"
-
-	:	[edgmap] "=m" (edgmap)
-	:	[bpnt] "Ir" (bpnt)
-	:	"cc"
-	);
-#endif
+	bts(edgmap, bpnt);
 }
 
 BOOL chkedg(unsigned bpnt){
-
-#if !defined(GCC__)
-	__asm{
-
-			xor		eax,eax
-			mov		ecx,bpnt
-			mov		ebx,edgmap
-			bt		[ebx],ecx
-			jnc		short chkedgx
-			inc		eax
-chkedgx:
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	xor		eax,eax\n"
-	"	bt		%[edgmap],%[bpnt]\n"
-	"	jnc		short chkedgx\n"
-	"	inc		eax\n"
-	"chkedgx:\n"
-
-	:	[edgmap] "=m" (edgmap)
-	:	[bpnt] "Ir" (bpnt)
-	:	"eax", "cc"
-	);
-#endif
+	return bt(edgmap, bpnt) ? 1 : 0;
 }
 
 void tracedg(){
@@ -15329,64 +14034,44 @@ unsigned ducolm(){
 }
 
 void chkref(){
+	union {
+		COLORREF cr;
+		struct {
+			unsigned char g;
+			unsigned char r;
+			unsigned char b;
+			unsigned char x;
+		} components;
+	} u, d;
 
-#if !defined(GCC__)
-	__asm{
-			mov		eax,uref
-			mov		ebx,dref
-			cmp		al,bl
-			jc		short chklup1
-			mov		dl,al
-			mov		al,bl
-			mov		bl,dl
-chklup1:	cmp		ah,bh
-			jc		short chklup2
-			mov		dl,ah
-			mov		ah,bh
-			mov		bh,dl
-chklup2:	ror		eax,16
-			ror		ebx,16
-			cmp		al,bl
-			jc		short chklup3
-			mov		dl,al
-			mov		al,bl
-			mov		bl,dl
-chklup3:	rol		eax,16
-			rol		ebx,16
-			mov		uref,eax
-			mov		dref,ebx
+	u.cr = uref;
+	d.cr = dref;
+
+	unsigned char tmp;
+
+	if (u.components.r < d.components.r) {
+		tmp = u.components.r;
+
+		u.components.r = d.components.r;
+		d.components.r = tmp;
 	}
-#else
-	__asm__ __volatile__
-	(
-	"	mov		eax,%[uref]\n"
-	"	cmp		al,cl\n"
-	"	jc		short chklup1\n"
-	"	mov		dl,al\n"
-	"	mov		al,cl\n"
-	"	mov		cl,dl\n"
-	"chklup1: 	cmp		ah,ch\n"
-	"	jc		short chklup2\n"
-	"	mov		dl,ah\n"
-	"	mov		ah,ch\n"
-	"	mov		ch,dl\n"
-	"chklup2: 	ror		eax,16\n"
-	"	ror		%[dref],16\n"
-	"	cmp		al,cl\n"
-	"	jc		short chklup3\n"
-	"	mov		dl,al\n"
-	"	mov		al,cl\n"
-	"	mov		cl,dl\n"
-	"chklup3: 	rol		eax,16\n"
-	"	rol		%[dref],16\n"
-	"	mov		%[uref],eax\n"
 
-	:	[uref] "=m" (uref),
-		[dref] "+r" (dref)
-	:
-	:	"dl", "cl", "ch", "ah", "al", "ecx", "eax"
-	);
-#endif
+	if (u.components.g < d.components.g) {
+		tmp = u.components.g;
+
+		u.components.g = d.components.g;
+		d.components.g = tmp;
+	}
+
+	if (u.components.b < d.components.b) {
+		tmp = u.components.b;
+
+		u.components.b = d.components.b;
+		d.components.b = tmp;
+	}
+
+	uref = u.cr;
+	dref = d.cr;
 }
 
 void trnumwnd0(int pos){
@@ -15561,85 +14246,38 @@ tracpar1:
 	}
 }
 
+static inline void difsub(unsigned *bpnt, unsigned shft, unsigned *&dst) {
+	*(dst++) = (*bpnt >> shft) & 0xff; 
+}
+
 void difbits(unsigned shft,unsigned* bpnt){
+	unsigned *dst = tradj;
 
-#if !defined(GCC__)
-	__asm{
+	difsub(bpnt, shft, dst);
 
-			jmp		short difbts
+	bpnt -= bwid;
+	difsub(bpnt, shft, dst);
 
-difsub:		mov		eax,[esi]
-			shr		eax,cl
-			and		eax,ebx
-			mov		[edi],eax
-			add		edi,4
-			ret
+	bpnt -= 1;
+	difsub(bpnt, shft, dst);
 
-difbts:		mov		esi,bpnt
-			mov		ecx,shft
-			mov		edi,offset tradj
-			mov		ebx,0xff
-			mov		edx,bwid
-			shl		edx,2
-			call	difsub		//4
-			sub		esi,edx
-			call	difsub		//1
-			sub		esi,4
-			call	difsub		//0
-			add		esi,8		
-			call	difsub		//2
-			add		esi,edx		
-			call	difsub		//5
-			sub		esi,8
-			call	difsub		//3
-			add		esi,edx
-			call	difsub		//6
-			add		esi,4
-			call	difsub		//7
-			add		esi,4
-			call	difsub		//8
-	}
-#else
-	__asm__ __volatile__
-	(
-	"	push ebx\n"
-	"	jmp		short difbts\n"
+	bpnt += 2;
+	difsub(bpnt, shft, dst);
 
-	"difsub: 	mov		eax,[%[bpnt]]\n"
-	"	shr		eax,cl\n"
-	"	and		eax,ebx\n"
-	"	mov		[edi],eax\n"
-	"	add		edi,4\n"
-	"	ret\n"
+	bpnt += bwid;
+	difsub(bpnt, shft, dst);
 
-	"difbts: 	mov		edi,offset tradj\n"
-	"	shl		%[bwid],2\n"
-	"	call	difsub\n"
-	"	sub		%[bpnt],%[bwid]\n"
-	"	call	difsub\n"
-	"	sub		%[bpnt],4\n"
-	"	call	difsub\n"
-	"	add		%[bpnt],8\n"
-	"	call	difsub\n"
-	"	add		%[bpnt],%[bwid]\n"
-	"	call	difsub\n"
-	"	sub		%[bpnt],8\n"
-	"	call	difsub\n"
-	"	add		%[bpnt],%[bwid]\n"
-	"	call	difsub\n"
-	"	add		%[bpnt],4\n"
-	"	call	difsub\n"
-	"	add		%[bpnt],4\n"
-	"	call	difsub\n"
-	"	pop ebx"
+	bpnt -= 2;
+	difsub(bpnt, shft, dst);
 
-	:
-	:	[bwid] "d" (bwid),
-		[bpnt] "S" (bpnt),
-		[shft] "c" (shft)
-	:	"memory", "edi", "eax"
-	);
-#endif
+	bpnt += bwid;
+	difsub(bpnt, shft, dst);
+
+	bpnt += 1;
+	difsub(bpnt, shft, dst);
+
+	bpnt += 1;
+	difsub(bpnt, shft, dst);
 }
 
 void blanklin(unsigned bind){
@@ -20506,31 +19144,7 @@ thumout:;
 						ratsr();
 						for(opnt=0;opnt<(unsigned)funscnt;opnt++){
 
-#if !defined(GCC__)
-							__asm { 
-								push ebp
-							}
-#else
-	__asm__ __volatile__
-	(
-	"	push	ebp\n"
-
-
-	);
-#endif
 							fselrct(opnt+formpnt);
-#if !defined(GCC__)
-							__asm {
-								pop ebp
-							}
-#else
-	__asm__ __volatile__
-	(
-	"	pop		ebp\n"
-
-
-	);
-#endif
 							selist[opnt]=opnt+formpnt;
 						}
 						fselpnt=funscnt;
@@ -22407,368 +21021,135 @@ void renam(){
 	ini.desnam[ind]=0;
 }
 
-void ducurs(unsigned char* pnt){
+static inline void delsubl (unsigned *&dst,
+                            unsigned val,
+			    unsigned cnt) {
+	for (unsigned i = 0; i < cnt; i++) {
+		*(dst++) = bswap_32(val);
 
-#if !defined(GCC__)
-	__asm{
-
-			jmp		short delups
-
-
-delsubl:	bswap	eax
-			mov		[edi],eax
-			add		edi,4
-			bswap	eax
-			shl		eax,1
-			loop	delsubl
-			ret
-
-delsubr:	bswap	eax
-			mov		[edi],eax
-			add		edi,4
-			bswap	eax
-			shr		eax,1
-			loop	delsubr
-			ret
-
-delsubt:	mov		eax,[esi]
-			add		esi,4
-			bswap	eax
-			mov		[edi],eax
-			add		edi,4
-			loop	delsubt
-			ret
-
-//form cursor
-delups:		mov		ebx,pnt
-			mov		edi,ebx
-			xor		ecx,ecx
-			mov		cl,32
-			mov		eax,0x00000100
-			rep		stosd
-			xor		eax,eax
-			dec		eax
-			mov		edi,ebx
-			add		edi,64
-			mov		[edi],eax
-			mov		eax,0x00ffff00
-			add		edi,32
-			mov		[edi],eax
-			sub		edi,64
-			mov		[edi],eax
-			mov		eax,0x00018000
-			mov		cl,16
-dulup0:		or		[edi],eax
-			add		edi,4
-			loop	dulup0
-
-//dlin cursor
-
-			add		ebx,128
-			mov		edi,ebx
-			mov		ecx,32
-			xor		edx,edx
-			inc		edx
-			mov		esi,edx
-			ror		esi,1
-dulup:		mov		eax,edx
-			or		eax,esi
-			or		eax,0x80000001
-			bswap	eax
-			mov		[edi],eax
-			add		edi,4
-			shl		edx,1
-			shr		esi,1
-			loop	dulup
-			xor		eax,eax
-			dec		eax
-			sub		edi,4
-			mov		[edi],eax
-			mov		[ebx],eax
-
-//straight up needle cursor
-			add		ebx,128
-			mov		edi,ebx
-			mov		eax,0x0003c000
-			bswap	eax
-			mov		cl,24
-			rep		stosd
-			mov		eax,0x00024000
-			bswap	eax
-			mov		cl,5
-			rep		stosd
-			mov		eax,0x00018000
-			bswap	eax
-			mov		cl,2
-			rep		stosd
-
-//left up
-			add		ebx,128
-			mov		edi,ebx
-			mov		cl,5
-			mov		esi,offset lucurstrt
-			call	delsubt
-			mov		cl,4
-			mov		eax,0x88
-			call	delsubl
-			mov		cl,19
-			mov		eax,0x1f00
-			call	delsubl
-			mov		esi,offset lucurfin
-			mov		cl,3
-			call	delsubt
-
-//left down
-
-			add		ebx,128
-			mov		edi,ebx
-			mov		esi,offset ldcurstrt
-			mov		cl,4
-			call	delsubt
-			mov		cl,19
-			mov		eax,0x7c000000
-			call	delsubr
-			mov		cl,4
-			mov		eax,0x440
-			call	delsubr
-			mov		cl,5
-			mov		esi,offset ldcurfin
-			call	delsubt
-
-//right up
-
-			add		ebx,128
-			mov		edi,ebx
-			mov		cl,5
-			mov		esi,offset rucurstrt
-			call	delsubt
-			mov		eax,0x9000000
-			mov		cl,4
-			call	delsubr
-			mov		cl,19
-			mov		eax,0x1f00000
-			call	delsubr
-			mov		esi,offset rucurfin
-			mov		cl,3
-			call	delsubt
-
-//right down
-			add		ebx,128
-			mov		edi,ebx
-			mov		esi,offset rdcurstrt
-			mov		cl,4
-			call	delsubt
-			mov		eax,0xf8
-			mov		cl,19
-			call	delsubl
-			mov		eax,0x8400000
-			mov		cl,4
-			call	delsubl
-			mov		esi,offset rdcurfin
-			mov		cl,5
-			call	delsubt
-
+		val <<= 1;
 	}
-#else
-	__asm__ __volatile__
-	(
+}
+static inline void delsubr (unsigned *&dst,
+                            unsigned val,
+			    unsigned cnt) {
+	for (unsigned i = 0; i < cnt; i++) {
+		*(dst++) = bswap_32(val);
 
-	"	jmp		short delups\n"
+		val >>= 1;
+	}
+}
 
+static inline void delsubt (unsigned *&dst, 
+			    unsigned *src, 
+			    unsigned cnt) {
 
-	"delsubl: 	bswap	eax\n"
-	"	mov		[edi],eax\n"
-	"	add		edi,4\n"
-	"	bswap	eax\n"
-	"	shl		eax,1\n"
-	"	loop	delsubl\n"
-	"	ret\n"
+	for (unsigned i = 0; i < cnt; i++) {
+		*(dst++) = bswap_32(*(src++));
+	}
+}
 
-	"delsubr: 	bswap	eax\n"
-	"	mov		[edi],eax\n"
-	"	add		edi,4\n"
-	"	bswap	eax\n"
-	"	shr		eax,1\n"
-	"	loop	delsubr\n"
-	"	ret\n"
+void ducurs(unsigned char* z){
+	unsigned *pnt = (unsigned *) z;
+	unsigned *dst = pnt;
+	for (int i = 0; i < 32; i++) {
+		*(dst++) = 0x100;
+	}
+	
 
-	"delsubt: 	mov		eax,[esi]\n"
-	"	add		esi,4\n"
-	"	bswap	eax\n"
-	"	mov		[edi],eax\n"
-	"	add		edi,4\n"
-	"	loop	delsubt\n"
-	"	ret\n"
+	dst = pnt + 16;
 
+	*dst = 0xffffffff;
 
-	"delups:	mov		edi,%[pnt]\n"
-	"	xor		ecx,ecx\n"
-	"	mov		cl,32\n"
-	"	mov		eax,0x00000100\n"
-	"	rep\n"
-	"	stosd\n"
-	"	xor		eax,eax\n"
-	"	dec		eax\n"
-	"	mov		edi,%[pnt]\n"
-	"	add		edi,64\n"
-	"	mov		[edi],eax\n"
-	"	mov		eax,0x00ffff00\n"
-	"	add		edi,32\n"
-	"	mov		[edi],eax\n"
-	"	sub		edi,64\n"
-	"	mov		[edi],eax\n"
-	"	mov		eax,0x00018000\n"
-	"	mov		cl,16\n"
-	"dulup0: 	or		[edi],eax\n"
-	"	add		edi,4\n"
-	"	loop	dulup0\n"
+	dst += 8;
 
+	*dst = 0x00ffff00;
 
+	dst -= 16;
 
-	"	add		%[pnt],128\n"
-	"	mov		edi,%[pnt]\n"
-	"	mov		ecx,32\n"
-	"	xor		edx,edx\n"
-	"	inc		edx\n"
-	"	mov		esi,edx\n"
-	"	ror		esi,1\n"
-	"dulup: 	mov		eax,edx\n"
-	"	or		eax,esi\n"
-	"	or		eax,0x80000001\n"
-	"	bswap	eax\n"
-	"	mov		[edi],eax\n"
-	"	add		edi,4\n"
-	"	shl		edx,1\n"
-	"	shr		esi,1\n"
-	"	loop	dulup\n"
-	"	xor		eax,eax\n"
-	"	dec		eax\n"
-	"	sub		edi,4\n"
-	"	mov		[edi],eax\n"
-	"	mov		edi,%[pnt]\n"
-	"	mov		[edi],eax\n"
+	*dst = 0x00ffff00;
+
+	for (int i = 0; i < 16; i++) {
+		*(dst++) |= 0x00018000;
+	}
+
+	pnt += 32;
+	dst = pnt;
+
+	unsigned ltor = 0x80000000;
+	unsigned rtol = 0x00000001;
+
+	for (int i = 0; i < 32; i++) {
+		*(dst++) = bswap_32(ltor | rtol | 0x80000001);
+
+		rtol <<=1;
+		ltor >>=1;
+	}
+
+	*(--dst) = 0xffffffff;
+	*pnt = 0xffffffff;
+
+	pnt += 32;
+	dst = pnt;
+
+	for (int i = 0; i < 24; i++) {
+		*(dst++) = bswap_32(0x0003c000);
+	}
+
+	for (int i = 0; i < 5; i++) {
+		*(dst++) = bswap_32(0x00024000);
+	}
+
+	for (int i = 0; i < 2; i++) {
+		*(dst++) = bswap_32(0x00018000);
+	}
 
 
-	"	add		%[pnt],128\n"
-	"	mov		eax,0x0003c000\n"
-	"	bswap	eax\n"
-	"	mov		cl,24\n"
-	"	rep\n"
-	"	stosd\n"
-	"	mov		eax,0x00024000\n"
-	"	bswap	eax\n"
-	"	mov		cl,5\n"
-	"	rep\n"
-	"	stosd\n"
-	"	mov		eax,0x00018000\n"
-	"	bswap	eax\n"
-	"	mov		cl,2\n"
-	"	rep\n"
-	"	stosd\n"
+	pnt += 32;
+	dst = pnt;
+
+	delsubt(dst, lucurstrt, 5);
+
+	delsubl(dst, 0x88, 4);
+	delsubl(dst, 0x1f00, 19);
+
+	delsubt(dst, lucurfin, 3);
 
 
-	"	add		%[pnt],128\n"
-	"	mov		edi,%[pnt]\n"
-	"	mov		cl,5\n"
-	"	mov		esi,offset lucurstrt\n"
-	"	call	delsubt\n"
-	"	mov		cl,4\n"
-	"	mov		eax,0x88\n"
-	"	call	delsubl\n"
-	"	mov		cl,19\n"
-	"	mov		eax,0x1f00\n"
-	"	call	delsubl\n"
-	"	mov		esi,offset lucurfin\n"
-	"	mov		cl,3\n"
-	"	call	delsubt\n"
+	pnt += 32;
+	dst = pnt;
+
+	delsubt(dst, ldcurstrt, 4);
+
+	delsubr(dst, 0x7c000000, 19);
+	delsubr(dst, 0x440, 4);
+
+	delsubt(dst, ldcurfin, 5);
+
+	pnt += 32;
+	dst = pnt;
+
+	delsubt(dst, rucurstrt, 5);
+
+	delsubr(dst, 0x9000000, 4);
+	delsubr(dst, 0x1f00000, 19);
+
+	delsubt(dst, rucurfin, 3);
 
 
+	pnt += 32;
+	dst = pnt;
 
-	"	add		%[pnt],128\n"
-	"	mov		edi,%[pnt]\n"
-	"	mov		esi,offset ldcurstrt\n"
-	"	mov		cl,4\n"
-	"	call	delsubt\n"
-	"	mov		cl,19\n"
-	"	mov		eax,0x7c000000\n"
-	"	call	delsubr\n"
-	"	mov		cl,4\n"
-	"	mov		eax,0x440\n"
-	"	call	delsubr\n"
-	"	mov		cl,5\n"
-	"	mov		esi,offset ldcurfin\n"
-	"	call	delsubt\n"
+	delsubt(dst, rdcurstrt, 4);
 
+	delsubl(dst, 0xf8, 19);
+	delsubl(dst, 0x8400000, 4);
 
-
-	"	add		%[pnt],128\n"
-	"	mov		edi,%[pnt]\n"
-	"	mov		cl,5\n"
-	"	mov		esi,offset rucurstrt\n"
-	"	call	delsubt\n"
-	"	mov		eax,0x9000000\n"
-	"	mov		cl,4\n"
-	"	call	delsubr\n"
-	"	mov		cl,19\n"
-	"	mov		eax,0x1f00000\n"
-	"	call	delsubr\n"
-	"	mov		esi,offset rucurfin\n"
-	"	mov		cl,3\n"
-	"	call	delsubt\n"
-
-
-	"	add		%[pnt],128\n"
-	"	mov		edi,%[pnt]\n"
-	"	mov		esi,offset rdcurstrt\n"
-	"	mov		cl,4\n"
-	"	call	delsubt\n"
-	"	mov		eax,0xf8\n"
-	"	mov		cl,19\n"
-	"	call	delsubl\n"
-	"	mov		eax,0x8400000\n"
-	"	mov		cl,4\n"
-	"	call	delsubl\n"
-	"	mov		esi,offset rdcurfin\n"
-	"	mov		cl,5\n"
-	"	call	delsubt\n"
-
-
-	:
-	:	[pnt] "m" (pnt)
-	:	"cl", "memory", "ecx", "edx", "esi", "edi", "eax"
-	);
-#endif
+	delsubt(dst, rdcurfin, 5);
 }
 
 void duamsk(){
-
-#if !defined(GCC__)
-	__asm{
-
-			xor		eax,eax
-			dec		eax
-			xor		ecx,ecx
-			mov		cl,32
-			mov		edi,offset amsk
-			rep		stosd
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	xor		eax,eax\n"
-	"	dec		eax\n"
-	"	xor		ecx,ecx\n"
-	"	mov		cl,32\n"
-	"	mov		edi,offset amsk\n"
-	"	rep\n"
-	"	stosd\n"
-
-	:
-	:	
-	:	"cl", "memory", "ecx", "edi", "eax"
-	);
-#endif
+	memset(&amsk, 0xff, 128); //This is almost certainly a bug.
 }
 
 void crtcurs(){
@@ -22813,43 +21194,7 @@ void duhom(){
 }
 
 void bcpy(TCHAR* dst,TCHAR* src){
-
-#if !defined(GCC__)
-	__asm{
-
-			mov		ebx,src
-			mov		edx,dst
-			xor		eax,eax
-blup:		mov		al,[ebx]
-			mov		[edx],al
-			or		eax,eax
-			je		short blupx
-			inc		ebx
-			inc		edx
-			jmp		blup
-blupx:		
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	mov		edx,%[dst]\n"
-	"	xor		eax,eax\n"
-	"blupz: 	mov		al,[%[src]]\n"
-	"	mov		[edx],al\n"
-	"	or		eax,eax\n"
-	"	je		short blupx\n"
-	"	inc		%[src]\n"
-	"	inc		edx\n"
-	"	jmp		blupz\n"
-	"blupx:\n"
-
-	:
-	:	[src] "r" (src),
-		[dst] "m" (dst)
-	:	"memory", "al", "edx", "eax"
-	);
-#endif
+	strcpy(dst, src);
 }
 
 void ducmd(){
@@ -23365,62 +21710,11 @@ void init(){
 }
 
 COLORREF defTxt(unsigned colInd){
-
-#if !defined(GCC__)
-	__asm{
-
-			xor		eax,eax
-			mov		ecx,defMap
-			mov		edx,colInd
-			bt		ecx,edx
-			jnc		short defx
-			mov		eax,0xffffff
-defx:
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	xor		eax,eax\n"
-	"	mov		ecx,%[defMap]\n"
-	"	mov		edx,%[colInd]\n"
-	"	bt		ecx,edx\n"
-	"	jnc		short defx\n"
-	"	mov		eax,0xffffff\n"
-	"defx:\n"
-
-	:
-	:	[colInd] "m" (colInd),
-		[defMap] "m" (defMap)
-	:	"ecx", "edx", "eax"
-	);
-#endif
-#pragma warning(disable:4035;once:)
+	return bt(&defMap, colInd) ? 0xffffff : 0;
 }
 
 void setCol(unsigned ind){
-
-#if !defined(GCC__)
-	__asm{
-
-			mov		ebx,ind
-			mov		eax,cbit
-			bts		eax,ebx
-			mov		cbit,eax
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	mov		eax,%[cbit]\n"
-	"	bts		eax,%[ind]\n"
-	"	mov		%[cbit],eax\n"
-
-	:	[cbit] "=m" (cbit)
-	:	[ind] "Ir" (ind)
-	:	"eax"
-	);
-#endif
+	bts(&cbit, ind & 31);
 }
 
 void relin(){
@@ -23436,32 +21730,7 @@ void relin(){
 }
 
 unsigned setRmp(unsigned pbit){
-
-#if !defined(GCC__)
-	__asm{
-			xor		eax,eax
-			mov		ebx,offset rmap
-			mov		ecx,pbit
-			bts		[ebx],ecx
-			jc		short setrm
-			dec		eax
-setrm:
-	}
-#else
-	__asm__ __volatile__
-	(
-	"	xor		eax,eax\n"
-	"	bts		%[rmap],%[pbit]\n"
-	"	jc		short setrm\n"
-	"	dec		eax\n"
-	"setrm:\n"
-
-	:	[rmap] "=m" (rmap)
-	:	[pbit] "Ir" (pbit)
-	:	"eax", "cc"
-	);
-#endif
-#pragma warning(disable:4035;once:)
+	return bts(rmap, pbit) ? 0 : 0xffffffff;
 }
 
 void drwLin(unsigned ind,unsigned len,HPEN hPen){
@@ -24048,36 +22317,7 @@ skip:;
 }
 	
 unsigned chkCol(unsigned ind){
-
-#if !defined(GCC__)
-	__asm{
-
-			mov		ebx,ind
-			mov		edx,cbit
-			xor		eax,eax
-			bt		edx,ebx
-			jnc		chk1
-			dec		eax
-chk1:
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	mov		edx,%[cbit]\n"
-	"	xor		eax,eax\n"
-	"	bt		edx,%[ind]\n"
-	"	jnc		chk1\n"
-	"	dec		eax\n"
-	"chk1:\n"
-
-	:
-	:	[ind] "Ir" (ind),
-		[cbit] "m" (cbit)
-	:	"edx", "eax"
-	);
-#endif
-#pragma warning(disable:4035;once:)
+	return bt(&cbit, ind) ? -1 : 0;
 }
 
 void dubar(){
@@ -24899,37 +23139,13 @@ void sachk(){
 }
 
 int	fltex(int cod){
+	if (cod != 0x10) 
+		return 0;
 
-	short	cw;
+	feenableexcept(FE_ALL_EXCEPT);
+	fesetround(FE_TONEAREST);
 
-#if !defined(GCC__)
-	__asm{
-
-			xor		eax,eax
-			cmp		cod,0x10
-			jne		short fltex1
-			mov		cw,0x27f
-			fldcw	cw
-			dec		eax
-fltex1:
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	xor		eax,eax\n"
-	"	cmp		%[cod],0x10\n"
-	"	jne		short fltex1\n"
-	"	mov		%[cw],0x27f\n"
-	"	fldcw	%[cw]\n"
-	"	dec		eax\n"
-	"fltex1:\n"
-
-	:	[cw] "=m" (cw)
-	:	[cod] "m" (cod)
-	:	"eax"
-	);
-#endif
+	return -1;
 }
 
 int APIENTRY WinMain(HINSTANCE hInstance,
