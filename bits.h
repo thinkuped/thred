@@ -38,3 +38,11 @@ static inline bool btc(unsigned *v, unsigned bit) {
 
 	return ret;
 }
+
+static inline int bsr(unsigned v) {
+	return __builtin_clz(v) ^ 31;
+}
+
+static inline int bsf(unsigned v) {
+	return __builtin_ffs(v) - 1;
+}

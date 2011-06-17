@@ -4949,12 +4949,12 @@ unsigned chkchk(unsigned ind){
 }
 
 unsigned nxtchk(unsigned ind){
-	int bit = ffs(chkmap[ind]);
-
-	if (bit == 0)
+	if (chkmap[ind] == 0)
 		 return 0xffffffff;
 
-	btr(chkmap+ind, --bit);
+	int bit = bsf(chkmap[ind]);
+
+	btr(chkmap+ind, bit);
 
 	return bit;
 }
@@ -4963,7 +4963,7 @@ unsigned prvchk(unsigned ind){
 	if (chkmap[ind] == 0)
 		 return 0xffffffff;
 
-	int bit = __builtin_clz(chkmap[ind]) ^ 31;
+	int bit = bsr(chkmap[ind]);
 
 	btr(chkmap+ind, bit);
 
@@ -10184,11 +10184,11 @@ unsigned nxtcol(){
 	if (bt(&colmap, apcol)) {
 		col = apcol;
 	} else {
-		col = ffs(colmap);
-
-		if (col-- == 0) {
+		if (colmap == 0) {
 			return 0xffffffff;
-		}  
+		}
+
+		col = bsf(colmap);
 	}
 
 	btc(&colmap, col);
