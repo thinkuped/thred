@@ -15633,7 +15633,7 @@ difbts:		mov		esi,bpnt
 	:
 	:	[bwid] "r" (bwid),
 		[bpnt] "r" (bpnt),
-		[shft] "q" (shft),
+		[shft] "c" (shft),
 		[tradj] "r" (&tradj),
 		[ff] "ri" (0xff)
 	:	"memory", "eax"
