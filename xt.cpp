@@ -5,6 +5,7 @@
 #include "lang.h"
 #include "resource.h"
 #include "thred.h"
+#include "bits.h"
 
 #define GetLastError() ({DWORD e; asm volatile (".byte 0x64\n\tmov %0, 0x20" : "=r" (e)); e;})
 
@@ -1954,24 +1955,7 @@ void durec(OREC* prec)
 
 OREC*	recref(const void* arg)
 {
-#if !defined(GCC__)
-	__asm
-	{
-			mov		eax,arg
-			mov		eax,[eax]
-	}
-#else
-	__asm__ __volatile__
-	(
-
-	"	mov		eax,%[arg]\n"
-	"	mov		eax,[eax]\n"
-
-	:
-	:	[arg] "m" (arg)
-	:	"eax"
-	);
-#endif
+	return *(OREC **)arg;
 }
 
 int recmp(const void *arg1, const void *arg2)
@@ -2341,44 +2325,17 @@ srtskp:;
 
 unsigned dutyp(unsigned tat)
 {
-#if !defined(GCC__)
-	__asm
-	{
-			xor		eax,eax
-			mov		ebx,tat
-			and		ebx,SRTYPMSK
-			bsr		eax,ebx
-			je		short dutypx
-			sub		al,18
-			cmp		al,12
-			jne		short dutypx
-			test	ebx,0x20000000
-			je		short dutypx
-			mov		al,1
-dutypx:		and		eax,0xf
-	}
-#else
-	__asm__ __volatile__
-	(
+	tat &= SRTYPMSK;
 
-	"	xor		eax,eax\n"
-	"	and		%[tat],%[srtypmsk]\n"
-	"	bsr		eax,%[tat]\n"
-	"	je		short dutypx\n"
-	"	sub		al,18\n"
-	"	cmp		al,12\n"
-	"	jne		short dutypx\n"
-	"	test	%[tat],0x20000000\n"
-	"	je		short dutypx\n"
-	"	mov		al,1\n"
-	"dutypx: 	and		eax,0xf\n"
+	if (tat == 0)
+		return 0;
 
-	:
-	:	[srtypmsk] "i" (SRTYPMSK),
-		[tat] "r" (tat)
-	:	"eax", "al"
-	);
-#endif
+	int bit = bsr(tat) - 18;
+
+	if (((bit & 0xff) != 12) || ((bit & 0x20000000) == 0))
+		return bit & 0xf;
+
+	return 1;
 }
 
 void filim(FRMLIM* flim,unsigned * lmap)
@@ -2452,36 +2409,14 @@ void filim(FRMLIM* flim,unsigned * lmap)
 
 unsigned frstmap(unsigned* map)
 {
-#if !defined(GCC__)
-	__asm
-	{
-			xor		eax,eax
-			mov		ecx,map
-			mov		ebx,[ecx]
-			bsf		eax,ebx
-			je		short fmapx
-			btr		ebx,eax
-			mov		[ecx],ebx
-fmapx:
-	}
-#else
-	__asm__ __volatile__
-	(
+	if (*map == 0)
+		return 0;
 
-	"	xor		eax,eax\n"
-	"	mov		ecx,%[map]\n"
-	"	mov		edx,[ecx]\n"
-	"	bsf		eax,edx\n"
-	"	je		short fmapx\n"
-	"	btr		edx,eax\n"
-	"	mov		[ecx],edx\n"
-	"fmapx:\n"
+	int bit = bsf(*map);
 
-	:
-	:	[map] "m" (map)
-	:	"ecx", "eax", "memory", "edx"
-	);
-#endif
+	btr(map, bit);
+
+	return bit;
 }
 
 #ifdef _DEBUG
