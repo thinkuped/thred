@@ -22794,11 +22794,23 @@ void dstcurs(){
 	DestroyCursor(hnedlu);
 }
 
+/* workaround for wine bug */
+#ifdef __WINE__
+extern char **__wine_main_argv;
+extern int    __wine_main_argc;
+#endif
+
 void duhom(){
 
 	unsigned ind;
 
-	strcpy(homdir,__argv[0]);
+	char **argv = __argv;
+
+#ifdef __WINE__
+	if (!argv) argv = __wine_main_argv;
+#endif
+
+	strcpy(homdir,argv[0]);
 	phom=strrchr(homdir,'\\');
 	if(phom)
 		phom++;
@@ -22855,10 +22867,17 @@ void ducmd(){
 
 	unsigned int 	red;
 	int				ind;
+	char **argv = __argv;
+	int    argc = __argc;
 
-	if(__argc>1){
+#ifdef __WINE__
+	if (!argv) argv = __wine_main_argv;
+	if (!argc) argc = __wine_main_argc;
+#endif
 
-		bcpy(filnam,__argv[1]);
+	if(argc>1){
+
+		bcpy(filnam,argv[1]);
 		if(!strncmp(filnam,"/F1:",4)){
  
 			balpnt=&filnam[4];
@@ -22867,9 +22886,9 @@ void ducmd(){
 			if(balfil!=INVALID_HANDLE_VALUE){
 
 				bcpy(balnam0,balpnt);
-				if(__argc>2){
+				if(argc>2){
 
-					bcpy(filnam,__argv[2]);
+					bcpy(filnam,argv[2]);
 					if(!strncmp(filnam,"/F2:",4)){
 
 						balpnt=&filnam[4];
@@ -22893,10 +22912,10 @@ void ducmd(){
 		}
 		else{
 
-			for(ind=2;ind<__argc;ind++){
+			for(ind=2;ind<argc;ind++){
 
 				strcat(filnam," ");
-				strcat(filnam,__argv[ind]);
+				strcat(filnam,argv[ind]);
 			}
 			setMap(REDOLD);
 			nuFil();

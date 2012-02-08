@@ -5556,11 +5556,22 @@ void clrstch()
 	while(EnumChildWindows(hStch,enumch,0));
 }
 
+/* workaround for wine bug */
+#ifdef __WINE__
+extern char **__wine_main_argv;
+#endif
+
+
 BOOL txnam(char* nam)
 {
 	char* pchr;
+	char **argv = __argv;
 
-	strcpy(nam,__argv[0]);
+#ifdef __WINE__
+	if (!argv) argv = __wine_main_argv;
+#endif
+
+	strcpy(nam,argv[0]);
 	pchr=strrchr(nam,'\\');
 	if(pchr)
 	{
