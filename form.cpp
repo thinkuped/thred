@@ -8408,7 +8408,7 @@ void prfmsg(){
 	sprintf(msgbuf,"%.2f mm",ini.grdsiz/PFGRAN);
 	prflin(STR_PRF20);
 	sethup();
-	sprintf(msgbuf,stab[STR_HUP0+ini.hup-1]);
+	sprintf(msgbuf,"%s",stab[STR_HUP0+ini.hup-1]);
 	prflin(STR_PRF17);
 	sprintf(msgbuf,"%.0f mm",ini.hupy/PFGRAN);
 	prflin(STR_PRF27);
