@@ -13,11 +13,9 @@ DESTDIR               = /usr/local
 
 CEXTRA                = -W -fexceptions -g -O0  \
 			-mno-cygwin \
-			-masm=intel \
 			-m32
 CXXEXTRA              = -W -fexceptions -g -O0  \
 			-mno-cygwin \
-			-masm=intel \
 			-m32
 RCEXTRA               =
 DEFINES               = -DWIN32 -D_DEBUG -D_WINDOWS -D_MBCS -DGCC__

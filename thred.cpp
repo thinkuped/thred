@@ -10,7 +10,6 @@
 #include "thred.h"
 #include "bits.h"
 
-#define GetLastError() ({DWORD e; asm volatile (".byte 0x64\n\tmov %0, 0x20" : "=r" (e)); e;})
 
 #define ds drawstructthingie
 
