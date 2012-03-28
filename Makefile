@@ -24,6 +24,7 @@ DLL_PATH              =
 DLL_IMPORTS           =
 LIBRARY_PATH          = -L.
 LIBRARIES             =  -lkernel32 -luser32 -lgdi32 -lwinspool -lcomdlg32 -ladvapi32 -lshell32 -lole32 -loleaut32 -luuid -lodbc32 -lodbccp32 -lhtmlhelp
+WINELIB_HEADERS       = /usr/include/wine
 
 
 ### thred.exe sources and settings
@@ -117,8 +118,8 @@ $(thred_exe_MODULE).so: $(thred_exe_OBJS)
 	$(CXX) $(thred_exe_LDFLAGS) -o $@ $(thred_exe_OBJS) $(thred_exe_LIBRARY_PATH) $(DEFLIB) $(thred_exe_DLLS:%=-l%) $(thred_exe_LIBRARIES:%=-l%)
 
 #patch tchar.h
-tchar.h: /usr/include/wine/windows/tchar.h
-	sed -e 's/#if defined(_UNICODE) || defined(_MBCS)/#if (defined(_UNICODE) || defined(_MBCS)) \&\& !defined(__MSVCRT__)/' /usr/include/wine/windows/tchar.h > tchar.h
+tchar.h: $(WINELIB_HEADERS)/windows/tchar.h
+	sed -e 's/#if defined(_UNICODE) || defined(_MBCS)/#if (defined(_UNICODE) || defined(_MBCS)) \&\& !defined(__MSVCRT__)/' $(WINELIB_HEADERS)/windows/tchar.h > tchar.h
 
 form.o hlp.o thred.o xt.o: tchar.h
 form.o thred.o xt.o: bits.h
