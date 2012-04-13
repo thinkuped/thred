@@ -9477,7 +9477,7 @@ void duver(TCHAR* nam){
 }
 
 void durit(void* src,unsigned cnt){
-	memcpy(src, (void *) opnt, cnt);
+	memcpy((void *) opnt, src, cnt);
 	opnt += cnt;
 }
 
