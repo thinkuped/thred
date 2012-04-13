@@ -2442,7 +2442,7 @@ void chkmen()
 {
 	int ind,cod;
 
-	for(ind=0;ind<sizeof(datcod);ind++)
+	for(ind=0;ind<(sizeof(datcod)/sizeof(int));ind++)
 	{
 		cod=MF_UNCHECKED;
 		if(ind==ini.dchk)
