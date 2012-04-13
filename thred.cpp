@@ -21150,7 +21150,7 @@ void ducurs(unsigned char* z){
 }
 
 void duamsk(){
-	memset(&amsk, 0xff, 128); //This is almost certainly a bug.
+	memset(amsk, 0xff, 128);
 }
 
 void crtcurs(){
