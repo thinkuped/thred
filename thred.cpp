@@ -24034,7 +24034,7 @@ skip:;
 			duclp();
 		if(chkMap(ROTAT)||chkMap(ROTCAPT)||chkMap(MOVCNTR))
 			ritrot();
-		delete plin;
+		delete[] plin;
 	}
 	if(formpnt&&!chkMap(FRMOF))
 		drwfrm();

@@ -413,8 +413,8 @@ void shoMsg(TCHAR* str){
 		NULL,
 		hInst,
 		NULL);
-	delete strs;
-	delete lens;
+	delete[] strs;
+	delete[] lens;
 }
 
 void keydays(unsigned daz){

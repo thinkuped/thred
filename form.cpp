@@ -5996,8 +5996,8 @@ nuseg:;
 			if((acnt||bcnt)&&acnt<MAXSEQ&&bcnt<MAXSEQ)
 				goto nuseg;
 		}
-		delete acnts;
-		delete bcnts;
+		delete[] acnts;
+		delete[] bcnts;
 	}
 }
 
@@ -6133,7 +6133,7 @@ void satfil(){
 	satfn(0,ind,sids,ind);
 satdun:;
 
-	delete lens;
+	delete[] lens;
 	stspace=tspac;
 }
 
