@@ -611,7 +611,7 @@ TCHAR				fildes[50];		//file designer name in clear
 HWND				fwnd;			//first window not destroyed for exiting enumerate loop
 RANG				selrang;		//range of selected forms
 unsigned			bakfrm;			//saved form index
-unsigned char		amsk;			//cursor and mask
+unsigned char		amsk[128];			//cursor and mask
 double				zumflor;		//minimum allowed zoom value
 FLRCT				chkhuprct;		//for checking the hoop size
 unsigned			daz;			//days untill a merchant key expires
@@ -22774,13 +22774,13 @@ void crtcurs(){
 
 	duamsk();
 	ducurs(curs.frm);
-	hfrm=CreateCursor(hInst,16,16,32,32,(void*)&amsk,(void*)&curs.frm);
-	hdlin=CreateCursor(hInst,16,16,32,32,(void*)&amsk,(void*)&curs.dlin);
-	hnedu=CreateCursor(hInst,16,32,32,32,(void*)&amsk,(void*)&curs.uned);
-	hnedrd=CreateCursor(hInst,1,31,32,32,(void*)&amsk,(void*)&curs.rdned);
-	hnedru=CreateCursor(hInst,1,1,32,32,(void*)&amsk,(void*)&curs.runed);
-	hnedld=CreateCursor(hInst,30,30,32,32,(void*)&amsk,(void*)&curs.ldned);
-	hnedlu=CreateCursor(hInst,32,1,32,32,(void*)&amsk,(void*)&curs.luned);
+	hfrm=CreateCursor(hInst,16,16,32,32,(void*)amsk,(void*)&curs.frm);
+	hdlin=CreateCursor(hInst,16,16,32,32,(void*)amsk,(void*)&curs.dlin);
+	hnedu=CreateCursor(hInst,16,32,32,32,(void*)amsk,(void*)&curs.uned);
+	hnedrd=CreateCursor(hInst,1,31,32,32,(void*)amsk,(void*)&curs.rdned);
+	hnedru=CreateCursor(hInst,1,1,32,32,(void*)amsk,(void*)&curs.runed);
+	hnedld=CreateCursor(hInst,30,30,32,32,(void*)amsk,(void*)&curs.ldned);
+	hnedlu=CreateCursor(hInst,32,1,32,32,(void*)amsk,(void*)&curs.luned);
 }
 
 void dstcurs(){
