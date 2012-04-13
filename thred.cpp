@@ -2910,8 +2910,10 @@ void redfils(){
 	WIN32_FIND_DATA		fdat;
 	HANDLE				hndl;
 
-	for(ind=0;ind<OLDNUM;ind++)
-		DeleteMenu(hfileMen,fmenid[ind],MF_BYCOMMAND);
+	for(ind=0;ind<OLDNUM;ind++) {
+		if (GetMenuState(hfileMen, fmenid[ind], MF_BYCOMMAND) != -1)
+			DeleteMenu(hfileMen,fmenid[ind],MF_BYCOMMAND);
+	}
 	for(ind=0;ind<OLDNUM;ind++){
 
 		if(ini.oldnams[ind][0]){
