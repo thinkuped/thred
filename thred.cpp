@@ -883,9 +883,9 @@ MENUITEMINFO filinfo={
 	13,					
 };
 
-const TCHAR			fltr[MAX_PATH]=			"Thredworks (THR)\0*.thr\0Pfaff (PCS)\0*.pcs\0Tajima (DST)\0*.dst\0\0";
-const TCHAR			bfltr[MAX_PATH]="Microsoft (BMP)\0*.bmp\0\0";
-TCHAR				cstFltr[MAX_PATH]=	"";
+const TCHAR			fltr[MAX_PATH]=			"Thredworks (THR)\0*.thr\0Pfaff (PCS)\0*.pcs\0Tajima (DST)\0*.dst\0";
+const TCHAR			bfltr[MAX_PATH]="Microsoft (BMP)\0*.bmp\0";
+TCHAR				cstFltr[MAX_PATH]="Thredworks (THR)\0*.thr\0";
 TCHAR				filnam[MAX_PATH]={0};
 TCHAR				thrnam[MAX_PATH];
 TCHAR				auxnam[MAX_PATH];
@@ -924,7 +924,7 @@ OPENFILENAME		ofn={
 	MAX_PATH,				//nMaxFile 
 	0,						//lpstrFileTitle 
 	0,						//nMaxFileTitle 
-	defDir,					//lpstr	ialDir 
+	defDir,					//lpstrInitialDir 
 	0,						//lpstrTitle
 	OFN_OVERWRITEPROMPT,	//Flags
 	0,						//nFileOffset
