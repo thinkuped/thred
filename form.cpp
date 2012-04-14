@@ -13108,7 +13108,7 @@ void clpcon(){
 
 //	clipnts=(CLIPNT*)&stchs[MAXSEQ];
 	clipnts=(CLIPNT*)&bseq;
-	vclpx=(VCLPX*)&opnt;
+	vclpx=(VCLPX*)&opntlst;
 	segxs=0;
 	for(ind=0;ind<sids;ind++){
 
