@@ -2440,7 +2440,8 @@ int datcod[]={ID_CHKOF,ID_CHKON,ID_CHKREP,ID_CHKREPMSG};
 
 void chkmen()
 {
-	int ind,cod;
+	unsigned ind;
+	int cod;
 
 	for(ind=0;ind<(sizeof(datcod)/sizeof(int));ind++)
 	{
@@ -5448,7 +5449,7 @@ BOOL binv(unsigned cnt){
 				ncnt++;
 			else{
 
-				if(bcpnt[ine]==0xff)
+				if (bcpnt[ine] == (TCHAR) 0xff)
 					icnt++;
 			}
 		}
@@ -10349,7 +10350,8 @@ unsigned duth(TCHAR* nam){
 
 void duver(TCHAR* nam){
 
-	unsigned ind,chr;
+	unsigned ind;
+	int chr;
 
 	ind=duth(nam);
 	if(ind){
