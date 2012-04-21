@@ -3621,7 +3621,7 @@ void dunseq(unsigned strt,unsigned fin){
 	miny/=2;
 	lin0=&*seq[strt];
 	lin1=&*seq[fin];
-	if(miny=1e30/2)
+	if(miny==1e30/2)
 		miny=0;
 	rspnt(lin0->x,lin0->y+miny);
 	rspnt(lin1->x,lin1->y+miny);
@@ -7601,7 +7601,7 @@ void sapliq()
 	frmpnt->bcol=actcol|(apcol<<4);
 	if(frmpnt->typ!=LIN)
 	{
-		if(frmpnt->ftyp=SAT&&frmpnt->stpt)
+		if(frmpnt->ftyp==SAT&&frmpnt->stpt)
 			delsac(clofind);
 	}
 	frmpnt->ftyp=0;
