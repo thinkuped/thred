@@ -116,7 +116,7 @@
 #define		IPICSPAC	6		//initial picot border space
 #define		PRFLINS		28		//number of lines on the prefernece menu
 #define		EDGETYPS	12		//number of border fill types
-#define		SEED		3037000499 //pseudo-random-sequence seed
+#define		SEED		3037000499u //pseudo-random-sequence seed
 #define		FSED		1340007303 //feather seqence seed
 #define		NAMSED		2222222222 //trial version psg seed
 #define		DSTRAT		0.8333333333333333	//ratio of dst stitch points to PFAFF stitch points
