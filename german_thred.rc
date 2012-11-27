@@ -1,0 +1,879 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU DISCARDABLE 
+BEGIN
+    POPUP "Datei"
+    BEGIN
+        MENUITEM "Neu",                         ID_FILE_NEW1
+        MENUITEM "&Öffnen (O)",                 ID_FILE_OPEN1
+        MENUITEM "Schliessen",                  ID_CLOSE
+        MENUITEM "Speichern (^S, F7)",          ID_FILE_SAVE2
+        MENUITEM "Speichern unter (F8)",        ID_FILE_SAVE3
+        MENUITEM SEPARATOR
+        MENUITEM "Miniaturansicht (T)",         ID_THUM
+        POPUP "Datei-Format"
+        BEGIN
+            MENUITEM "Pfaff PCS ",                  ID_AUXPCS
+            MENUITEM "Tajima DST",                  ID_AUXDST
+        END
+        MENUITEM "PCS Datei öffnen",            ID_OPNPCD
+        POPUP "PCS mit Vorlage speichern"
+        BEGIN
+            MENUITEM "Ein",                         ID_BSAVON
+            MENUITEM "Aus",                         ID_BSAVOF
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Einfügen",                    ID_INSFIL
+        MENUITEM "Datei einfügen",              ID_OVRLAY
+        POPUP "Datei drehen"
+        BEGIN
+            MENUITEM "Ein",                         ID_ROTAUXON
+            MENUITEM "Aus",                         ID_ROTAUXOFF
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Vorlage laden",               ID_LODBIT
+        MENUITEM "Vorlage speichern",           ID_SAVMAP
+        MENUITEM "Vorlage ausblenden (X+Shift)", ID_HIDBITF, CHECKED
+        MENUITEM "Vorlage entfernen",           ID_DELMAP
+        MENUITEM SEPARATOR
+        POPUP "Backups löschen"
+        BEGIN
+            MENUITEM "Backups der aktuellen Datei", ID_PURG
+            MENUITEM "Alle Backups im Ordner",      ID_PURGDIR
+        END
+        MENUITEM "Datei schützen",              ID_FLOK
+        MENUITEM "PES2Card (W+Cntrl)",          ID_PES2CRD
+    END
+    POPUP "Ansicht"
+    BEGIN
+        MENUITEM "Nähsimulation (I)",           ID_RUNPAT
+        MENUITEM "Design Informationen (Ä/Ö)",  ID_DESIZ
+        MENUITEM SEPARATOR
+        MENUITEM "Ganzer Rahmen (X)",           VU_ZUMFUL
+        MENUITEM "Zur vorigen Ansicht (B+Shift)", ID_BAKMRK
+        MENUITEM SEPARATOR
+        MENUITEM "Ansicht Garn (F6)",           ID_VUTHRDS
+        MENUITEM "Ansicht Garn für markierte Farbe", ID_VUSELTHRDS
+        POPUP "Eigenschaften Garnstärke"
+        BEGIN
+            MENUITEM "30",                          ID_SIZ30
+            MENUITEM "40",                          ID_SIZ40
+            MENUITEM "60",                          ID_SIZ60
+            MENUITEM "Voreinstellungen",            ID_TSIZDEF
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Backups",                     ID_VUBAK
+        POPUP "Knoten"
+        BEGIN
+            MENUITEM "Ein",                         ID_KNOTON
+            MENUITEM "Aus",                         ID_KNOTOF
+        END
+        POPUP "Einstellungen"
+        BEGIN
+            MENUITEM "Voreinstellungen",            ID_SETPREF
+            MENUITEM SEPARATOR
+            MENUITEM "Hintergrundfarbe",            ID_VIEW_STCHBAK
+            MENUITEM "Bitmapfarbe",                 ID_BITCOL
+            MENUITEM "Farbe Applikation",           ID_SETAP
+            POPUP "Gitter Darstellung"
+            BEGIN
+                MENUITEM "Stark",                       ID_GRDHI
+                MENUITEM "Mittel",                      ID_GRDMED
+                MENUITEM "Voreingestellt",              ID_GRDEF
+                MENUITEM "UnRot",                       ID_GRDRED
+                MENUITEM "UnBlau",                      ID_GRDBLU
+                MENUITEM "UnGrün",                      ID_GRDGRN
+            END
+            MENUITEM SEPARATOR
+            POPUP "Geradstich-Länge"
+            BEGIN
+                MENUITEM "Exakt",                       ID_LINBEXACT
+                MENUITEM "Angepasst",                   ID_LINBEVEN
+            END
+            MENUITEM SEPARATOR
+            POPUP "Nadel-Anzeige"
+            BEGIN
+                MENUITEM "Ein",                         ID_SETNEDL
+                MENUITEM "Aus",                         ID_RSTNEDL
+            END
+            POPUP "Stich-/Formpunktanzeige"
+            BEGIN
+                MENUITEM "Stichpunkt Vierecke",         ID_STCHPIX
+                MENUITEM "Formpunkt Dreiecke",          ID_FRMPIX
+            END
+            MENUITEM "Verschiebe Pixels",           ID_NUDGPIX
+            POPUP "Bei Markierung einfügen"
+            BEGIN
+                MENUITEM "Ein",                         ID_FIL2SEL_ON
+                MENUITEM "Aus",                         ID_FIL2SEL_OFF
+            END
+            MENUITEM SEPARATOR
+            POPUP "Markierung lösen mit..."
+            BEGIN
+                MENUITEM "Escape",                      ID_MARKESC, CHECKED
+                MENUITEM "Q",                           ID_MARKQ, CHECKED
+            END
+            POPUP "Mauszeiger Form"
+            BEGIN
+                MENUITEM "Box",                         ID_FRMBOX
+                MENUITEM "Kreuz",                       ID_FRMX
+            END
+        END
+        MENUITEM "Über Aladin...",              ID_ABOUT
+    END
+    MENUITEM "Form",                        ID_FORM
+    POPUP "Bearbeiten"
+    BEGIN
+        POPUP "Definieren"
+        BEGIN
+            MENUITEM "Form Ordnungszahl (#/§)",     ID_FRMNUM
+            MENUITEM "Formfarbe zu Stichfarbe",     ID_FRM2COL
+            MENUITEM "Knoten",                      ID_KNOTS
+            MENUITEM "Knoten bei Markierung (K+Ctrl)", ID_KNOTAT
+            MENUITEM "Verschiebe-Marke (.)",        ID_SETMRK
+            MENUITEM "Anf/Ende von Zierstichen richtig anordnen", ID_CLPADJ
+            POPUP "Drehen"
+            BEGIN
+                MENUITEM "Winkel (R+Ctrl)",             ID_SETROT
+                MENUITEM "Winkel um Mittelpunkt (R+Shift)", ID_ROTMRK
+                MENUITEM "Anzahl Segmente (R) ",        ID_ROTSEG
+            END
+            MENUITEM "Bildausschnitt in der Mitte (M+Shift)", ID_MRKCNTR
+            MENUITEM "Bildausschnitt bei Markierung (M+Ctrl)", ID_MRKPNT
+            MENUITEM "Federstich Voreinstellungen", ID_FTHDEF
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Zurücksticken",               ID_RETRACE
+        MENUITEM "Reihenfolge umkehren",        ID_FLPORD
+        MENUITEM "Alles neu füllen (J)",        ID_REFILAL
+        MENUITEM "Zierstich extrahieren (F4)",  ID_RTRVCLP
+        MENUITEM "Zierstich Umrandung anpassen", ID_SHRINK
+        MENUITEM "Lasso (W+Shift)",             ID_CROP
+        MENUITEM SEPARATOR
+        MENUITEM "Form trennen",                ID_SPLTFRM
+        MENUITEM "Anfangspunkt der Form",       ID_FRM0
+        MENUITEM SEPARATOR
+        MENUITEM "Stickfeld überprüfen",        ID_CHK
+        MENUITEM "Wechseln zu Originalfarben",  ID_EDIT_RESET_COL
+        POPUP "Magnetisch"
+        BEGIN
+            MENUITEM "Stiche (F2)",                 ID_SNAP2
+            MENUITEM "Gitterpunkte ( S+ Shift)",    ID_SNAP2GRD
+        END
+        POPUP "Sortieren"
+        BEGIN
+            MENUITEM "Nach Farben (F3)",            ID_SORT
+            MENUITEM "Nach Farben dann nach Formen (F3+Shift)", ID_SRTBF
+            MENUITEM "Nach Formen (F3+Cntrl)",      ID_SRTF
+        END
+        POPUP "Gruppierung aufheben"
+        BEGIN
+            MENUITEM "Anfang {ß/')",                ID_UNGRPLO
+            MENUITEM "Ende ('/^)",                  ID_UNGRPHI
+        END
+        MENUITEM SEPARATOR
+        POPUP "Markieren"
+        BEGIN
+            MENUITEM "Alle Formen und Stiche (A+Shift)", ID_SELAL
+            MENUITEM "Alle Stiche (A+Ctrl)",        ID_SELALSTCH
+            MENUITEM "Farbe",                       ID_EDIT_SELECTCOLOR
+            MENUITEM "Stiche der markierten Form",  ID_SELFSTCHS
+            MENUITEM "Applikations-Stiche der markierten Form", ID_SELAP
+            MENUITEM "Umrandungsstiche der markierten Form", ID_SELBRD
+            MENUITEM "Füllstiche der markierten Form", ID_SELFIL
+        END
+        POPUP "Umwandeln"
+        BEGIN
+            MENUITEM "Satin-Band",                  ID_RIBON
+            MENUITEM "Tripelstich-Linie",           ID_DUBEAN
+            MENUITEM "Von Tripelstich zu Geradstich", ID_UNBEAN
+            MENUITEM "Stichpunkte in Formpunkte",   ID_STCHS2FRM
+            MENUITEM "In Federstich (F+shift)",     ID_2FTHR
+        END
+        POPUP "Zentrieren"
+        BEGIN
+            MENUITEM "Horizontal (- + Shift)",      ID_CNTRH
+            MENUITEM "Vertikal (- + Ctrl)",         ID_CNTRV
+            MENUITEM "Mittig (-)",                  ID_CNTRX
+            MENUITEM "Gesamtes Muster",             ID_CENTIRE
+            MENUITEM "Markierte Formen (L)",        ID_CNTR
+        END
+        POPUP "Spiegeln"
+        BEGIN
+            MENUITEM "Horizontal",                  ID_FLIPH
+            MENUITEM "Vertikal",                    ID_FLIPV
+        END
+        POPUP "Drehen"
+        BEGIN
+            MENUITEM "Einfach",                     ID_ROTAGAIN
+            MENUITEM "Kopie drehen",                ID_ROTDUP
+            MENUITEM "Noch eine Kopie drehen",      ID_DUPAGAIN
+            MENUITEM "Winkel",                      ID_ROTCMD
+        END
+        POPUP "Verschieben"
+        BEGIN
+            MENUITEM "Zum Design-Anfang",           ID_MV2FRNT
+            MENUITEM "Zum Design-Ende",             ID_MV2BAK
+            MENUITEM "Zur Verschiebe-Marke (Ü)",    ID_MOVMRK
+        END
+        POPUP "Verschieben auf  Ebene..."
+        BEGIN
+            MENUITEM "0",                           ID_LAYMOV0
+            MENUITEM "1",                           ID_LAYMOV1
+            MENUITEM "2",                           ID_LAYMOV2
+            MENUITEM "3",                           ID_LAYMOV3
+            MENUITEM "4",                           ID_LAYMOV4
+        END
+        POPUP "Kopieren auf Ebene..."
+        BEGIN
+            MENUITEM "0",                           ID_LAYCPY0
+            MENUITEM "1",                           ID_LAYCPY1
+            MENUITEM "2",                           ID_LAYCPY2
+            MENUITEM "3",                           ID_LAYCPY3
+            MENUITEM "4",                           ID_LAYCPY4
+        END
+        POPUP "Löschen"
+        BEGIN
+            MENUITEM "Alle Formen",                 ID_DELFRMS
+            MENUITEM "Alle Formen und Stiche (Del+Ctrl+Shift)", ID_DELTOT
+            MENUITEM "Alle Stiche",                 ID_DELSTCH
+            MENUITEM "Unformatierte Stiche",        ID_DELFRE
+            MENUITEM "Knoten",                      ID_DELKNOT
+            MENUITEM "Auswahl (Del)",               ID_DELETE
+            MENUITEM "Lange Stiche ",               ID_REMBIG
+            MENUITEM "Kurze Stiche (F11)",          ID_REMZERO
+        END
+        MENUITEM SEPARATOR
+        POPUP "Automat. Umriss"
+        BEGIN
+            MENUITEM "Kanten finden (U+Ctrl)",      ID_TRDIF
+            MENUITEM "Bmp aus (X+Shift)",           ID_HIDBIT, CHECKED
+            MENUITEM "Formpixel aus (H)",           ID_BLAK
+            MENUITEM "Farbe auswählen (H+Ctrl)",    ID_TRCSEL
+            MENUITEM "Umriss Modus (T+Ctrl)",       ID_TRACE
+            MENUITEM "Kanten zeigen (re/li Mausklick)", ID_TRACEDG
+        END
+    END
+    MENUITEM "+",                           ZUMIN
+    MENUITEM "-",                           ID_ZUMOUT
+    MENUITEM "Rückg",                       ID_BACK, GRAYED
+    MENUITEM "Wiederh",                     ID_REDO, GRAYED
+    MENUITEM "Drehen",                      ID_ROT
+    MENUITEM "Einstellungen",               ID_PREF
+    POPUP "Stiche"
+    BEGIN
+        POPUP "Füllstiche"
+        BEGIN
+            MENUITEM "Fächer-Satin",                ID_FILSAT
+            MENUITEM "Senkrecht",                   ID_FILL_VERT
+            MENUITEM "Horizontal",                  ID_FILL_HOR
+            MENUITEM "Winkel",                      ID_FILANG
+            POPUP "Zierstich"
+            BEGIN
+                MENUITEM "Fächer",                      ID_CLPFIL
+                MENUITEM "Senkrecht",                   ID_VRTCLP
+                MENUITEM "Waagerecht",                  ID_HORCLP
+                MENUITEM "Winkel",                      ID_ANGCLP
+            END
+            MENUITEM "Echo-Linien",                 ID_CONTF
+            MENUITEM "Federstich",                  ID_FETHR
+        END
+        POPUP "Umrandung"
+        BEGIN
+            MENUITEM "Geradstich",                  ID_FILIN
+            MENUITEM "Zweifach",                    ID_DUBFIL
+            MENUITEM "Tripelstich",                 ID_BOLD
+            MENUITEM "Zick-Zack",                   ID_PERP
+            MENUITEM "Winkel-Satin",                ID_SATBRD
+            MENUITEM "Applikation",                 ID_APLIQ
+            MENUITEM "Langettenstich",              ID_FILBUT
+            MENUITEM "Zierstich",                   ID_FILCLP
+            MENUITEM "Picot",                       ID_PICOT
+            MENUITEM "Kettenstich 1",               ID_LINCHN
+            MENUITEM "Kettenstich 2",               ID_OPNCHN
+            MENUITEM "Zierstich, angepasst",        ID_FILCLPX
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Stiche entfernen",            ID_UNFIL
+        MENUITEM "Stiche neu setzen (F5)",      ID_REFILF
+    END
+    MENUITEM "Hinzu",                       ID_ADEND
+    MENUITEM "Form-",                       ID_FRMOF
+    MENUITEM "Alle",                        ID_LA
+    MENUITEM "1",                           ID_L1
+    MENUITEM "2",                           ID_L2
+    MENUITEM "3",                           ID_L3
+    MENUITEM "4",                           ID_L4
+    MENUITEM "Hilfe",                       ID_HLP
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 2,1,0,0
+ PRODUCTVERSION 2,0,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "Thredworks\0"
+            VALUE "FileDescription", "Aladin\0"
+            VALUE "FileVersion", "2.1\0"
+            VALUE "InternalName", "Aladin\0"
+            VALUE "LegalCopyright", "Copyright © 1999, 2000, 2001\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "Aladin.exe\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "Thredworks\0"
+            VALUE "ProductVersion", "2.1\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON    DISCARDABLE     "icon1.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DLOCK DIALOG DISCARDABLE  0, 0, 288, 206
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Sicherung Aladin Dateien"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,150,7,50,14
+    PUSHBUTTON      "Abbrechen",IDCANCEL,90,7,50,14
+    PUSHBUTTON      "Alle sichern",IDC_LOCKAL,30,7,50,14
+    PUSHBUTTON      "Alle entsichern",IDC_UNLOCKAL,210,7,50,14
+    LISTBOX         IDC_LOCKED,7,43,115,156,LBS_NOINTEGRALHEIGHT | 
+                    LBS_EXTENDEDSEL | WS_VSCROLL | WS_TABSTOP
+    LISTBOX         IDC_UNLOCKED,166,43,115,156,LBS_NOINTEGRALHEIGHT | 
+                    LBS_EXTENDEDSEL | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Gesichert",IDC_STATIC,43,29,45,8
+    LTEXT           "Ungesichert",IDC_STATIC,205,31,50,8
+    PUSHBUTTON      "<<",IDC_LOCK,126,49,36,14
+    PUSHBUTTON      ">>",IDC_UNLOCK,126,73,36,14
+END
+
+IDD_TEAR DIALOGEX 0, 0, 144, 196
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Einstellungen für Tropfen"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,32,177,79,14
+    PUSHBUTTON      "Abbrechen",IDCANCEL,47,7,50,14
+    LTEXT           "Verhältnis Tropfen",IDC_RATLAB,7,96,78,8,0,WS_EX_RIGHT
+    EDITTEXT        IDC_TEARAT,97,96,40,14,ES_AUTOHSCROLL
+    GROUPBOX        "Twist Setup",IDC_TWSTLAB,7,111,130,61
+    LTEXT           "Punkte",IDC_TEARPNTS,7,70,78,8,0,WS_EX_RIGHT
+    EDITTEXT        IDC_TEARSIDS,97,70,40,14,ES_AUTOHSCROLL
+    LTEXT           "Twist Step",IDC_TWRATLAB,7,122,78,8,0,WS_EX_RIGHT
+    EDITTEXT        IDC_TWSTSTP,97,122,40,14,ES_AUTOHSCROLL
+    LTEXT           "Twist Ratio",IDC_TWRAT,7,148,78,8,0,WS_EX_RIGHT
+    EDITTEXT        IDC_TWSTRAT,97,148,40,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Topfen Voreinstellung",IDC_DEFTEAR,14,27,115,14
+    PUSHBUTTON      "Paisley Voreinstellung",IDC_DEFPAIS,14,47,115,14
+END
+
+IDD_WAV DIALOG DISCARDABLE  0, 0, 130, 158
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Einstellungen für Wellen"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,39,137,50,14
+    PUSHBUTTON      "Abbrechen",IDCANCEL,40,7,50,14
+    RTEXT           "Punkte",IDC_WPNTXT,7,32,60,8
+    EDITTEXT        IDC_WAVPNTS,83,32,40,14,ES_AUTOHSCROLL
+    RTEXT           "Anfang",IDC_WAVSTRTXT,7,53,60,8
+    EDITTEXT        IDC_WAVSTRT,83,53,40,14,ES_AUTOHSCROLL
+    RTEXT           "Ende",IDC_WAVENDTXT,7,74,60,8
+    EDITTEXT        IDC_WAVEND,83,74,40,14,ES_AUTOHSCROLL
+    RTEXT           "Wellen",IDC_WAVSTXT,7,95,60,8
+    EDITTEXT        IDC_WAVS,83,95,40,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Wellen Voreinstellung",IDC_DEFWAV,7,117,116,14
+END
+
+IDD_FETHDEF DIALOG DISCARDABLE  0, 0, 81, 166
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Federstich Einstellungen"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,7,145,67,14
+    PUSHBUTTON      "Abbrechen",IDCANCEL,7,7,67,14
+    CONTROL         "Positiv",IDC_FDUP,"Button",BS_AUTOCHECKBOX | 
+                    BS_LEFTTEXT | WS_TABSTOP,7,42,34,8
+    EDITTEXT        IDC_DFUPCNT,48,39,25,14,ES_AUTOHSCROLL
+    CONTROL         "Negativ",IDC_FDWN,"Button",BS_AUTOCHECKBOX | 
+                    BS_LEFTTEXT | WS_TABSTOP,7,60,34,8
+    EDITTEXT        IDC_DFDWNCNT,47,57,25,14,ES_AUTOHSCROLL
+    CONTROL         "Schattierung",IDC_FDBLND,"Button",BS_AUTOCHECKBOX | 
+                    BS_LEFTTEXT | WS_TABSTOP,7,25,34,10
+    COMBOBOX        IDC_FDTYP,16,75,48,68,CBS_DROPDOWNLIST | WS_TABSTOP
+    LTEXT           "Grösse",IDC_SFDRAT,7,91,14,8
+    EDITTEXT        IDC_DFRAT,47,91,25,14,ES_AUTOHSCROLL
+    LTEXT           "Schritte",IDC_SDFNUM,7,109,19,8
+    EDITTEXT        IDC_DFNUM,47,109,25,14,ES_AUTOHSCROLL
+    LTEXT           "Basis",IDC_SFDFLR,7,127,17,8
+    EDITTEXT        IDC_DFLR,47,127,25,14,ES_AUTOHSCROLL
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_DLOCK, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 281
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 199
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_FSELB               "Keine Umrandungs-Stiche"
+    IDS_FSELF               "Keine Füll-Stiche"
+    IDS_FSELA               "Keine Applikations-Stiche"
+    IDS_FSELM               "Keine Stiche"
+    IDS_SEL1FRM             "Markieren Sie eine Form, um diese Funktion anzuwenden"
+    IDS_PIKOL               "Farbe"
+    IDS_UPON                "bis zu: Ein"
+    IDS_UPOF                "bis zu: Aus"
+    IDS_FGRPF               "eine Form, eine Gruppe von Formen oder eine Gruppe von Stichen"
+    IDS_ALL                 "alle Formen und Stiche, eine Form,\neine Gruppe von Formen oder eine Gruppe von Stichen"
+    IDS_AUXTXT              "%s Datei öffnen"
+    IDS_CPYRIT              "Aladin Digitalisierungs-Programm für Maschinenstickerei\n(c)2000 Marion und Alfie McCoskey 1201 Locust Ave., Shasta Lake, CA\nAll rights reserved\nVersion: 2.1\n(c)2002 Deutsche Übersetzung Barbara Kälin,\nwww.stickeria.net"
+    IDS_PNT                 "Bitte geben Sie die Anzahl Punkte für die gewünschte Form ein"
+    IDS_HUP0                "Definieren"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_HUP1                "Klein Pfaff"
+    IDS_HUP2                "Gross Pfaff"
+    IDS_HUP3                "100mm"
+    IDS_HUP4                "Benutzerdefiniert"
+    IDS_KEY                 "Aladin, Demoversion\n\nIhren persönlichen Registrierungscode,\nder Ihnen ermöglicht, Ihre Arbeiten zu speichern,\nerhalten Sie bei:\n\nhttp://www.stickeria.net\n\nBetätigen Sie die linke Maustaste um Stiche zu setzen"
+    IDS_CLP                 "Das Muster in der Zwischenablage ist zu klein\num damit einen Zierstich zu erzeugen."
+    IDS_EXP                 "Dieser Registrierungscode läuft in %d Tagen ab"
+    IDS_XPIRAD              "Dieser Registrierungscode ist abgelaufen."
+    IDS_CNTR                "Muster neu zentriert"
+    IDS_MAPLOD              "Bitte laden Sie eine Bitmap-Datei\num die automatische Stichgenerierung auszuführen"
+    IDS_FRMOVR              "Zu viele Form-Punkte"
+    IDS_ROTIN               "Der Rotationswinkel ist zu klein"
+    IDS_SELC                "Bitte markieren Sie mehr als eine Form um den Befehl Formen zentrieren auszuführen."
+    IDS_NSEL                "Keine Daten zur Markierung"
+    IDS_CONT                "Eine Form muss mindestens über fünf Seiten verfügen\num den Kontur-Füllstich anwenden zu können"
+    IDS_ROTA                "Bitte geben Sie einen Winkel für die Drehung ein.\nDer momentane Wert liegt bei %d°"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_FRM2                "Eine Form muss mehr als zwei Punkte haben\num den Befehl Umwandeln in\\Zick-Zack-Linie\\busführen zu können"
+    IDS_FRML                "Bitte geben Sie eine Form-Ordnungsnummer unter %d ein."
+    IDS_FRM3                "Kann keine Form mit weniger\nals zwei Form-Punkten erstellen."
+    IDS_STMAX               "Kann nur bis zu 12.000 Stichen umwandeln."
+    IDS_FRMN1               "Die Form-Ordnungsnummer ist zu gross"
+    IDS_COLU                "Diese Farbe ist im Muster enthalten"
+    IDS_COLAL               "Alle Farben sind im Muster enthalten"
+    IDS_MRK                 "Sie haben keine Marke gesetzt"
+    IDS_FRMNO               "Keine Formen"
+    IDS_FRM2L               "Die Form ist zu gross"
+    IDS_NOTHR               "Dies ist keine THR Datei"
+    IDS_FNOPN               "Konnte Datei nicht öffnen: %s"
+    IDS_REM1                "Um die langen Stiche zu entfernen\nmuss die benutzerdefinierte Stichlänge\nunter der max. Stichlänge liegen"
+    IDS_DST1                "Der Zielpunkt liegt innerhalb der zu verschiebenden Fläche"
+    IDS_BAKDT               "Backup-Dateien gelöscht"
+    IDS_BAKDEL              "Lösche Backup-Dateien"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_FDEL                "Form löschen?"
+    IDS_DELFRM              "Formen löschen?"
+    IDS_END                 "Ende"
+    IDS_INSF                "Um ein bestehendes Muster einzufügen\nwählen Sie bitte den Befehl Einfügen aus dem Datei-Menü."
+    IDS_PFAF2L              "ACHTUNG\nMuster zu gross für den grossen Pfaff-Rahmen"
+    IDS_DST2S               "Dst Daten nicht korrekt"
+    IDS_BMAP                "Aladin zeigt nur monochrome Bitmaps\noder 24bit Farb-Bitmaps an"
+    IDS_SHOMAP              "Keine Vorlage vorhanden"
+    IDS_MAPCHG              "Vorlage wurde nicht verändert"
+    IDS_SAVMAP              "Sie können nur 24bit Farb-Bitmaps als Vorlage speichern."
+    IDS_FILSTCH             "Füllungs-Stiche"
+    IDS_BRDSTCH             "Umrandungs-Stiche"
+    IDS_APSTCH              "Applikations-Stiche"
+    IDS_FRMSEL              "Form auswählen %s"
+    IDS_FRM1MSG             "eine Form"
+    IDS_GRPMSG              "eine Gruppe von Stichen"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ROTAGIN             "Nochmals drehen"
+    IDS_SHOSEL              "Wählen Sie %s\n um die Funktion %s auszuführen"
+    IDS_REGP                "Regelmässiges Vieleck"
+    IDS_STAR                "Stern"
+    IDS_SPIR                "Spirale"
+    IDS_HEART               "Herz"
+    IDS_LENS                "Linse"
+    IDS_EGG                 "Ei"
+    IDS_CLPS                "Kopieren Sie ein Muster in die Zwischenablage\num diese Füllart zu verwenden.\nMarkieren Sie eine Form mit Stichen und geben Sie Strg C ein\noder wählen Sie eine Gruppe von Stichen und geben Sie Strg C ein"
+    IDS_FRM3X               "Diese Stichart kann nicht bei einer Form\nmit weniger als drei Punkten angewandt werden"
+    IDS_ANGS                "Bitte wählen Sie für eine Linien mit nur 2 Form-Punkten den Winkel-Satinstich"
+    IDS_FILSEL              "Markieren Sie eine Form durch einen rechten Mausklick\num ihre Stickattribute zu bearbeiten"
+    IDS_FILCR               "Sie müssen erst eine Form erstellen"
+    IDS_FGRPS               "eine Gruppe von Stichen oder eine Form"
+    IDS_UNGRP               "Gruppierung aufheben"
+    IDS_NOGRP               "Diese Form enthält keine Stiche"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_NOHLP               "HTML Hilfe ist nicht verfügbar\nAladin.chm muss sich im gleichen Verzeichnis befinden wie Aladin.exe\nund Internet Explorer ver. 3.0 oder höher\nmuss auf Ihrem Computer installiert sein"
+    IDS_SAVDISC             "Änderungen in %s speichern"
+    IDS_UNFIL               "Die Stiche dieser Form wurden von Hand editiert.\nFüllung trotzdem löschen?"
+    IDS_REFIL               "Die Stiche dieser Form wurden von Hand editiert.\n Füllung trotzdem erneuern?"
+    IDS_SNAP2GRD            "Gitter magnetisch"
+    IDS_RETRAC              "Zurücksticken"
+    IDS_STCH_FRM            "einen Stich-Punkt oder einen Form-Punkt"
+    IDS_SETMRK              "Marke an diesem Punkt setzen"
+    IDS_FSZ                 "eine Form oder eine Gruppe von Stichen,\nund bestimmen Sie den Mittelpunkt des neuen Bildausschnitts"
+    IDS_SETROTM             "Bestimmen Sie den Winkel für die Drehung"
+    IDS_RNGEND              "Anf/Ende von Zierstichen anordnen"
+    IDS_ROT                 "Drehen"
+    IDS_ROTCMD              "Winkel für die Drehung"
+    IDS_CONVRIB             "In Satin-Band umwandeln"
+    IDS_ROTDUP              "Kopie drehen"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CROP                "Lasso"
+    IDS_STCH2FRM            "Stiche in Form-Punkte umwandeln"
+    IDS_FRMGUID             "einen Form-Punkt mit einer Leit-Linie\noder einen Punkt einer Linien-Form"
+    IDS_SPLT                "Form auftrennen"
+    IDS_CENT                "Zentriern"
+    IDS_SETFRM              "Form-Ordnungszahl definieren"
+    IDS_FRMCLP              "eine Form mit Zierstich-Umrandung"
+    IDS_SHRNK               "Zierstich-Umrandung anpassen"
+    IDS_PRT                 "Datei nicht vollständig gelesen"
+    IDS_SHRTKEY             "Code zu kurz\n\n"
+    IDS_INVKEY              "Code ungültig\n\n"
+    IDS_EXPKEY              "Code ist abgelaufen\n\n"
+    IDS_DAYKEY              "%s\n\nDie Aladin Testzeit endet in %d Tagen"
+    IDS_SHRTF               "Zu wenig Daten"
+    IDS_TRC0                "Kanten finden"
+    IDS_TRC1S               "Bmp ein"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TRC2                "Form Pix ausbl."
+    IDS_TRC3                "Farben wählen"
+    IDS_TRC4                "Kanten suchen"
+    IDS_TRC1H               "Bmp aus"
+    IDS_SRCH                "Suchen"
+    IDS_NUMPNT              "Punkt"
+    IDS_NUMFRM              "Form"
+    IDS_NUMSEL              "Stich"
+    IDS_NUMSCH              "sch"
+    IDS_NUMFORM             "Form"
+    IDS_BOXSEL              "Auswahl"
+    IDS_RITER               "Fehler beim Speichern der PCS-Datei"
+    IDS_SAVFIL              "Speichere Datei %s"
+    IDS_CLOS                "Aladin schliessen"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TOT                 "Stiche %d"
+    IDS_LAYR                "Ebene %d"
+    IDS_CREAT               "Konnte Datei %s nicht erstellen"
+    IDS_FNOPNA              "Konnte Datei %s nicht öffnen.\nBeenden Sie das Programm und versuchen Sie es noch einmal."
+    IDS_NOTVER              "Diese THR-Datei wurde mit einer neueren\nVersion von Aladin erstellt.\nBitte downloaden Sie die neueste Version von Aladin bei www.stickeria.net"
+    IDS_BADFIL              "Defekte Aladin Datei: %s"
+    IDS_ZEROL               "Keine Daten enthalten: %s"
+    IDS_OVRLOK              "%s ist gesichert\nTrotzdem überschreiben?"
+    IDS_OVRIT               "Überschreibe gesicherte Datei"
+    IDS_FILROT              "Datei: %s wurde gedreht"
+    IDS_THRED               "Aladin: %s"
+    IDS_NUFIL               "unbenannt.thr"
+    IDS_SIZ                 "Geben Sie einen neuen Wert für das Garn No.%s ein\nDer momentane Wert liegt bei %.2f mm."
+    IDS_TRIAL               "Demoversion"
+    IDS_EMB                 "Aladin: Embird Datei-Austausch"
+    IDS_ON                  "Ein"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_OFF                 "Aus"
+    IDS_FMEN                "Linie (E)\nFreihand (F)\nRegelm. Vieleck (R)\nStern (S)\nSpirale (A)\nHerz (H)\nLinse (L)\nEi (G)\nTropfen (T)\nZick-Zack (Z)\nWelle (w)"
+    IDS_TXT0                "Form"
+    IDS_TXT1                "Ebene"
+    IDS_TXT2                "Füllung"
+    IDS_TXT3                "Füll-Farbe "
+    IDS_TXT4                "Füll-Dichte"
+    IDS_TXT5                "Füll-Stichlänge"
+    IDS_TXT6                "Füll-Winkel"
+    IDS_TXT7                "Umrandung"
+    IDS_TXT8                "Umr-Farbe"
+    IDS_TXT9                "Umr-Dichte"
+    IDS_TXT10               "Umr-Stichlänge"
+    IDS_TXT11               "Umr-Breite"
+    IDS_TXT12               "Farbe Applikation"
+    IDS_TXT13               "Breite Langettenstich"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TXT14               "Anfang"
+    IDS_TXT15               "Ende"
+    IDS_TXT16               "Abstand Picots"
+    IDS_TXT17               "Unterlegstich"
+    IDS_TXT18               "Versatz Füllung"
+    IDS_TXT19               "Position Kette"
+    IDS_FIL0                "Keine"
+    IDS_FIL1                "Senkrecht"
+    IDS_FIL2                "Waagerecht"
+    IDS_FIL3                "Winkel"
+    IDS_FIL4                "Fächer-Satin"
+    IDS_FIL5                "Fächer Zierstich"
+    IDS_FIL6                "Echo-Linien"
+    IDS_FIL7                "Senkr. Zierstich"
+    IDS_FIL8                "Waager. Zierstich"
+    IDS_FIL9                "Winkel Zierstich"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_EDG0                "Keine"
+    IDS_EDG1                "Linie"
+    IDS_EDG2                "Tripelstich"
+    IDS_EDG3                "Zierstich"
+    IDS_EDG4                "Winkel-Satin"
+    IDS_EDG5                "Applikation"
+    IDS_EDG6                "Zick-Zack"
+    IDS_EDG7                "Langettenstich"
+    IDS_EDG8                "Picot"
+    IDS_EDG9                "Zweifach"
+    IDS_EDG10               "Kettenstich 1"
+    IDS_EDG11               "Kettenstich 2"
+    IDS_PRF0                "Stichdichte"
+    IDS_PRF1                "Füllwinkel"
+    IDS_PRF2                "Form Füllende"
+    IDS_PRF3                "Breite Umrandung"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PRF4                "max. Stichlänge"
+    IDS_PRF5                "Stichlänge"
+    IDS_PRF6                "min. Stichlänge"
+    IDS_PRF7                "Gitter bei..."
+    IDS_PRF8                "Ansicht Stichpunkte"
+    IDS_PRF9                "Kleinster Stich"
+    IDS_PRF10               "Farbe f. Applikation"
+    IDS_PRF11               "Magnetisch bei"
+    IDS_PRF12               "Verhältnis Stern"
+    IDS_PRF13               "Spiralumdrehungen"
+    IDS_PRF14               "Breite Langettenstich"
+    IDS_PRF15               "Anf/Ende Zick-Zack"
+    IDS_PRF16               "Abstand Picots"
+    IDS_PRF17               "Rahmentyp"
+    IDS_PRF18               "Rahmenbreite"
+    IDS_PRF19               "Unterlegstich Zick-Zack"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PRF20               "Gittergrösse"
+    IDS_PRF21               "Versatz Zierstichfüllung"
+    IDS_PRF22               "Abstand Zierstichfüllung"
+    IDS_PRF23               "Länge Kettenstich"
+    IDS_PRF24               "Position Kettenstich"
+    IDS_PRF25               "Verschieben um..."
+    IDS_PRF26               "Ausdehnung Eiform"
+    IDS_PRF27               "Rahmenhöhe"
+    IDS_FRMPLUS             "Form+"
+    IDS_FRMINUS             "Form-"
+    IDS_OKENT               "OK=Eingabe oder `"
+    IDS_CANCEL              "Abbrechen"
+    IDS_APCOL               "Die Farbe für Applikationen ist Nr. %d"
+    IDS_FREH                "Freihand"
+    IDS_BLUNT               "Stumpf"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TAPR                "Spitz"
+    IDS_PNTD                "Spitz"
+    IDS_SQR                 "Stumpf"
+    IDS_DELST2              "Stiche ebenfalls löschen? (S um zu löschen)"
+    IDS_NCOLCHG             "%d Farben angepasst"
+    IDS_SAV                 "Speichern"
+    IDS_DISC                "Beenden"
+    IDS_THRDBY              "Aladin: %s von %s"
+    IDS_STCHOUT             "WARNUNG\nStiche ausserhalb des Rahmens\n\n"
+    IDS_STCHS               "Stiche: %d\nBreite: %.2f mm,\nHöhe: %.2f mm\n\n"
+    IDS_FORMS               "Formen: %d\nBreite: %.2f mm,\nHöhe: %.2f mm\n\n"
+    IDS_HUPWID              "Rahmenbreite: %.2f mm\nRahmenhöhe: %.2f mm\n\n"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CREATBY             "Erstellt von: %s\nBearbeitet von: %s"
+    IDS_CUSTHUP             "Benutzerdefinierter Rahmen\n%.2f\n%.2f"
+    IDS_STCHP               "Geben Sie die Grösse der Stichpunkte ein.\nMomentan: %d"
+    IDS_FRMP                "Geben Sie die Grösse der Formpunkte ein\nMomentan: %d"
+    IDS_ENTROT              "Geben Sie die gewünschte Anzahl der Segmente ein.\nDer momentane Wert lautet: %.2f"
+    IDS_NUDG                "Geben Sie die Verschiebepunkte ein\nMomentan: %d"
+    IDS_ZIG                 "Zick-Zack"
+    IDS_EDG12               "Zierstich anpassen"
+    IDS_TXT20               "Max Füllstich"
+    IDS_TXT21               "Min Füllstich"
+    IDS_TXT22               "Max Umr.stich"
+    IDS_TXT23               "Min Umr.stich"
+    IDS_ALLX                "alle Formen und Stiche, eine Form,\neine Auswahl an Formen, eine Auswahl an Formpunkten,\n eine Auswahl an Stichen"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_FTH0                "Wellen"
+    IDS_FTH1                "Wellen 2"
+    IDS_FTH2                "Linie"
+    IDS_FTH3                "Fransen"
+    IDS_FTH4                "Spitzen"
+    IDS_FTH5                "Blöcke"
+    IDS_FIL10               "Federstich"
+    IDS_FTHCOL              "Federst. Farbe"
+    IDS_FTHTYP              " Auswahl"
+    IDS_FTHBLND             " Schattierung"
+    IDS_FTHUP               " Oben"
+    IDS_FTHBOTH             " Beidseitig"
+    IDS_FTHSIZ              " Breite"
+    IDS_FTHNUM              " Variationen"
+    IDS_FTHFLR              " Breite Basis"
+    IDS_FTHUPCNT            " Positiv"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_FTHDWNCNT           " Negativ"
+    IDS_P2CMSG              "Can't locate PES2Card Software.\nWould you like to browse for\nComputerservice file: LinkP2C.exe?\n"
+    IDS_P2CTITL             "PES2Card Software Not Found"
+    IDS_CLPLIM              "%d stitches saved to clipboard"
+    IDS_P2CNODAT            "No data to send to PES2Card"
+END
+
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
