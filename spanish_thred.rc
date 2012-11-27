@@ -1,0 +1,1143 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU DISCARDABLE 
+BEGIN
+    POPUP "file"
+    BEGIN
+        MENUITEM "Nuevo",                       ID_FILE_NEW1
+        MENUITEM "Abrir (O)",                   ID_FILE_OPEN1
+        MENUITEM "Cerrar",                      ID_CLOSE
+        MENUITEM "Resumen (T)",                 ID_THUM
+        MENUITEM "Abrir archivo PCS",           ID_OPNPCD
+        MENUITEM "PES2Card (W+Cntrl)",          ID_PES2CRD
+        MENUITEM "Insertar",                    ID_INSFIL
+        MENUITEM "Superponer",                  ID_OVRLAY
+        MENUITEM "Guardar (^S, F7)",            ID_FILE_SAVE2
+        MENUITEM "Guardar como (F8)",           ID_FILE_SAVE3
+        MENUITEM "Cargar Bitmap",               ID_LODBIT
+        MENUITEM "Guardar Bitmap",              ID_SAVMAP
+        MENUITEM "Ocultar Bitmap (Shift+X)",    ID_HIDBITF, CHECKED
+        MENUITEM "Remover Bitmap",              ID_DELMAP
+        POPUP "Suprimir resguardos"
+        BEGIN
+            MENUITEM "Resguardos para el archivo seleccionado", ID_PURG
+            MENUITEM "Todos los resguardos en el directorio seleccionado", 
+                                                    ID_PURGDIR
+        END
+        MENUITEM "Cierre",                      ID_FLOK
+    END
+    POPUP "ver"
+    BEGIN
+        MENUITEM "Movie (I)",                   ID_RUNPAT
+        POPUP "Ajustar"
+        BEGIN
+            MENUITEM "Aplique Color",               ID_SETAP
+            MENUITEM "Fondo Color",                 ID_VIEW_STCHBAK
+            MENUITEM "Color del Mapa de Bits",      ID_BITCOL
+            MENUITEM "Espaciamiento para Relleno del Portapapeles", 
+                                                    ID_CLPSPAC
+            POPUP "Control de fecha"
+            BEGIN
+                MENUITEM "Off",                         ID_CHKOF, CHECKED
+                MENUITEM "On",                          ID_CHKON, CHECKED
+                MENUITEM "Auto Reparación",             ID_CHKREP, CHECKED
+                MENUITEM "Auto Reparac. con mensaje",   ID_CHKREPMSG
+                , CHECKED
+                MENUITEM "",                            ID_VIEW_SET_DATACHECK
+
+            END
+            MENUITEM "Preferencias por Defecto",    ID_SETPREF
+            POPUP "Completar en Seleccionar"
+            BEGIN
+                MENUITEM "On",                          ID_FIL2SEL_ON
+                MENUITEM "Off",                         ID_FIL2SEL_OFF
+            END
+            POPUP "Forma Cursor"
+            BEGIN
+                MENUITEM "CAsillero",                   ID_FRMBOX
+                MENUITEM "Cruz",                        ID_FRMX
+            END
+            POPUP "Máscara de Grilla"
+            BEGIN
+                MENUITEM "Alto",                        ID_GRDHI
+                MENUITEM "Medio",                       ID_GRDMED
+                MENUITEM "Por defecto",                 ID_GRDEF
+                MENUITEM "QuitarRojo",                  ID_GRDRED
+                MENUITEM "QuitarAzul",                  ID_GRDBLU
+                MENUITEM "QuitarVerde",                 ID_GRDGRN
+            END
+            POPUP "Espaciamiento del Borde de Línea"
+            BEGIN
+                MENUITEM "Exacto",                      ID_LINBEXACT
+                MENUITEM "Parejo",                      ID_LINBEVEN
+            END
+            POPUP "Tipo Archivo de Máquina"
+            BEGIN
+                MENUITEM "Pfaff PCS ",                  ID_AUXPCS
+                MENUITEM "Tajima DST",                  ID_AUXDST
+            END
+            POPUP "Cursor de la Aguja"
+            BEGIN
+                MENUITEM "On",                          ID_SETNEDL
+                MENUITEM "Off",                         ID_RSTNEDL
+            END
+            MENUITEM "Pixels Nudge",                ID_NUDGPIX
+            POPUP "Guardar Mapa de Bits PCS"
+            BEGIN
+                MENUITEM "On",                          ID_BSAVON
+                MENUITEM "Off",                         ID_BSAVOF
+            END
+            POPUP "Tamaño del Punto"
+            BEGIN
+                MENUITEM "Caseilleros del Punto de Puntadas", ID_STCHPIX
+                MENUITEM "Triángulos del Punto de la Forma", ID_FRMPIX
+                MENUITEM "Casillero de la Forma",       ID_FRMPBOX
+            END
+            POPUP "Quitar Marca"
+            BEGIN
+                MENUITEM "Salir",                       ID_MARKESC, CHECKED
+                MENUITEM "Q",                           ID_MARKQ, CHECKED
+            END
+            POPUP "Archivo Rotar Máquina"
+            BEGIN
+                MENUITEM "On",                          ID_ROTAUXON
+                MENUITEM "Off",                         ID_ROTAUXOFF
+            END
+            POPUP "Underlay"
+            BEGIN
+                MENUITEM "Ángulo",                      ID_UANG
+                MENUITEM "Indentar",                    ID_WIND
+                MENUITEM "Espaciado",                   ID_USPAC
+                MENUITEM "Largo de Puntada",            ID_USTCH
+            END
+            MENUITEM "Advertir si se edita",        ID_WARNOF, CHECKED
+        END
+        MENUITEM "Resguardos",                  ID_VUBAK
+        MENUITEM "Zoom Completo (X)",           VU_ZUMFUL
+        POPUP "Tamaño de hebra"
+        BEGIN
+            MENUITEM "30",                          ID_SIZ30
+            MENUITEM "40",                          ID_SIZ40
+            MENUITEM "60",                          ID_SIZ60
+            MENUITEM "Determinar los Defectos",     ID_TSIZDEF
+        END
+        MENUITEM "Mostrar Hebras (F6)",         ID_VUTHRDS
+        MENUITEM "Mostrar Hebras para el color seleccionado", ID_VUSELTHRDS
+        MENUITEM "Información de diseño (')",   ID_DESIZ
+        POPUP "Nudos"
+        BEGIN
+            MENUITEM "On",                          ID_KNOTON
+            MENUITEM "Off",                         ID_KNOTOF
+        END
+        MENUITEM "Recuperar Marca (B+Shift)",   ID_BAKMRK
+        MENUITEM "Sobre la Hebra",              ID_ABOUT
+    END
+    MENUITEM "forma",                       ID_FORM
+    POPUP "editar"
+    BEGIN
+        POPUP "Centro"
+        BEGIN
+            MENUITEM "Horizontal (- +Shift)",       ID_CNTRH
+            MENUITEM "Vertical (- +Control)",       ID_CNTRV
+            MENUITEM "Ambos (-)",                   ID_CNTRX
+            MENUITEM "Todo el Diseño",              ID_CENTIRE
+            MENUITEM "Formas (L)",                  ID_CNTR
+        END
+        MENUITEM "Controlar Rango",             ID_CHK
+        POPUP "Convertir"
+        BEGIN
+            MENUITEM "a Cinta Pluma (F+shift)",     ID_2FTHR
+            MENUITEM "a Cinta Satén (C+shift)",     ID_RIBON
+            MENUITEM "a Bean",                      ID_DUBEAN
+            MENUITEM "de Bean a Línea",             ID_UNBEAN
+            MENUITEM "Puntadas a Forma",            ID_STCHS2FRM
+        END
+        POPUP "Copiar a Lámina"
+        BEGIN
+            MENUITEM "0",                           ID_LAYCPY0
+            MENUITEM "1",                           ID_LAYCPY1
+            MENUITEM "2",                           ID_LAYCPY2
+            MENUITEM "3",                           ID_LAYCPY3
+            MENUITEM "4",                           ID_LAYCPY4
+        END
+        MENUITEM "Tundir a Forma (W+Shift)",    ID_CROP
+        POPUP "Suprimir"
+        BEGIN
+            MENUITEM "Todas las Formas",            ID_DELFRMS
+            MENUITEM "Todas las Formas y Puntadas (Suprimir+Cntrl+Shift)", 
+                                                    ID_DELTOT
+            MENUITEM "Todas las Puntadas (L+shift)", ID_DELSTCH
+            MENUITEM "Puntadas Libres",             ID_DELFRE
+            MENUITEM "Nudos",                       ID_DELKNOT
+            MENUITEM "Puntadas Grandes (F11+shift)", ID_REMBIG
+            MENUITEM "Seleccionar (suprimir)",      ID_DELETE
+            MENUITEM "Puntadas Pequeñas (F11)",     ID_REMZERO
+        END
+        POPUP "Flip"
+        BEGIN
+            MENUITEM "Horizontal",                  ID_FLIPH
+            MENUITEM "Vertical",                    ID_FLIPV
+            MENUITEM "Orden",                       ID_FLPORD
+        END
+        POPUP "Actualización &Forma"
+        BEGIN
+            POPUP "&Límite"
+            BEGIN
+                MENUITEM "&Color",                      ID_SETBCOL
+                MENUITEM "Largo de Puntada &Máximo",    ID_MAXBLEN
+                MENUITEM "Largo de Puntada &mínimo",    ID_MINBLEN
+                MENUITEM "Largo de &Puntada",           ID_SETBLEN
+                MENUITEM "Espaciamiento",               ID_SETBSPAC
+            END
+            POPUP "&Camino del Centro"
+            BEGIN
+                MENUITEM "&On",                         ID_SETCWLK
+                MENUITEM "o&Ff",                        ID_NOTCWLK
+            END
+            POPUP "Camino de Borde"
+            BEGIN
+                MENUITEM "&On",                         ID_SETWLK
+                MENUITEM "o&Ff",                        ID_NOTWLK
+            END
+            POPUP "&Fill"
+            BEGIN
+                MENUITEM "&Ang",                        ID_SETFANG
+                MENUITEM "&Color",                      ID_SETFCOL
+                MENUITEM "Largo Máximo de Puntada",     ID_MAXFLEN
+                MENUITEM "Largo Mínimo de Puntada",     ID_MINFLEN
+                MENUITEM "Largo de Puntada",            ID_SETFLEN
+                MENUITEM "&Espaciamiento",              ID_SETFSPAC
+            END
+            MENUITEM "Altura",                      ID_FRMHI
+            MENUITEM "Indentado",                   ID_FRMIND
+            POPUP "Base"
+            BEGIN
+                MENUITEM "&On",                         ID_SETUND
+                MENUITEM "o&Ff",                        ID_NOTUND
+                MENUITEM "&Angulo",                     ID_SETUANG
+                MENUITEM "&Color",                      ID_SETUCOL
+                MENUITEM "&Espaciamiento",              ID_SETUSPAC
+            END
+            MENUITEM "debajo del largo de &Puntada", ID_UNDLEN
+            MENUITEM "&Ancho",                      ID_FRMWID
+        END
+        POPUP "Mover"
+        BEGIN
+            MENUITEM "para comenzar",               ID_MV2FRNT
+            MENUITEM "para Marcar (;)",             ID_MOVMRK
+            MENUITEM "para Finalizar",              ID_MV2BAK
+        END
+        POPUP "Mover hacia la Lámina"
+        BEGIN
+            MENUITEM "0",                           ID_LAYMOV0
+            MENUITEM "1",                           ID_LAYMOV1
+            MENUITEM "2",                           ID_LAYMOV2
+            MENUITEM "3",                           ID_LAYMOV3
+            MENUITEM "4",                           ID_LAYMOV4
+        END
+        MENUITEM "Rellenar todo (J)",           ID_REFILAL
+        MENUITEM "Reparar Datos",               ID_REPAIR
+        MENUITEM "Resetear Colores",            ID_EDIT_RESET_COL
+        MENUITEM "Retrazar",                    ID_RETRACE
+        MENUITEM "Recuperar Puntadas del Portapapeles (F4)", ID_RTRVCLP
+        POPUP "Rotar"
+        BEGIN
+            MENUITEM "Otra vez",                    ID_ROTAGAIN
+            MENUITEM "y Duplicar",                  ID_ROTDUP
+            MENUITEM "y Duplicar Otra Vez",         ID_DUPAGAIN
+            MENUITEM "Comando",                     ID_ROTCMD
+        END
+        POPUP "Seleccionar"
+        BEGIN
+            MENUITEM "Todas las Formas",            ID_ALFRM
+            MENUITEM "Todas las Formas y Puntadas (A+Shift)", ID_SELAL
+            MENUITEM "Todas las Puntadas A+Cntrl",  ID_SELALSTCH
+            MENUITEM "Color",                       ID_EDIT_SELECTCOLOR
+            MENUITEM "Forma Aplique Puntadas",      ID_SELAP
+            MENUITEM "Forma Puntadas de Borde",     ID_SELBRD
+            MENUITEM "Forma Puntadas del Camino de Borde", ID_SELWLK
+            MENUITEM "Forma Puntadas de Relleno",   ID_SELFIL
+            MENUITEM "Forma Puntadas",              ID_SELFSTCHS
+            MENUITEM "Forma Puntadas de Base",      ID_SELUND
+        END
+        POPUP "Ajustar"
+        BEGIN
+            MENUITEM "Tamaño del Diseño",           ID_SETSIZ
+            MENUITEM "Defectos de Pluma",           ID_FTHDEF
+            MENUITEM "Punto de Comienzo de Relleno (<)", ID_FILSTRT
+            MENUITEM "Punto de Fin de Relleno (>)", ID_FILEND
+            MENUITEM "Forma Número (/)",            ID_FRMNUM
+            MENUITEM "Forma Color a Color de Puntada", ID_FRM2COL
+            MENUITEM "Forma Punto Cero",            ID_FRM0
+            MENUITEM "Nudos",                       ID_KNOTS
+            MENUITEM "Nudo en la Puntada Seleccionada (K+Cntrl)", ID_KNOTAT
+            MENUITEM "Marca de Orden (.)",          ID_SETMRK
+            MENUITEM "Extremos de Rango para los Rellenos del Portapapeles", 
+                                                    ID_CLPADJ
+            POPUP "Rotación"
+            BEGIN
+                MENUITEM "Angulo (R+Cntrl)",            ID_SETROT
+                MENUITEM "Angulo desde Marca (R+Shift)", ID_ROTMRK
+                MENUITEM "Segmentos (R)",               ID_ROTSEG
+            END
+            MENUITEM "Seleccionado",                65535
+            MENUITEM "Marca Zoom en el Centro (M+Shift)", ID_MRKCNTR
+            MENUITEM "Marca Zoom en el Punto Seleccionado (M+Cntrl)", 
+                                                    ID_MRKPNT
+        END
+        MENUITEM "Contraer Borde de Portapapeles", ID_SHRINK
+        POPUP "Presión"
+        BEGIN
+            MENUITEM "Junto [F2]",                  ID_SNAP2
+            MENUITEM "a Cuadrícula [S+shift]",      ID_SNAP2GRD
+        END
+        POPUP "Seleccionar"
+        BEGIN
+            MENUITEM "Auto (F3)",                   ID_SORT
+            MENUITEM "por Color luego Forma (F3+Shift)", ID_SRTBF
+            MENUITEM "por Forma (F3+Cntrl)",        ID_SRTF
+        END
+        MENUITEM "Dividir Forma",               ID_SPLTFRM
+        POPUP "Trazar"
+        BEGIN
+            MENUITEM "Encontrar Bordes (U+control)", ID_TRDIF
+            MENUITEM "Ocultar Mapa de Bits (X+shift)", ID_HIDBIT, CHECKED
+            MENUITEM "Resetear Pixels de Forma (H)", ID_BLAK
+            MENUITEM "Seleccionar Colores (H+control)", ID_TRCSEL
+            MENUITEM "Mode Trazar (T+Control)",     ID_TRACE
+            MENUITEM "Mostrar Bordes Trazados (clic derecho o izquierdo)", 
+                                                    ID_TRACEDG
+        END
+        POPUP "Desagrupar"
+        BEGIN
+            MENUITEM "Primero{[)",                  ID_UNGRPLO
+            MENUITEM "Ultimo (])",                  ID_UNGRPHI
+        END
+    END
+    MENUITEM "in",                          ZUMIN
+    MENUITEM "out",                         ID_ZUMOUT
+    MENUITEM "deshacer",                    ID_BACK, GRAYED
+    MENUITEM "rehacer",                     ID_REDO, GRAYED
+    MENUITEM "rot",                         ID_ROT
+    MENUITEM "pref",                        ID_PREF
+    POPUP "llenar"
+    BEGIN
+        MENUITEM "Ventilar",                    ID_FILSAT
+        MENUITEM "Pluma",                       ID_FETHR
+        MENUITEM "Vertical",                    ID_FILL_VERT
+        MENUITEM "Horizontal",                  ID_FILL_HOR
+        MENUITEM "Angulo",                      ID_FILANG
+        POPUP "Portapapeles"
+        BEGIN
+            MENUITEM "Ventilar",                    ID_CLPFIL
+            MENUITEM "Vertical",                    ID_VRTCLP
+            MENUITEM "Horizontal",                  ID_HORCLP
+            MENUITEM "Angulo",                      ID_ANGCLP
+        END
+        MENUITEM "Contorno",                    ID_CONTF
+        MENUITEM "Editor Textura",              ID_TXFIL
+        POPUP "Borde"
+        BEGIN
+            MENUITEM "Línea",                       ID_FILIN
+            MENUITEM "Bean",                        ID_BOLD
+            MENUITEM "Satén Angulo",                ID_SATBRD
+            MENUITEM "Satén Perpendicular",         ID_PERP
+            MENUITEM "Aplique",                     ID_APLIQ
+            MENUITEM "BH",                          ID_FILBUT
+            MENUITEM "Portapapeles",                ID_FILCLP
+            MENUITEM "Portapapeles, Parejo",        ID_FILCLPX
+            MENUITEM "Picot",                       ID_PICOT
+            MENUITEM "Doble",                       ID_DUBFIL
+            MENUITEM "Cadena de Línea",             ID_LINCHN
+            MENUITEM "Cadena abierta",              ID_OPNCHN
+        END
+        MENUITEM "Desrellenar",                 ID_UNFIL
+        MENUITEM "Rellenar (F5)",               ID_REFILF
+    END
+    MENUITEM "agregar",                     ID_ADEND
+    MENUITEM "de+",                         ID_FRMOF
+    MENUITEM "todo",                        ID_LA
+    MENUITEM "1",                           ID_L1
+    MENUITEM "2",                           ID_L2
+    MENUITEM "3",                           ID_L3
+    MENUITEM "4",                           ID_L4
+    MENUITEM "ayuda",                       ID_HLP
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 3,0,9,2
+ PRODUCTVERSION 3,0,9,2
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comentarios", "\0"
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "\0"
+            VALUE "ConstrucciónEspecial", "\0"
+            VALUE "ConstrucciónPrivada", "\0"
+            VALUE "CopyrightLegal", "Copyright © 1999, 2000, 2001,2002,2003\0"
+            VALUE "DescripciónArchivo", "Thred\0"
+            VALUE "FileDescription", "\0"
+            VALUE "FileVersion", "3, 0, 9, 2\0"
+            VALUE "InternalName", "\0"
+            VALUE "LegalCopyright", "\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "MarcaregistradaLegal", "\0"
+            VALUE "NombreInterno", "Thred\0"
+            VALUE "NombreProduco", "Thred\0"
+            VALUE "NombrearchivoOriginal", "Thred3.exe\0"
+            VALUE "Nompre de la Empresa", "Thredworks\0"
+            VALUE "OriginalFilename", "\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "\0"
+            VALUE "ProductVersion", "3, 0, 9, 2\0"
+            VALUE "SpecialBuild", "\0"
+            VALUE "VersiónArchivo", "3.092\0"
+            VALUE "VersiónProducto", "3.092\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON    DISCARDABLE     "icon1.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DLOCK DIALOG DISCARDABLE  0, 0, 288, 206
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Lock Thred Files"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,150,7,50,14
+    PUSHBUTTON      "Cancelar",IDCANCEL,90,7,50,14
+    PUSHBUTTON      "Trabar Todo",IDC_LOCKAL,30,7,50,14
+    PUSHBUTTON      "Destrabar Todo",IDC_UNLOCKAL,210,7,50,14
+    LISTBOX         IDC_LOCKED,7,43,115,156,LBS_NOINTEGRALHEIGHT | 
+                    LBS_EXTENDEDSEL | WS_VSCROLL | WS_TABSTOP
+    LISTBOX         IDC_UNLOCKED,166,43,115,156,LBS_NOINTEGRALHEIGHT | 
+                    LBS_EXTENDEDSEL | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Archivos Trabados",IDC_STATIC,43,29,45,8
+    LTEXT           "Archivos Destrabados",IDC_STATIC,205,31,50,8
+    PUSHBUTTON      "<<",IDC_LOCK,126,49,36,14
+    PUSHBUTTON      ">>",IDC_UNLOCK,126,73,36,14
+END
+
+IDD_TEAR DIALOGEX 0, 0, 144, 196
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Tear Setup"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,32,177,79,14
+    PUSHBUTTON      "Cancelar",IDCANCEL,47,7,50,14
+    PUSHBUTTON      "Desgaste por Defecto",IDC_DEFTEAR,14,27,115,14
+    PUSHBUTTON      "Paisley por Defecto",IDC_DEFPAIS,14,47,115,14
+    RTEXT           "Puntos",IDC_TEARPNTS,7,70,78,14,SS_CENTERIMAGE,
+                    WS_EX_RIGHT
+    EDITTEXT        IDC_TEARSIDS,97,70,40,14,ES_AUTOHSCROLL
+    RTEXT           "Indice de Desgaste",IDC_RATLAB,7,96,78,14,
+                    SS_CENTERIMAGE,WS_EX_RIGHT
+    EDITTEXT        IDC_TEARAT,97,96,40,14,ES_AUTOHSCROLL
+    GROUPBOX        "Ajuste de Torsión",IDC_TWSTLAB,7,111,130,61
+    RTEXT           "Paso de Torsión",IDC_TWRATLAB,7,122,78,14,
+                    SS_CENTERIMAGE,WS_EX_RIGHT
+    EDITTEXT        IDC_TWSTSTP,97,122,40,14,ES_AUTOHSCROLL
+    RTEXT           "Indice de torsión",IDC_TWRAT,7,148,78,14,SS_CENTERIMAGE,
+                    WS_EX_RIGHT
+    EDITTEXT        IDC_TWSTRAT,97,148,40,14,ES_AUTOHSCROLL
+END
+
+IDD_WAV DIALOG DISCARDABLE  0, 0, 118, 158
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Ajuste de la Forma de Onda"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,39,137,50,14
+    PUSHBUTTON      "Cancelar",IDCANCEL,40,7,50,14
+    RTEXT           "Puntos",IDC_WPNTXT,7,32,56,14,SS_CENTERIMAGE
+    EDITTEXT        IDC_WAVPNTS,69,32,40,14,ES_AUTOHSCROLL
+    RTEXT           "Comenzar",IDC_WAVSTRTXT,7,53,56,14,SS_CENTERIMAGE
+    EDITTEXT        IDC_WAVSTRT,69,53,40,14,ES_AUTOHSCROLL
+    RTEXT           "Fin",IDC_WAVENDTXT,7,74,56,14,SS_CENTERIMAGE
+    EDITTEXT        IDC_WAVEND,69,74,40,14,ES_AUTOHSCROLL
+    RTEXT           "Ondas",IDC_WAVSTXT,7,95,56,14,SS_CENTERIMAGE
+    EDITTEXT        IDC_WAVS,69,95,40,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Forma de Ondas por Defecto",IDC_DEFWAV,7,117,102,14
+END
+
+IDD_FETHDEF DIALOG DISCARDABLE  0, 0, 81, 166
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Ajuste de Relleno Pluma"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,7,145,67,14
+    PUSHBUTTON      "Cancelar",IDCANCEL,7,7,67,14
+    CONTROL         "Mezclar",IDC_FDBLND,"Botón",WS_TABSTOP | 0xe23,7,23,36,
+                    14
+    CONTROL         "Arriba",IDC_FDUP,"Botón",WS_TABSTOP | 0xe23,7,39,36,14
+    EDITTEXT        IDC_DFUPCNT,49,39,25,14,ES_AUTOHSCROLL
+    CONTROL         "Abajo",IDC_FDWN,"Botón",WS_TABSTOP | 0xe23,7,57,36,14
+    EDITTEXT        IDC_DFDWNCNT,49,57,25,14,ES_AUTOHSCROLL
+    COMBOBOX        IDC_FDTYP,16,75,48,68,CBS_DROPDOWNLIST | WS_TABSTOP
+    RTEXT           "Size",IDC_SFDRAT,7,91,36,14,SS_CENTERIMAGE
+    EDITTEXT        IDC_DFRAT,49,91,25,14,ES_AUTOHSCROLL
+    RTEXT           "Steps",IDC_SDFNUM,7,109,36,14,SS_CENTERIMAGE
+    EDITTEXT        IDC_DFNUM,49,109,25,14,ES_AUTOHSCROLL
+    RTEXT           "Floor",IDC_SFDFLR,7,127,36,14,SS_CENTERIMAGE
+    EDITTEXT        IDC_DFLR,49,129,25,14,ES_AUTOHSCROLL
+END
+
+IDD_DASY DIALOG DISCARDABLE  0, 0, 102, 253
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Daisy Form Setup"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,7,232,88,14
+    PUSHBUTTON      "Cancelar",IDCANCEL,7,7,88,14
+    RTEXT           "Pétalos",IDC_STATIC,7,26,48,14,SS_CENTERIMAGE
+    EDITTEXT        IDC_PETALS,66,26,29,14,ES_RIGHT | ES_AUTOHSCROLL
+    RTEXT           "Puntos de Pétalos",IDC_STATIC,7,45,48,14,SS_CENTERIMAGE
+    EDITTEXT        IDC_PETLPNTS,66,45,29,14,ES_RIGHT | ES_AUTOHSCROLL
+    RTEXT           "Puntos Espejo",IDC_STATIC,20,64,38,14,SS_CENTERIMAGE
+    EDITTEXT        IDC_DAZPCNT,66,64,29,14,ES_RIGHT | ES_AUTOHSCROLL
+    RTEXT           "Puntos Pétalos Internos",IDC_STATIC,7,83,56,14,
+                    SS_CENTERIMAGE
+    EDITTEXT        IDC_INPNTS,66,83,29,14,ES_RIGHT | ES_AUTOHSCROLL
+    RTEXT           "Tamaño Centro",IDC_STATIC,7,102,48,14,SS_CENTERIMAGE
+    EDITTEXT        IDC_CNTLEN,66,102,29,14,ES_RIGHT | ES_AUTOHSCROLL
+    RTEXT           "Tamaño Pétalo",IDC_STATIC,7,121,48,14,SS_CENTERIMAGE
+    EDITTEXT        IDC_PETLEN,66,121,29,14,ES_RIGHT | ES_AUTOHSCROLL
+    CONTROL         "Orificio",IDC_HOLE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,17,140,31,10
+    CONTROL         "Líneas D",IDC_DLIN,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,64,140,31,10
+    RTEXT           "Tamaño del Orificio",IDC_STATIC,7,157,48,14,
+                    SS_CENTERIMAGE
+    EDITTEXT        IDC_HOLSIZ,66,157,29,14,ES_RIGHT | ES_AUTOHSCROLL
+    CTEXT           "Tipo de Petalo",IDC_STATIC,28,178,41,8
+    COMBOBOX        IDC_DAZTYP,7,190,88,104,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "Resetear",IDC_DAZRST,7,208,88,14
+END
+
+IDD_SIZ DIALOG DISCARDABLE  0, 0, 90, 119
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Ajustar el Tamaño de Diseño"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,21,98,50,14
+    PUSHBUTTON      "Cancelar",IDCANCEL,20,7,50,14
+    RTEXT           "Ancho",IDC_STATIC,7,26,29,14
+    EDITTEXT        IDC_DESWID,43,26,40,14,ES_AUTOHSCROLL
+    RTEXT           "Altura",IDC_STATIC,7,45,29,14
+    EDITTEXT        IDC_DESHI,43,45,40,14,ES_AUTOHSCROLL
+    CONTROL         "Formas de Relleno",IDC_REFILF,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,21,65,52,10
+    PUSHBUTTON      "Recuperar Aspecto",IDC_DUASP,21,79,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_DLOCK, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 281
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 199
+    END
+
+    IDD_TEAR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 137
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 191
+    END
+
+    IDD_WAV, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 109
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 151
+    END
+
+    IDD_FETHDEF, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 74
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 159
+    END
+
+    IDD_DASY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 95
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 246
+    END
+
+    IDD_SIZ, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 83
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 112
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_FETHDEF DLGINIT
+BEGIN
+    IDC_FDTYP, 0x403, 6, 0
+0x7543, 0x7672, 0x0065, 
+    IDC_FDTYP, 0x403, 7, 0
+0x7543, 0x7672, 0x3265, "\000" 
+    IDC_FDTYP, 0x403, 5, 0
+0x694c, 0x656e, "\000" 
+    IDC_FDTYP, 0x403, 7, 0
+0x6950, 0x6b63, 0x7465, "\000" 
+    IDC_FDTYP, 0x403, 7, 0
+0x6152, 0x6767, 0x6465, "\000" 
+    IDC_FDTYP, 0x403, 5, 0
+0x6152, 0x706d, "\000" 
+    IDC_FDTYP, 0x403, 1, 0
+"\000" 
+    IDC_FDTYP, 0x403, 1, 0
+"\000" 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_FSELB               "Puntadas sin borde"
+    IDS_FSELF               "Puntadas sin borde"
+    IDS_FSELA               "Puntadas sin aplique"
+    IDS_FSELM               "Sin puntadas"
+    IDS_SEL1FRM             "Seleccionar una forma para usar esta funcción"
+    IDS_PIKOL               "elegir color"
+    IDS_UPON                "hasta: on"
+    IDS_UPOF                "hasta: off"
+    IDS_FGRPF               "una forma, un grupo de formas, o un grupo de puntadas"
+    IDS_ALL                 "todas las formas y puntadas, una forma,\\ grupo de formas, o un grupo de puntadas"
+    IDS_AUXTXT              "Abrir archivos %s"
+    IDS_CPYRIT              "Thred Digitizing Program for Machine Embroidery\n(c)2000 Marion and Alfie McCoskey 1201 Locust Ave., Shasta Lake, CA\nAll rights reserved\nVersion: 3.092"
+    IDS_PNT                 "Sírvae ingresar  los puntos para el %s"
+    IDS_HUP0                "Determinar Tipo"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_HUP1                "Pfaff Pequeño"
+    IDS_HUP2                "Pfaff Grande"
+    IDS_HUP3                "100mm"
+    IDS_HUP4                "Tipo"
+    IDS_KEY                 "Thred, trial version\n\nYou can register your copy of Thred at:\nhttp://www.Thredworks.com\n\n"
+    IDS_CLP                 "Datos de  portapapeles demasiado escasos  para completar portapapeles"
+    IDS_EXP                 "Esta clave caduca en %d días"
+    IDS_XPIRAD              "Esta clave ha caducado"
+    IDS_CNTR                "Re-centrado del Diseño"
+    IDS_MAPLOD              "Debe tener un mapa de bits cargado para usar las funciones de autotrazado"
+    IDS_FRMOVR              "Demasiados puntos de forma"
+    IDS_ROTIN               "El ángulo de rotación es pequeño"
+    IDS_SELC                "Debe seleccionar  más de una forma para centrar las formas"
+    IDS_NSEL                "Nada para seleccionar"
+    IDS_CONT                "Una forma debe tener por lo menos cinco lados para el relleno de contorno"
+    IDS_ROTA                "Ingrese un ángulo de giro.\nEl valor actual es: %.2f"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_FRM2                "Una forma debe tener  más de dos lados para convertirse en Cinta de Satén"
+    IDS_FRML                "Ingrese el número de forma inferior a %d"
+    IDS_FRM3                "No puede crear una forma con menos de dos puntos"
+    IDS_STMAX               "No puede convertir más de 12,000 puntadas"
+    IDS_FRMN1               "Número de forma demasiado alto"
+    IDS_COLU                "Color en uso"
+    IDS_COLAL               "Todos los colors usados"
+    IDS_MRK                 "No se fijó la marca"
+    IDS_FRMNO               "Sin formas"
+    IDS_FRM2L               "La forma trazada en demasiado grande"
+    IDS_NOTHR               "No es un archivo THR"
+    IDS_FNOPN               "No pudo abrir el archivo: %s"
+    IDS_REM1                "Para quitar puntadas grandes,\najustar el largo de  puntada del usuario menos que el largo máximo de  puntada"
+    IDS_DST1                "El destino está dentro del rango mover"
+    IDS_BAKDT               "Resguardos suprimidos"
+    IDS_BAKDEL              "Suprimiendo resguardos"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_FDEL                "Suprime forma?"
+    IDS_DELFRM              "Suprime formas?"
+    IDS_END                 "Fin"
+    IDS_INSF                "Para insertar un archivo  completo, seleccione insertar desde el menú de archivo"
+    IDS_PFAF2L              "ADVERTENCIA\nDiseño demasiado grande  para bucle grandePfaff"
+    IDS_DST2S               "Encabezador de archivo Dst demasiado corto"
+    IDS_BMAP                "El hilo sólo muestra mapas de bits de un color o de 24 colores de bits"
+    IDS_SHOMAP              "No hay mapa de bits para guardar"
+    IDS_MAPCHG              "El mapa de bits no cambió"
+    IDS_SAVMAP              "Guardar mapa de bits sólo está disponible para mapas  de bits a color de 24 bits"
+    IDS_FILSTCH             "puntadas de relleno"
+    IDS_BRDSTCH             "puntadas de borde"
+    IDS_APSTCH              "puntadas de aplique"
+    IDS_FRMSEL              "selecciona forma %s"
+    IDS_FRM1MSG             "una forma"
+    IDS_GRPMSG              "un grupo de puntadas"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ROTAGIN             "Rotar Otra Vez"
+    IDS_SHOSEL              "Selecciona %s\n para usar %s"
+    IDS_REGP                "polígono regular"
+    IDS_STAR                "estrella"
+    IDS_SPIR                "espiral"
+    IDS_HEART               "corazón"
+    IDS_LENS                "lentes"
+    IDS_EGG                 "huevo"
+    IDS_CLPS                "Pone las puntadas en el portapapeles para usar este relleno y Seleccionar una forma que se rellena y pulsar control C para seleccionar un grupo de puntadas, y pulsar control C"
+    IDS_FRM3X               "No puede usar este tipo de relleno en una forma con menos de tres puntos"
+    IDS_ANGS                "Sírvase usar el relleno de satén en ángulo para una forma de línea con  sólo dos puntos"
+    IDS_FILSEL              "Para usar un relleno hacer clic derecho cerca de un punto de forma para seleccionarla"
+    IDS_FILCR               "Para usar un relleno, crear una forma seleccionando ""forma"" en el menú principal"
+    IDS_FGRPS               "un grupo de  puntadas o una forma"
+    IDS_UNGRP               "desagrupar"
+    IDS_NOGRP               "No puede encontrar las puntadas para la forma seleccionada"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_NOHLP               "HTML Help no está disponible \nthred.chm debe estar en el mismo directorio que thred.exe\n e Internet Explorer versión 3.0 o mayor y estar instalado en su computadora"
+    IDS_SAVDISC             "Guardar cambios en %s"
+    IDS_UNFIL               "Las puntadas en la forma están editadas, se quita el relleno de todos modos?"
+    IDS_REFIL               "Las puntadas en la forma son editadas, se rellena de todos modos?"
+    IDS_SNAP2GRD            "Abrochar en la Cuadrícula"
+    IDS_RETRAC              "Volver a trazar"
+    IDS_STCH_FRM            "un punto de  puntada o un punto de forma"
+    IDS_SETMRK              "Ajustar la Marca en el Punto Seleccionado"
+    IDS_FSZ                 "una forma o un grupo de puntadas y ajustar la marca del zoom"
+    IDS_SETROTM             "Ajustar el Angulo de Rotación desde la Marca"
+    IDS_RNGEND              "Ajustar los Extremos de Rango para los Rellenos del Portapapeles"
+    IDS_ROT                 "Rotar"
+    IDS_ROTCMD              "Comando Rotar"
+    IDS_CONVRIB             "Convertir a Cinta"
+    IDS_ROTDUP              "Rotar y  Duplicar"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CROP                "Cosecha"
+    IDS_STCH2FRM            "Convertir las puntadas a forma"
+    IDS_FRMGUID             "un punto de forma con una guía satén interior o un punto en una forma de línea"
+    IDS_SPLT                "Separar Forma"
+    IDS_CENT                "Centrar"
+    IDS_SETFRM              "Ajustar el Número de Forma"
+    IDS_FRMCLP              "una forma con un relleno del borde del portapapeles"
+    IDS_SHRNK               "Contrarer el Borde del Portapapeles"
+    IDS_PRT                 "Lectura parcial del archivo"
+    IDS_SHRTKEY             "Tecla demasiado corta\n\n"
+    IDS_INVKEY              "Tecla Nula\n\n"
+    IDS_EXPKEY              "Su prueba Thred Trial caducó\n\n"
+    IDS_DAYKEY              "%s%sSu Prueba Thred finalizará en %d días\n\n%s"
+    IDS_SHRTF               "Archivo demasiado corto"
+    IDS_TRC0                "encontrar bordes"
+    IDS_TRC1S               "mostrar mapa de bits"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TRC2                "rst frm pix"
+    IDS_TRC3                "sel colores"
+    IDS_TRC4                "mostrar bordes"
+    IDS_TRC1H               "ocultar mapa de bits"
+    IDS_SRCH                "buscar"
+    IDS_NUMPNT              "pnt"
+    IDS_NUMFRM              "frm"
+    IDS_NUMSEL              "sel"
+    IDS_NUMSCH              "sch"
+    IDS_NUMFORM             "form"
+    IDS_BOXSEL              "seleccionar casillero"
+    IDS_RITER               "error de escritura de archivo PCS"
+    IDS_SAVFIL              "Guardar Archivo %s"
+    IDS_CLOS                "Cerrando Thred"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TOT                 "tot %d"
+    IDS_LAYR                "lámina %d"
+    IDS_CREAT               "No pudo crear archivo %s"
+    IDS_FNOPNA              "No pudo abrir archivo %s\\ intentar cerrar Thred y abrir el archivo otra vez"
+    IDS_NOTVER              "Este archivo THR es una versión más nueva que esta copia de Thread  pueda leer.  Por favor baje la última versión de Thred de Thredworks.com para leer este archivo"
+    IDS_BADFIL              "Archivo Thred: %s"
+    IDS_ZEROL               "Archivo largo cero: %s"
+    IDS_OVRLOK              "%s está trabado\nsobreescribir de todos modos"
+    IDS_OVRIT               "Sobreescribir archivo trabado"
+    IDS_FILROT              "Archivo: %s fue rotado"
+    IDS_THRED               "Thred: %s"
+    IDS_NUFIL               "nufil.thr"
+    IDS_SIZ                 "Ingresar un nuevo tamaño para #%s thread\n El tamaño actual es de %.2f milímetros"
+    IDS_TRIAL               "Versión de Ensayo"
+    IDS_EMB                 "Thred: Intercambio de Archivo Embird "
+    IDS_ON                  "on"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_OFF                 "off"
+    IDS_FMEN                "Line (E)\nFree Hand (F)\nRegular Polygon (R)\nStar (S)\nSpiral (A)\nHeart (H)\nLens (L)\nEgg (G)\nTear (T)\nZig-Zag (Z)\nWave (W)\nDaisy (D)"
+    IDS_TXT0                "Forma"
+    IDS_TXT1                "Lámina"
+    IDS_TXT2                "Relleno"
+    IDS_TXT3                "Color de Relleno"
+    IDS_TXT4                "Espaciamiento de Relleno"
+    IDS_TXT5                "Largo de puntada de Relleno"
+    IDS_TXT6                "Angulo de Relleno"
+    IDS_TXT7                "Borde"
+    IDS_TXT8                "Color de Borde"
+    IDS_TXT9                "Espaciamiento de Borde"
+    IDS_TXT10               "Largo de puntada de Borde"
+    IDS_TXT11               "Ancho de Borde"
+    IDS_TXT12               "Color Aplique"
+    IDS_TXT13               "Esquina BH"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TXT14               "Comienzo"
+    IDS_TXT15               "Fin"
+    IDS_TXT16               "Espaciamiento Pico"
+    IDS_TXT17               "Base"
+    IDS_TXT18               "Etapa de Relleno"
+    IDS_TXT19               "Posición de cadena"
+    IDS_FIL0                "Ninguno"
+    IDS_FIL1                "Vertical"
+    IDS_FIL2                "Horizontal"
+    IDS_FIL3                "Angulo"
+    IDS_FIL4                "Abanico"
+    IDS_FIL5                "Clip Abanico"
+    IDS_FIL6                "Contorno"
+    IDS_FIL7                "clip Vrt"
+    IDS_FIL8                "Clip Hor"
+    IDS_FIL9                "Clip Ang"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_EDG0                "Ninguno"
+    IDS_EDG1                "Línea"
+    IDS_EDG2                "Bean"
+    IDS_EDG3                "Portapapeles"
+    IDS_EDG4                "Saten Ang"
+    IDS_EDG5                "Aplique"
+    IDS_EDG6                "Saten Prp"
+    IDS_EDG7                "BH"
+    IDS_EDG8                "Picot"
+    IDS_EDG9                "Doble"
+    IDS_EDG10               "Cadena Lin"
+    IDS_EDG11               "Cadena Opn"
+    IDS_PRF0                "Espaciamiento de Relleno"
+    IDS_PRF1                "Angulo de Relleno"
+    IDS_PRF2                "Extremos de Relleno"
+    IDS_PRF3                "Ancho de borde"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PRF4                "Largo de puntada, máximo"
+    IDS_PRF5                "Largo de puntada, usuario"
+    IDS_PRF6                "Largo de puntada, mínimo"
+    IDS_PRF7                "Corte de cuadrícula"
+    IDS_PRF8                "Corte de casillero de Puntada"
+    IDS_PRF9                "Tamaño de  puntada pequeña"
+    IDS_PRF10               "Color Aplique"
+    IDS_PRF11               "Ajustar al tamaño"
+    IDS_PRF12               "Indice Estrella"
+    IDS_PRF13               "Envoltorio Espiral"
+    IDS_PRF14               "Largo de extremo de botón"
+    IDS_PRF15               "Extremos de forma de satén"
+    IDS_PRF16               "Espaciamiento Picot"
+    IDS_PRF17               "Tipo Bucle"
+    IDS_PRF18               "Ancho Bucle"
+    IDS_PRF19               "Base Satén"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PRF20               "Tamaño de cuadrícula"
+    IDS_PRF21               "Compensación de portapapeles"
+    IDS_PRF22               "Fase de portapapeles"
+    IDS_PRF23               "Largo de relleno de cadena"
+    IDS_PRF24               "posición de relleno de cadena"
+    IDS_PRF25               "Nudge"
+    IDS_PRF26               "Indice Egg"
+    IDS_PRF27               "Altura de Bucle"
+    IDS_FRMPLUS             "de+"
+    IDS_FRMINUS             "de-"
+    IDS_OKENT               "OK=Enter or `"
+    IDS_CANCEL              "Cancelar"
+    IDS_APCOL               "El número de color del aplique es %d"
+    IDS_FREH                "Manos libres"
+    IDS_BLUNT               "Despuntado"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TAPR                "Ahusado"
+    IDS_PNTD                "En punta"
+    IDS_SQR                 "Cuadrado"
+    IDS_DELST2              "Suprime puntadas también)(S para suprimir)"
+    IDS_NCOLCHG             "cambio %d de colores"
+    IDS_SAV                 "Guardar"
+    IDS_DISC                "Desechar"
+    IDS_THRDBY              "Thred: %s by %s"
+    IDS_STCHOUT             "ADVERTENCIA\nPuntadas fuera de bucle\n\n"
+    IDS_STCHS               "Puntadas: %d\nAncho de Puntada: %.2f mm, %.2f in\nAltura de Puntadas: %.2f mm, %.2f in\n\n"
+    IDS_FORMS               "Formas: %d\nAncho de Formas: %.2f mm, %.2f in\nForms Height: %.2f mm, %.2f in\n\n"
+    IDS_HUPWID              "Ancho de Bucle: %.2f mm\nAltura de Bucle: %.2f mm\n\n"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CREATBY             "Creado por: %s\nModificado por: %s"
+    IDS_CUSTHUP             "Bucle tipo\n%.2f\n%.2f"
+    IDS_STCHP               "Ingresar pixels de  punto de puntada\\bctual: %d"
+    IDS_FRMP                "Ingresar  puntos de forma\\bctual: %d"
+    IDS_ENTROT              "Sírvase ingresar los segmentos de rotación.\nEl valor actual es: %.2f"
+    IDS_NUDG                "Ingresar pixels nudge\\bhora es:%d"
+    IDS_NOSTCHSEL           "No hay puntada seleccionada"
+    IDS_ZIG                 "Zig-Zag"
+    IDS_EDG12               "Clip parejo"
+    IDS_TXT20               "Puntada de Relleno Max"
+    IDS_TXT21               "Puntada de Relleno Min"
+    IDS_TXT22               "Puntada de Borde Max"
+    IDS_TXT23               "Puntada de Borde Min"
+    IDS_ALLX                "todas las formas  y puntadas, una forma\\ y un grupo de formas, un grupo de puntos de forma, \\ o un grupo de puntadas"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_FTH0                "Curva"
+    IDS_FTH1                "Curva2"
+    IDS_FTH2                "Línea"
+    IDS_FTH3                "Fragmentado"
+    IDS_FTH4                "Rampa"
+    IDS_FTH5                "Picket"
+    IDS_FIL10               "Pluma"
+    IDS_FTHCOL              "Color de pluma"
+    IDS_FTHTYP              "Tipo de Pluma"
+    IDS_FTHBLND             "Mezcla de Pluma"
+    IDS_FTHUP               "Pluma arriba"
+    IDS_FTHBOTH             "Pluma ambas"
+    IDS_FTHSIZ              "Tamaño de  pluma"
+    IDS_FTHNUM              "Pasos de pluma"
+    IDS_FTHFLR              "Piso de pluma"
+    IDS_FTHUPCNT            "Conteo ascedente de Pluma"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_FTHDWNCNT           "Conteo descendiente de pluma"
+    IDS_SETSTCH             "Clic izquierdo para ajustar puntadas"
+    IDS_P2CMSG              "No puede ubicar Software PES2Card.\\Desea  buscar el archivo de servicio de la Computadora: LinkP2C.exe?\n"
+    IDS_P2CTITL             "Software PES2Card No Encontrado"
+    IDS_P2CNODAT            "Sin datos para enviar a PES2Card"
+    IDS_CLPSPAC             "Ingresar el espaciamiento de relleno del portapapeles\\bctual: %.2f"
+    IDS_CHANSMAL            "Largo de puntada de cadena demasiado  grande para la forma"
+    IDS_FSTRT               "Comienza Relleno"
+    IDS_FEND                "Fin de relleno"
+    IDS_FORMP               "un  punto de forma"
+    IDS_WLKIND              "camino borde/identado base\\bctual%.2f"
+    IDS_WLKLEN              "Camino borde/largo puntada base\\bctual%.2f"
+    IDS_UANG                "ángulo base\\bctual.2f"
+    IDS_USPAC               "espaciamiento base\\bctual %.2f"
+    IDS_WALK                "Camino borde"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_UWLKIND             "Indentar"
+    IDS_WLKCOL              "Color camino borde"
+    IDS_UND                 "Base"
+    IDS_UNDCOL              "Color Base"
+    IDS_ULEN                "Largo de puntada de Base"
+    IDS_FUANG               "Angulo de Base"
+    IDS_FUSPAC              "Espaciamiento de Base"
+    IDS_KEYVER              "Esta versión de Thred es más reciente que la de su clave Thred\n\n"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_DAZCRV              "Curva"
+    IDS_DAZSAW              "Punto lateral"
+    IDS_DAZRMP              "Punto Centro"
+    IDS_DAZRAG              "Framentado"
+    IDS_DAZCOG              "Cog"
+    IDS_CWLK                "Camino centro"
+    IDS_UCOL                "Color Base"
+    IDS_SETULEN             "Largo de Puntada de Base"
+    IDS_SRTER               "Error de orden de color en formato%d"
+    IDS_SETUSPAC            "Espaciamiento de Base"
+    IDS_SETUANG             "Angulo de Base"
+    IDS_SETFLEN             "Largo de Puntada"
+    IDS_SETFSPAC            "Espaciamiento"
+    IDS_SETFANG             "Angulo"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_COL                 "Color"
+    IDS_WID                 "Ancho"
+    IDS_HI                  "Altura"
+    IDS_FRMBOX              "Pixels de casillero de forma\\bctual%d"
+    IDS_HSIZ                "Tamaño de bucle cambiado por %d ancho por %d altura"
+    IDS_DAZHART             "Espejo"
+    IDS_CLEAR               "Despejar"
+    IDS_TXHI                "hi: %.2f"
+    IDS_TXWID               "wid: %.2f"
+    IDS_TXSPAC              "spc: %.2f"
+    IDS_TXVRT               "vert"
+    IDS_TXHOR               "horz"
+    IDS_TXANG               "angulo"
+    IDS_FIL11               "Vrt txtr"
+    IDS_FIL12               "Hor txtr"
+    IDS_FIL13               "Ang txt"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TXOF                "Compensación de Textura"
+    IDS_TXMIR               "espejo"
+    IDS_BADFLT              "Datos de puntos de la forma error\n"
+    IDS_BADCLP              "Datos de  portapapeles error\n"
+    IDS_BADSAT              "Datos D-línea error\n"
+    IDS_BADTX               "Datos textura error\n"
+    IDS_FRMDAT              "Punto de forma"
+    IDS_CLPDAT              "Portapapeles"
+    IDS_SATDAT              "Línea D"
+    IDS_TXDAT               "Textura"
+    IDS_NOTREP              " datos no reparados en %d formas\n"
+    IDS_DATREP              "Datos Reparados"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
