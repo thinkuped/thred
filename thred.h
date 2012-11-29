@@ -37,8 +37,8 @@
 #define		DEFBPIX		4		//default form box pixels
 #define		MAXWLK		54		//max underlay/edge walk stitch length
 #define		MINWLK		2.4		//max underlay/edge walk stitch length
-#define		DEFULEN		12;		//default underlay stitch length
-#define		DEFUSPAC	6;		//default underlay stitch spacing
+#define		DEFULEN		12		//default underlay stitch length
+#define		DEFUSPAC	6		//default underlay stitch spacing
 
 #define		IWAVPNTS	36		//default wave points
 #define		IWAVSTRT	10		//default wave start
