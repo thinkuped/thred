@@ -1,0 +1,997 @@
+101 MENU
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+{
+POPUP "Fichier"
+{
+	MENUITEM "Nouveau",  40015
+	MENUITEM "&Ouvrir (O)",  40002
+	MENUITEM "Fermer",  40206
+	MENUITEM "Enregistrer (^S, F7)",  40007
+	MENUITEM "Enregistrer sous (F8)",  40037
+	MENUITEM SEPARATOR
+	MENUITEM "Miniatures(T)",  40126
+	MENUITEM SEPARATOR
+	MENUITEM "Ouvrir fichier PCS/DST",  40043
+	MENUITEM "PES2Card (W+Ctrl)",  40241
+	MENUITEM SEPARATOR
+	MENUITEM "lier position libre",  40131
+	MENUITEM "lier position fixe",  40188
+	MENUITEM SEPARATOR
+	MENUITEM "Charger Bitmap",  40022
+	MENUITEM "Enregistrer Bitmap",  40202
+	MENUITEM "Cacher Bitmap (Maj+X)",  40204,  CHECKED
+	MENUITEM "Supprimer Bitmap",  40205
+	MENUITEM SEPARATOR
+	POPUP "Suppression sauvegarde"
+	{
+		MENUITEM "du fichier sélectionné",  40073
+		MENUITEM "de tous les fichiers du répertoire sélectionné",  40074
+	}
+	MENUITEM "Verrouiller",  40196
+}
+POPUP "vue"
+{
+	MENUITEM "Simulateur broderie(I)",  40034
+	POPUP "Afficher les noeuds de coupe"
+	{
+		MENUITEM "oui",  40168
+		MENUITEM "non",  40169
+	}
+	POPUP "Personnaliser le logiciel"
+	{
+		MENUITEM "Valeurs par défaut",  40147
+		MENUITEM "Couleur de l'appliqué",  40062
+		MENUITEM "Couleur fond",  40003
+		MENUITEM "Couleur du Bitmap",  40018
+		POPUP "Parametres sous couche"
+		{
+			MENUITEM "Angle",  40248
+			MENUITEM "Distance du bord",  40245
+			MENUITEM "Densité",  40247
+			MENUITEM "Longueur point",  40246
+		}
+		POPUP "Insertion d'objet à un endroit donné"
+		{
+			MENUITEM "oui",  40190
+			MENUITEM "non",  40191
+		}
+		MENUITEM "Densite remplissage presse papier",  40242
+		POPUP "Dimension des icones point et noeud vectoriel"
+		{
+			MENUITEM "point brodé=carré ",  40215
+			MENUITEM "noeud vectoriel=triangle",  40216
+			MENUITEM "noeud ZERO de l'objet=carré",  40277
+		}
+		POPUP "Choix type curseur"
+		{
+			MENUITEM "boite",  40222
+			MENUITEM "croix",  40223
+		}
+		POPUP "Curseur aiguille"
+		{
+			MENUITEM "oui",  40165
+			MENUITEM "non",  40166
+		}
+		POPUP "Grille"
+		{
+			MENUITEM "contraste fort",  40182
+			MENUITEM "contraste moyen",  40183
+			MENUITEM "défaut",  40181
+			MENUITEM "pour fond à base de rouge",  40184
+			MENUITEM "pour fond à base de bleu",  40185
+			MENUITEM "pour fond à base de vert",  40186
+		}
+		POPUP "Choix touche supprimer marque"
+		{
+			MENUITEM "Echappe",  40210,  CHECKED
+			MENUITEM "Quitter",  40211,  CHECKED
+		}
+		POPUP "Contrôle données"
+		{
+			MENUITEM "inactif",  40286,  CHECKED
+			MENUITEM "actif",  40288,  CHECKED
+			MENUITEM "réparation auto",  40289,  CHECKED
+			MENUITEM "réparation auto avec message",  40290,  CHECKED
+			MENUITEM SEPARATOR
+		}
+		POPUP "Ajustement du motif de contour"
+		{
+			MENUITEM "normal",  40173
+			MENUITEM "réajusté",  40174
+		}
+		POPUP "Rotation du fichier"
+		{
+			MENUITEM "autoriser",  40194
+			MENUITEM "interdire",  40195
+		}
+		POPUP "Type du fichier machine"
+		{
+			MENUITEM "Pfaff PCS ",  40141
+			MENUITEM "Tajima DST",  40142
+		}
+		MENUITEM "Dimensionnement du déplacement en Pixels",  40209
+		POPUP "Enregitrement PCS avec Bitmap"
+		{
+			MENUITEM "oui",  40170
+			MENUITEM "non",  40171
+		}
+		MENUITEM "Afficher anomalies détectés par editeur",  40285,  CHECKED
+	}
+	MENUITEM "Reset zoom (X)",  40009
+	MENUITEM "Retrouve et centre la marque (B+Maj)",  40213
+	MENUITEM "Information du motif (')",  40136
+	MENUITEM "Vue des sauvegardes",  40072
+	POPUP "Epaisseur du fil"
+	{
+		MENUITEM "30",  40026
+		MENUITEM "40",  40027
+		MENUITEM "60",  40028
+		MENUITEM "valeur par défaut",  40029
+	}
+	MENUITEM "De tous les fils (F6)",  40120
+	MENUITEM "Du fil de la couleur sélectionnée",  40121
+}
+MENUITEM "forme",  40048
+POPUP "editeur"
+{
+	POPUP "Centrer"
+	{
+		MENUITEM "sur axe horiz (- +Maj)",  40154
+		MENUITEM "sur axe vert (- +Control)",  40155
+		MENUITEM "sur les deux axes (-)",  40156
+		MENUITEM "Tout le motif",  40157
+		MENUITEM "Plusieurs Formes entre elles (L)",  40132
+	}
+	POPUP "Symétrie"
+	{
+		MENUITEM "Horizontale",  40068
+		MENUITEM "Verticale",  40069
+		MENUITEM "inverser les noeuds",  40082
+	}
+	POPUP "Rotation"
+	{
+		MENUITEM "encore",  40089
+		MENUITEM "avec duplication",  40088
+		MENUITEM "encore et avec duplication",  40145
+		MENUITEM "Valeur angle de rotation",  40087
+	}
+	MENUITEM SEPARATOR
+	MENUITEM "Reset couleurs",  40006
+	POPUP "Sélection"
+	{
+		MENUITEM "Tous les objets",  40249
+		MENUITEM "Tous les objets et broderies (A+Maj)",  40109
+		MENUITEM "Toutes les broderies A+Ctrl",  40130
+		MENUITEM "de la Couleur",  40011
+		MENUITEM "des pt Appliqué       de l'obj",  40117
+		MENUITEM "des pt Contour        de l'obj",  40116
+		MENUITEM "des pt maintien       de l'obj",  40250
+		MENUITEM "des pt remplissage  de l'obj",  40115
+		MENUITEM "des pt (tous)             de l'obj",  40118
+		MENUITEM "des pt sous couche de l'obj",  40251
+	}
+	POPUP "Suppression"
+	{
+		MENUITEM "de la Sélection",  40070
+		MENUITEM "Tous objets",  40086
+		MENUITEM "Tous objets avec leur broderie (Delete+Ctrl+Maj)",  40143
+		MENUITEM "Toutes les broderies (L+Maj)",  40042
+		MENUITEM "points isolés (sans obj vectoriel)",  40110
+		MENUITEM "Noeuds d'arret des fils",  40167
+		MENUITEM "grand points (F11+Maj)",  40122
+		MENUITEM "petits points (F11)",  40020
+	}
+	POPUP "Définir..."
+	{
+		MENUITEM "Taille motif",  40283
+		MENUITEM "Nom Designer",  40292
+		MENUITEM "val défaut remplis. point plumetis",  40238
+		MENUITEM "Point remplis.départ (<)",  40243
+		MENUITEM "Point remplis.final (>)",  40244
+		MENUITEM "numéro objet (/)",  40153
+		MENUITEM "couleur forme = couleur fil",  40193
+		MENUITEM "Noeud ZERO (point de depart) de l'objet",  40053
+		MENUITEM "Noeud d'arrêt des fils (coupe)",  40021
+		MENUITEM "Noeud d'arrêt sur pt selectionné (K+Ctrl)",  40220
+		MENUITEM "adapter le motif de clonage",  40144
+		POPUP "Rotation"
+		{
+			MENUITEM "Angle (R+Ctrl)",  40148
+			MENUITEM "Angle autour de la marque(R+Maj)",  40150
+			MENUITEM "nbre de Segments (R)",  40151
+		}
+		MENUITEM "Sélection",  65535
+		MENUITEM "Zoom au Centre (M+Maj)",  40149
+		MENUITEM "Zoom sur la Sélection (M+Ctrl)",  40152
+	}
+	MENUITEM SEPARATOR
+	POPUP "&Formes : Mise à jour"
+	{
+		POPUP "&Maintien central"
+		{
+			MENUITEM "&Oui",  40255
+			MENUITEM "&Non",  40256
+		}
+		POPUP "maintien &Bord"
+		{
+			MENUITEM "&Oui",  40254
+			MENUITEM "&Non",  40257
+		}
+		POPUP "&Sous couche"
+		{
+			MENUITEM "&Oui",  40253
+			MENUITEM "&Non",  40258
+			MENUITEM "&Couleur",  40266
+			MENUITEM "&Angle",  40262
+			MENUITEM "&Densité",  40261
+			MENUITEM "&Long point",  40259
+			MENUITEM "distance &Bord",  40284
+		}
+		POPUP "&Remplissage"
+		{
+			MENUITEM "&Couleur",  40267
+			MENUITEM "&Angle",  40265
+			MENUITEM "&Densité",  40264
+			MENUITEM "longueur m&In point",  40274
+			MENUITEM "&Longueur point",  40263
+			MENUITEM "longueur &Max point",  40273
+		}
+		POPUP "&Contour"
+		{
+			MENUITEM "&Couleur",  40268
+			MENUITEM "&Densité",  40270
+			MENUITEM "long m&In point",  40272
+			MENUITEM "&Longueur point",  40269
+			MENUITEM "long &Max point",  40271
+		}
+		MENUITEM "&Hauteur de l'objet",  40276
+		MENUITEM "&Largeur de l'objet",  40275
+	}
+	MENUITEM "suppression points extérieurs à la forme (W+Maj)",  40214
+	MENUITEM "scinder une forme",  40161
+	MENUITEM "controle aux limites cadre",  40107
+	POPUP "Convertir en"
+	{
+		MENUITEM "colonne point plumetis (F+Maj)",  40240
+		MENUITEM "colonne point satin (C+Maj)",  40139
+		MENUITEM "point triple",  40159
+		MENUITEM "Pt triple en pt simple",  40160
+		MENUITEM "pt brodé en noeuds vectoriels",  40162
+	}
+	MENUITEM "rétrécissement du contour cloné",  40146
+	POPUP "aimanter les points de piqure"
+	{
+		MENUITEM "ensemble [F2]",  40085
+		MENUITEM "à la grille [S+Maj]",  40192
+	}
+	MENUITEM SEPARATOR
+	POPUP "Ordre de broderie"
+	{
+		MENUITEM "En premier",  40076
+		MENUITEM "définir la position (.)",  40114
+		MENUITEM "aller à la position définie(;)",  40119
+		MENUITEM "En dernier",  40077
+	}
+	POPUP "Tri"
+	{
+		MENUITEM "Auto (F3)",  40105
+		MENUITEM "par couleur puis forme (F3+Maj)",  40158
+		MENUITEM "par forme (F3+Ctrl)",  40225
+	}
+	POPUP "Dégrouper"
+	{
+		MENUITEM "Premier{[)",  40128
+		MENUITEM "Dernier (])",  40129
+	}
+	POPUP "Copie dans calque"
+	{
+		MENUITEM "0",  40113
+		MENUITEM "1",  40097
+		MENUITEM "2",  40098
+		MENUITEM "3",  40099
+		MENUITEM "4",  40100
+	}
+	POPUP "Déplacement des calques"
+	{
+		MENUITEM "0",  40112
+		MENUITEM "1",  40101
+		MENUITEM "2",  40102
+		MENUITEM "3",  40103
+		MENUITEM "4",  40104
+	}
+	MENUITEM SEPARATOR
+	MENUITEM "Ré-Remplir tout (J)",  40108
+	MENUITEM "Reparation des Données",  40287
+	MENUITEM "Créer des points Retour",  40180
+	MENUITEM "Recharger le presse papier (F4)",  40106
+	POPUP "Trace"
+	{
+		MENUITEM "Trouver bordure (U+ctrl)",  40199
+		MENUITEM "masque Bitmap (X+Maj)",  40023,  CHECKED
+		MENUITEM "Raz obj Pixels (H)",  40203
+		MENUITEM "Selection Couleurs (H+control)",  40200
+		MENUITEM "Mode Trace (T+Control)",  40198
+		MENUITEM "afficher contours (clic droit ou gauche)",  40201
+	}
+}
+MENUITEM "zoom+",  40008
+MENUITEM "zoom-",  40135
+MENUITEM "défaire",  40013,  GRAYED
+MENUITEM "refaire",  40052,  GRAYED
+MENUITEM "rotation",  40016
+MENUITEM "préférences",  40067
+POPUP "broder"
+{
+	MENUITEM "Editeur texture de points",  40282
+	MENUITEM SEPARATOR
+	POPUP "Remplissage"
+	{
+		MENUITEM "éventail",  40047
+		MENUITEM "plumetis",  40239
+		MENUITEM "Vertical",  40035
+		MENUITEM "Horizontal",  40057
+		MENUITEM "Angle",  40036
+		MENUITEM "écho contour",  40127
+		POPUP "Clonage du presse papier"
+		{
+			MENUITEM "éventail",  40083
+			MENUITEM "Vertical",  40176
+			MENUITEM "Horizontal",  40177
+			MENUITEM "Angle",  40178
+		}
+	}
+	MENUITEM SEPARATOR
+	POPUP "Contour"
+	{
+		MENUITEM "Pt Simple",  40055
+		MENUITEM "Pt aller-retour",  40179
+		MENUITEM "Pt Triple",  40066
+		MENUITEM "Pt Satin incliné",  40058
+		MENUITEM "Pt Satin perpendiculaire",  40075
+		MENUITEM "Pt pour Appliqué",  40060
+		MENUITEM "Pt feston",  40123
+		MENUITEM "Clonage normal du presse papier",  40056
+		MENUITEM "Clonage ajusté du presse papier",  40224
+		MENUITEM "Pt Picot",  40125
+		MENUITEM "Pt Chainette",  40207
+		MENUITEM "Pt Chainette ouvert",  40208
+	}
+	MENUITEM SEPARATOR
+	MENUITEM "supprimer broderie",  40050
+	MENUITEM "inverser les bords (F5)",  40138
+}
+MENUITEM "ajout",  40065
+MENUITEM "frm+",  40078
+MENUITEM "tout",  40095
+MENUITEM "1",  40091
+MENUITEM "2",  40092
+MENUITEM "3",  40093
+MENUITEM "4",  40094
+POPUP "aide"
+{
+	MENUITEM "Contenu",  40134
+	MENUITEM "Au sujet de thred",  40137
+}
+}
+
+114 DIALOG 0, 0, 288, 206
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Protection des Fichiers"
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+FONT 8, "MS Sans Serif"
+{
+   CONTROL "OK", 1, BUTTON, BS_DEFPUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 150, 7, 50, 14 
+   CONTROL "Annuler", 2, BUTTON, BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 90, 7, 50, 14 
+   CONTROL "Verrouiller tout", 1001, BUTTON, BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 30, 7, 50, 14 
+   CONTROL "Déverrouiller tout", 1002, BUTTON, BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 210, 7, 60, 14 
+   CONTROL "", 1003, LISTBOX, LBS_NOTIFY | LBS_NOINTEGRALHEIGHT | LBS_EXTENDEDSEL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_VSCROLL | WS_TABSTOP, 7, 43, 115, 156 
+   CONTROL "", 1004, LISTBOX, LBS_NOTIFY | LBS_NOINTEGRALHEIGHT | LBS_EXTENDEDSEL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_VSCROLL | WS_TABSTOP, 166, 43, 115, 156 
+   CONTROL "Fich.verrouillés", -1, STATIC, SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 43, 29, 50, 8 
+   CONTROL "Fich.déverrouillés", -1, STATIC, SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 200, 31, 60, 8 
+   CONTROL "<<", 1005, BUTTON, BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 126, 49, 36, 14 
+   CONTROL ">>", 1006, BUTTON, BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 126, 73, 36, 14 
+}
+
+117 DIALOGEX 0, 0, 144, 196
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "configuration de déformation"
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+FONT 8, "MS Sans Serif"
+{
+   CONTROL "OK", 1, BUTTON, BS_DEFPUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 32, 177, 79, 14 
+   CONTROL "Annuler", 2, BUTTON, BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 47, 7, 50, 14 
+   CONTROL "valeur par Défaut", 1016, BUTTON, BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 14, 27, 115, 14 
+   CONTROL "Défaut Paisley", 1017, BUTTON, BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 14, 47, 115, 14 
+   CONTROL "Points", 1009, STATIC, SS_RIGHT | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | WS_GROUP, 7, 70, 78, 14 , 0x00001000
+   CONTROL "", 1010, EDIT, ES_LEFT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 97, 70, 40, 14 
+   CONTROL "Ratio de déformation", 1006, STATIC, SS_RIGHT | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | WS_GROUP, 7, 96, 78, 14 , 0x00001000
+   CONTROL "", 1007, EDIT, ES_LEFT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 97, 96, 40, 14 
+   CONTROL "config rotation", 1008, BUTTON, BS_GROUPBOX | WS_CHILD | WS_VISIBLE, 7, 111, 130, 61 
+   CONTROL "nbre de pas", 1011, STATIC, SS_RIGHT | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | WS_GROUP, 7, 122, 78, 14 , 0x00001000
+   CONTROL "", 1013, EDIT, ES_LEFT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 97, 122, 40, 14 
+   CONTROL "Ratio", 1014, STATIC, SS_RIGHT | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | WS_GROUP, 7, 148, 78, 14 , 0x00001000
+   CONTROL "", 1015, EDIT, ES_LEFT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 97, 148, 40, 14 
+}
+
+118 DIALOG 0, 0, 118, 158
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "config vague"
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+FONT 8, "MS Sans Serif"
+{
+   CONTROL "OK", 1, BUTTON, BS_DEFPUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 39, 137, 50, 14 
+   CONTROL "Annuler", 2, BUTTON, BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 40, 7, 50, 14 
+   CONTROL "Points", 1018, STATIC, SS_RIGHT | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | WS_GROUP, 7, 32, 56, 14 
+   CONTROL "", 1019, EDIT, ES_LEFT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 69, 32, 40, 14 
+   CONTROL "Début", 1020, STATIC, SS_RIGHT | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | WS_GROUP, 7, 53, 56, 14 
+   CONTROL "", 1022, EDIT, ES_LEFT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 69, 53, 40, 14 
+   CONTROL "Fin", 1023, STATIC, SS_RIGHT | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | WS_GROUP, 7, 74, 56, 14 
+   CONTROL "", 1024, EDIT, ES_LEFT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 69, 74, 40, 14 
+   CONTROL "vagues", 1025, STATIC, SS_RIGHT | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | WS_GROUP, 7, 95, 56, 14 
+   CONTROL "", 1026, EDIT, ES_LEFT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 69, 95, 40, 14 
+   CONTROL "Val par défaut", 1027, BUTTON, BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 7, 117, 102, 14 
+}
+
+119 DIALOG 0, 0, 121, 166
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "init. remplis. point plumetis"
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+FONT 8, "MS Sans Serif"
+{
+   CONTROL "OK", 1, BUTTON, BS_DEFPUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 24, 145, 67, 14 
+   CONTROL "Annuler", 2, BUTTON, BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 24, 7, 67, 14 
+   CONTROL "Dégradé", 1036, BUTTON, BS_AUTOCHECKBOX | BS_LEFTTEXT | BS_RIGHT | BS_VCENTER | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 24, 23, 42, 14 
+   CONTROL "Haut", 1029, BUTTON, BS_AUTOCHECKBOX | BS_LEFTTEXT | BS_RIGHT | BS_VCENTER | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 18, 39, 36, 14 
+   CONTROL "", 1031, EDIT, ES_LEFT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 56, 39, 25, 14 
+   CONTROL "Bas", 1032, BUTTON, BS_AUTOCHECKBOX | BS_LEFTTEXT | BS_RIGHT | BS_VCENTER | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 18, 57, 36, 14 
+   CONTROL "", 1033, EDIT, ES_LEFT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 56, 57, 25, 14 
+   CONTROL "", 1037, COMBOBOX, CBS_DROPDOWNLIST | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 24, 75, 48, 68 
+   CONTROL "Taille", 1038, STATIC, SS_RIGHT | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | WS_GROUP, 16, 91, 36, 14 
+   CONTROL "", 1039, EDIT, ES_LEFT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 56, 91, 25, 14 
+   CONTROL "Pas", 1040, STATIC, SS_RIGHT | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | WS_GROUP, 16, 109, 36, 14 
+   CONTROL "", 1041, EDIT, ES_LEFT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 56, 109, 25, 14 
+   CONTROL "sol", 1044, STATIC, SS_RIGHT | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | WS_GROUP, 16, 129, 36, 14 
+   CONTROL "", 1043, EDIT, ES_LEFT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 56, 129, 25, 14 
+}
+
+121 DIALOG 0, 0, 122, 246
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "parametre fleur"
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+FONT 8, "MS Sans Serif"
+{
+   CONTROL "OK", 1, BUTTON, BS_DEFPUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 15, 225, 88, 14 
+   CONTROL "Annuler", 2, BUTTON, BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 15, 7, 88, 14 
+   CONTROL "Nbre Petales", -1, STATIC, SS_RIGHT | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 26, 46, 14 
+   CONTROL "", 1047, EDIT, ES_RIGHT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 66, 26, 29, 14 
+   CONTROL "Points petale", -1, STATIC, SS_RIGHT | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 45, 47, 14 
+   CONTROL "", 1048, EDIT, ES_RIGHT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 66, 45, 29, 14 
+   CONTROL "Points symetr.", -1, STATIC, SS_RIGHT | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | WS_GROUP, 20, 64, 44, 14 
+   CONTROL "", 1066, EDIT, ES_RIGHT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 66, 64, 29, 14 
+   CONTROL "Points inter.", -1, STATIC, SS_RIGHT | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 83, 44, 14 
+   CONTROL "", 1056, EDIT, ES_RIGHT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 66, 83, 29, 14 
+   CONTROL "Taille centre", -1, STATIC, SS_RIGHT | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 102, 48, 14 
+   CONTROL "", 1049, EDIT, ES_RIGHT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 66, 102, 29, 14 
+   CONTROL "Taille petale", -1, STATIC, SS_RIGHT | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 121, 48, 14 
+   CONTROL "", 1050, EDIT, ES_RIGHT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 66, 121, 29, 14 
+   CONTROL "trous", 1053, BUTTON, BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 17, 140, 31, 10 
+   CONTROL "ligne-D", 1063, BUTTON, BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 66, 140, 38, 10 
+   CONTROL "Taille ouverture", -1, STATIC, SS_RIGHT | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 155, 48, 14 
+   CONTROL "", 1052, EDIT, ES_RIGHT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 66, 155, 29, 14 
+   CONTROL "Type petale", -1, STATIC, SS_CENTER | WS_CHILD | WS_VISIBLE | WS_GROUP, 38, 176, 41, 8 
+   CONTROL "", 1057, COMBOBOX, CBS_DROPDOWN | WS_CHILD | WS_VISIBLE | WS_VSCROLL | WS_TABSTOP, 15, 188, 88, 104 
+   CONTROL "Réinitialisation", 1045, BUTTON, BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 15, 206, 88, 14 
+}
+
+123 DIALOG 0, 0, 110, 119
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dimension du motif"
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+FONT 8, "MS Sans Serif"
+{
+   CONTROL "OK", 1, BUTTON, BS_DEFPUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 31, 98, 50, 14 
+   CONTROL "annuler", 2, BUTTON, BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 30, 7, 50, 14 
+   CONTROL "Largeur", -1, STATIC, SS_RIGHT | WS_CHILD | WS_VISIBLE | WS_GROUP, 17, 26, 29, 14 
+   CONTROL "", 1068, EDIT, ES_LEFT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 53, 26, 40, 14 
+   CONTROL "Hauteur", -1, STATIC, SS_RIGHT | WS_CHILD | WS_VISIBLE | WS_GROUP, 17, 45, 29, 14 
+   CONTROL "", 1069, EDIT, ES_LEFT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 53, 45, 40, 14 
+   CONTROL "Remplissage", 1073, BUTTON, BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 31, 65, 52, 10 
+   CONTROL "Conserver aspect", 1074, BUTTON, BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 25, 79, 62, 14 
+}
+
+124 DIALOG 0, 0, 155, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Nom du designer"
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+FONT 8, "MS Sans Serif"
+{
+   CONTROL "", 1076, EDIT, ES_LEFT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 7, 34, 141, 14 
+   CONTROL "OK", 1, BUTTON, BS_DEFPUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 98, 7, 50, 14 
+   CONTROL "Annuler", 2, BUTTON, BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 7, 7, 50, 14 
+}
+
+
+STRINGTABLE
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+{
+1, 	"Pas de contour"
+2, 	"Pas de remplissage"
+3, 	"Pas d'appliqué"
+4, 	"Pas de point"
+5, 	"Sélectionner un objet"
+6, 	"Couleur sel."
+7, 	"brod jusqu'a"
+8, 	"brod tout"
+10, 	"un objet, un groupe d'objets, ou un groupe de broderies"
+11, 	"tous les objets brodés, un objet,\nun groupe d'objets, ou un groupe d'objets brodés"
+12, 	"Ouvrir fichier %s"
+13, 	"Programme de digitalisation pour broderie machine THRED\n(c)2000 Marion and Alfie McCoskey 1201 Locust Ave., Shasta Lake, CA\nTout droit réservé\nVersion: 3.101\n\n\n Traduction française : Chantal Darcillon (sept 2009)"
+14, 	"%s : Entrer le nombre de noeuds vectoriels souhaités"
+15, 	"Dim. du cadre actuel"
+}
+
+
+STRINGTABLE
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+{
+16, 	"Pfaff petit"
+17, 	"Pfaff grand"
+18, 	"100mm"
+19, 	"Perso."
+21, 	"Données du presse papier trop petites pour le remplissage"
+24, 	"re_centrage du motif"
+25, 	"vous devez charger un bitmap\npour utiliser la fonction de traçage automatique"
+26, 	"obj avec trop de noeuds"
+27, 	"angle de rotation petit"
+28, 	"Vous devez sélectionner plusieurs obj pour centrer"
+29, 	"Rien à sélectionner"
+30, 	"                                            un obj doit avoir au moins 5 cotés\n                                             pour le remplissage en echo contour"
+31, 	"Entrer un angle de rotation.\nla valeur courante est: %.2f"
+}
+
+
+STRINGTABLE
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+{
+32, 	"Un obj doit avoir au moins deux cotés\npour la conversion en point satin"
+33, 	"Entrer un numero d'obj inférieur à %d"
+34, 	"création obj impossible si moins de 2 noeuds"
+35, 	"Conversion de plus de 12000 points impossible"
+36, 	"Numero d'obj trop grand"
+37, 	"Couleur utilisée"
+38, 	"Toutes les couleurs utilisés"
+39, 	"Marque non positionnée"
+40, 	"Pas d'obj"
+41, 	"Obj à tracer trop grand"
+42, 	"ce n'est pas un fichier THR"
+43, 	"Ouverture du fichier: %s impossible"
+44, 	"Pour enlever les grands points,\nMettre une longueur de points inférieure à la plus grande"
+45, 	"La destination est à l'interieur des bornes"
+46, 	"Sauvegarde supprimée"
+47, 	"Suppression de la sauvegarde"
+}
+
+
+STRINGTABLE
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+{
+48, 	"suppression objets ?"
+49, 	"suppression objets ?"
+50, 	"Terminé"
+51, 	"Pour insérer un fichier complet, choisir l'option insérer du menu fichier"
+52, 	"ATTENTION\nMotif trop grand pour le grand cadre Pfaff"
+53, 	"Entête du fichier DST trop petite"
+54, 	"Thred affiche seulement du monochrome \npas de bitmap 24 bits"
+55, 	"Aucun bitmap à sauvegarder"
+56, 	"Bitmap non modifié"
+57, 	"Sauvegarde de bitmap disponible seulement pour les bitmaps couleur 24 bits"
+58, 	"Remplissage"
+59, 	"Contour"
+60, 	"appliqué"
+61, 	"obj sélectionné %s"
+62, 	"un obj"
+63, 	"un groupe de noeuds"
+}
+
+
+STRINGTABLE
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+{
+64, 	"nouvelle rotation"
+65, 	"Sélectionner %s\n pour utiliser %s"
+66, 	"polygone régulier"
+67, 	"étoile"
+68, 	"spirale"
+69, 	"coeur"
+70, 	"ellipse"
+71, 	"oeuf"
+72, 	"Mettre des points dans le presse papier :\nSélectionner un obj rempli et presser ctrl C \nou sélectionner un obj vectoriel et presser ctrl C"
+73, 	"                                             remplissage impossible\n                                             sur un obj qui a moins de 3 noeuds"
+74, 	"Utiliser le point satin incliné\npour un obj ligne avec seulement 2 noeuds"
+75, 	"pour utiliser le menu <broder>,\n sélectionner l'objet avec un clic droit près d'un noeud"
+76, 	"pour utiliser le menu <broder>, créer un objet\nen sélectionnant \"forme\" sur le menu principal"
+77, 	"un groupe de noeuds ou un objet"
+78, 	"dégrouper"
+79, 	"on ne trouve pas de noeuds pour l'objet sélectionné"
+}
+
+
+STRINGTABLE
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+{
+80, 	"aide HTML non disponible\nthred.chm doit être dans le meme répertoire que Thred3_FR.exe\net Internet Explorer version 3.0 ou supérieure\ndoit être sur votre ordinateur"
+81, 	"Sauvegarde des modifications dans %s"
+82, 	"les noeuds de l'objet sont modifiés, supprimer le remplissage ?"
+83, 	"les noeuds de l'objet ont été modifiés, remettre le remplissage ?"
+84, 	"Attacher à la grille"
+85, 	"Créer des points de retour"
+86, 	"point contour ou point remplissage"
+87, 	"marquage du point sélectionné"
+88, 	"un objet ou groupe d'objets\n et choisir le zoom"
+89, 	"choix de la rotation autour de la marque"
+91, 	"positionner le point final de remplissage sur l'aire de travail"
+92, 	"Rotation"
+93, 	"Commande de rotation"
+94, 	"Générer les points"
+95, 	"Rotation et duplication"
+}
+
+
+STRINGTABLE
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+{
+96, 	"Rogner"
+97, 	"Générer les points"
+98, 	"un obj avec un point satin\nou un point pour un contour"
+99, 	"Scission d'objet"
+100, 	"Centrer"
+101, 	"Numero d'objet"
+102, 	"objet rempli avec clonage contour"
+103, 	"le rétrécissement d'un contour cloné"
+104, 	"Lecture partielle du fichier"
+109, 	"Fichier trop petit"
+110, 	"recherche des bords"
+111, 	"cacher bmp"
+}
+
+
+STRINGTABLE
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+{
+112, 	"rst frm pix"
+113, 	"choix coul."
+114, 	"voir bords"
+117, 	"voir bmp"
+118, 	"recherche"
+119, 	"noeud :"
+120, 	"obj"
+121, 	"Pt No"
+122, 	"=Pt:"
+123, 	"obj"
+124, 	"sélection"
+125, 	"erreur écriture fichier PCS"
+126, 	"Sauvegarde du fichier %s"
+127, 	"fermeture du programme Thred"
+}
+
+
+STRINGTABLE
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+{
+128, 	"tot %d"
+129, 	"calque %d"
+130, 	"Création du fichier %s impossible"
+131, 	"Ouverture du fichier %s impossible\nFermer Thred et réessayer"
+132, 	"Ce fichier THR file provient d'une version postérieure\nque ce logiciel Thread ne peut pas lire.\nTélécharger une version plus récente\n du logiciel sur Thredworks.com pour lire ce fichier"
+133, 	"Fichier corrompu: %s"
+134, 	"Fichier de taille nulle: %s"
+135, 	"%s est vérouillé\n Réécriture quand même"
+136, 	"Mise à jour d'un fichier vérouillé"
+137, 	"Le fichier: %s avait subit une rotation"
+138, 	"Thred: %s"
+139, 	"nufil.thr"
+140, 	"Entrer une nouvelle taille pour #%s thread\nLa taille actuelle est de %.2f millimètres"
+141, 	"Version de démo"
+142, 	"Thred: Fichier d'échange Embird"
+143, 	"oui"
+}
+
+
+STRINGTABLE
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+{
+144, 	"non"
+145, 	"Ligne (E)\nForme libre (F)\nPolygone régulier (R)\nEtoile (S)\nSpirale (A)\nCoeur (H)\nEllipse (L)\nOeuf (G)\nLarme (T)\nZig-Zag (Z)\nVague (W)\nFleur (D)"
+146, 	"Forme de l'Objet"
+147, 	"Calque"
+148, 	"Remplissage"
+149, 	".......... Couleur"
+150, 	".......... Densité"
+151, 	".......... Lg point"
+152, 	".......... Angle"
+153, 	"Contour"
+154, 	".......... Couleur"
+155, 	".......... Densité"
+156, 	".......... Lg point"
+157, 	".......... Largeur"
+158, 	".......... Appliqué : couleur"
+159, 	".......... feston : coin"
+}
+
+
+STRINGTABLE
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+{
+160, 	"Départ"
+161, 	"Fin"
+162, 	"Pt picot : espacement"
+163, 	".......... sous couche"
+164, 	".......... décalage clone"
+165, 	".......... chainette : ang"
+166, 	"aucun"
+167, 	"Vertical"
+168, 	"Horizontal"
+169, 	"Angle"
+170, 	"éventail"
+171, 	"clone éventail"
+172, 	"écho Contour"
+173, 	"clone Vertical"
+174, 	"clone Horizontal"
+175, 	"clone Angle"
+}
+
+
+STRINGTABLE
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+{
+176, 	"Aucun"
+177, 	"Ligne"
+178, 	"Pt triple"
+179, 	"tableau"
+180, 	"Satin incliné"
+181, 	"Appliqué"
+182, 	"Satin perpend"
+183, 	"Pt feston"
+184, 	"Picot"
+185, 	"Pt double"
+186, 	"Pt chainette"
+187, 	"Pt chainette 2"
+188, 	".................... : densité"
+189, 	"remplissage : inclinaison"
+190, 	".................... : type lisière"
+191, 	"Contour        : largeur"
+}
+
+
+STRINGTABLE
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+{
+192, 	"longueur de point : maximum"
+193, 	"............................ : choisi"
+194, 	"............................ : minimum"
+195, 	"Grille  : Nb zoom pour la voir"
+196, 	"Points visibles apres Nb zoom"
+197, 	"taille petit point"
+198, 	"Appliqué      : No couleur"
+199, 	"distance points (pour édit/aimanter)"
+200, 	"ratio étoile"
+201, 	"enveloppe Spirale"
+202, 	"Pt feston      : longueur coin"
+203, 	"Pt satin : extrémités"
+204, 	"espacement Picots"
+205, 	"Cadre : type"
+206, 	".......... : largeur"
+207, 	"............ : sous couche"
+}
+
+
+STRINGTABLE
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+{
+208, 	".......... : divisions"
+209, 	"Clonage : espacement motif"
+210, 	"............. : décalage motif"
+211, 	"Pt chainette : longueur"
+212, 	"................... : position"
+213, 	"dimension deplacement (flèches)"
+214, 	"ratio oeuf"
+215, 	".......... : hauteur"
+217, 	"Obj+"
+218, 	"Obj-"
+219, 	"oui"
+220, 	"non"
+221, 	"le no de couleur de l'Appliqué est : %d"
+222, 	"libre"
+223, 	"arrondi"
+}
+
+
+STRINGTABLE
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+{
+224, 	"Fuselé"
+225, 	"Pointu"
+226, 	"Carré"
+227, 	"Objet + broderie (touche S)"
+228, 	"%d changement de couleurs"
+229, 	"Sauvegarde"
+230, 	"Sortir"
+231, 	"Thred: %s par %s"
+232, 	"ATTENTION\nPoints extérieurs au cadre\n\n"
+233, 	"Points: %d\nLargeur: %.2f mm, %.2f inches\nHauteur: %.2f mm, %.2f inches\n\n"
+236, 	"Objet: %d\nLargeur: %.2f mm, %.2f inches\nHauteur: %.2f mm, %.2f inches\n\n"
+239, 	"Largeur cadre: %.2f mm\nHauteur Cadre: %.2f mm\n\n"
+}
+
+
+STRINGTABLE
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+{
+241, 	"Créer par : %s\nModifié par : %s"
+242, 	"Cadre actuel\n%.2f\n%.2f"
+244, 	"Entrer taille en pixels d'un point brodé\nactuel: %d"
+245, 	"Entrer taille en pixels d'un noeud vectoriel\nactuel: %d"
+246, 	"Entrer le nbre de segments de rotation.\nvaleur actuelle est : %.2f"
+247, 	"Entrer le nbre de pixels dont on veut se déplacer lorsque l'on presse les flèches droite ou gauche\nactuel: %d"
+248, 	"aucun point sélectionné"
+249, 	"Zig-Zag"
+250, 	"Even Clip"
+251, 	".......... Lg point Max"
+252, 	".......... Lg point Min"
+253, 	".......... Lg point Max"
+254, 	".......... Lg point Min"
+255, 	"tous les objets brodés, un obj,\nun groupe d'obj, une broderie,\n ou un groupe de broderie"
+}
+
+
+STRINGTABLE
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+{
+256, 	"Sinusoidal"
+257, 	"demi_sinus."
+258, 	"Linéaire"
+259, 	"Effiloché"
+260, 	"Dent de scie"
+261, 	"Palissade"
+262, 	"Plumetis"
+263, 	"...... plumetis : coul dégradé"
+264, 	"..................... : type"
+265, 	"..................... : dégradé 2 coul."
+266, 	"..................... : à partir haut"
+267, 	"..................... : au centre"
+268, 	"..................... : taille"
+269, 	"..................... : pas"
+270, 	"..................... : Lg point min"
+271, 	"..................... : cpt supérieur"
+}
+
+
+STRINGTABLE
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+{
+272, 	"..................... : cpt inférieur"
+273, 	"clic gauche générer points"
+274, 	"softawre PES2Card introuvable.\nrecherche sur l'ordi du\nfichier : LinkP2C.exe?\n"
+275, 	"PES2Card Software Non trouvé"
+277, 	"aucune donnée envoyée sur PES2Card"
+278, 	"Entrer la densité de remplissage\nactuelle : %.2f"
+279, 	"longueur point chainette trop grand pour obj"
+280, 	"Départ remplissage"
+281, 	"Fin remplissage"
+282, 	"un noeud"
+283, 	"sous couche distance bord\nactuel %.2f"
+284, 	"bordure/sous couche long point\nactuel %.2f"
+285, 	"sous couche angle\nactuel %.2f"
+286, 	"sous couche densité\nactuel %.2f"
+287, 	".............. bordure"
+}
+
+
+STRINGTABLE
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+{
+288, 	".......... Distance du bord"
+289, 	"couleur bordure"
+290, 	"sous couche"
+291, 	".......... Couleur"
+292, 	".......... Lg point"
+293, 	".......... Angle"
+294, 	".......... Densité"
+}
+
+
+STRINGTABLE
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+{
+1058, 	"Arrondi"
+1059, 	"arrondi d'un coté"
+1060, 	"en pointe"
+1061, 	"effiloché"
+1062, 	"crénelé"
+1063, 	"maintien central"
+1064, 	"couleur sous couche"
+1065, 	"long point sous couche"
+1066, 	"erreur ordre couleur ds obj %d"
+1067, 	"densité sous couche"
+1068, 	"Angle sous couche"
+1069, 	"Long point"
+1070, 	"Densité"
+1071, 	"Angle"
+}
+
+
+STRINGTABLE
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+{
+1072, 	"Couleur"
+1073, 	"largeur"
+1074, 	"Hauteur"
+1075, 	"donner la taille en pixels pour le premier noeud vectoriel d'un objet\nactuel %d"
+1076, 	"changement taille cadre %d largeur par %d hauteur"
+1077, 	"symétrique"
+1078, 	"efface"
+1079, 	"haut: %.2f"
+1080, 	"larg: %.2f"
+1081, 	"densité: %.2f"
+1082, 	"vertical"
+1083, 	"horizontal"
+1084, 	"angle"
+1085, 	"texture Vert"
+1086, 	"texture Horiz "
+1087, 	"texture Angle "
+}
+
+
+STRINGTABLE
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+{
+1088, 	".......... Texture décalage"
+1090, 	"symétrie"
+1091, 	"erreur noeud objet\n"
+1092, 	"erreur donnée presse papier\n"
+1093, 	"erreur donnée ligne-D\n"
+1094, 	"erreur donnée Texture\n"
+1096, 	"noeud obj"
+1097, 	"Presse papier"
+1098, 	"ligne-D"
+1099, 	"Texture"
+1100, 	"donnée non fournie %d obj\n"
+1101, 	"Donnée réparée"
+}
+
+104 ICON "Icon_3.ico"
+
+
+1 VERSIONINFO
+FILEVERSION 3,1,0,0
+PRODUCTVERSION 3,1,0,0
+FILEOS 0x40004
+FILETYPE 0x1
+{
+BLOCK "StringFileInfo"
+{
+	BLOCK "040904b0"
+	{
+		VALUE "Comments", ""
+		VALUE "CompanyName", "Thredworks"
+		VALUE "FileDescription", "Thred"
+		VALUE "FileVersion", "3.101"
+		VALUE "InternalName", "Thred"
+		VALUE "LegalCopyright", "Copyright © 1999, 2000, 2001,2002,2003"
+		VALUE "LegalTrademarks", ""
+		VALUE "OriginalFilename", "Thred3.exe"
+		VALUE "PrivateBuild", ""
+		VALUE "ProductName", "Thred"
+		VALUE "ProductVersion", "3.101"
+		VALUE "SpecialBuild", ""
+	}
+}
+
+BLOCK "VarFileInfo"
+{
+	VALUE "Translation", 0x0409 0x04B0
+}
+}
+
+119 240 "Data_3.bin"
+
