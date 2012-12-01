@@ -5500,10 +5500,11 @@ extern char **__wine_main_argv;
 BOOL txnam(char* nam)
 {
 	char* pchr;
-	char **argv = __argv;
 
 #ifdef __WINE__
-	if (!argv) argv = __wine_main_argv;
+	char **argv = __wine_main_argv;
+#else
+	char **argv = __argv;
 #endif
 
 	strcpy(nam,argv[0]);

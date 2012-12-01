@@ -21189,10 +21189,10 @@ void duhom(){
 
 	unsigned ind;
 
-	char **argv = __argv;
-
 #ifdef __WINE__
-	if (!argv) argv = __wine_main_argv;
+	char **argv = __wine_main_argv;
+#else
+	char **argv = __argv;
 #endif
 
 	strcpy(homdir,argv[0]);
@@ -21216,12 +21216,13 @@ void ducmd(){
 
 	unsigned int 	red;
 	int				ind;
-	char **argv = __argv;
-	int    argc = __argc;
 
 #ifdef __WINE__
-	if (!argv) argv = __wine_main_argv;
-	if (!argc) argc = __wine_main_argc;
+	char **argv = __wine_main_argv;
+	int    argc = __wine_main_argc;
+#else
+	char **argv = __argv;
+	int    argc = __argc;
 #endif
 
 	if(argc>1){

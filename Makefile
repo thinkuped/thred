@@ -11,12 +11,10 @@ DESTDIR               = /usr/local
 
 ### Common settings
 
-CEXTRA                = -W -fexceptions -g -O0  \
-			-mno-cygwin \
-			-m32
-CXXEXTRA              = -W -fexceptions -g -O0  \
-			-mno-cygwin \
-			-m32
+CEXTRA                = -W -fexceptions -fpermissive -g -O0  \
+			-mno-cygwin
+CXXEXTRA              = -W -fexceptions -fpermissive -g -O0  \
+			-mno-cygwin
 RCEXTRA               =
 DEFINES               = -DWIN32 -D_DEBUG -D_WINDOWS -D_MBCS -DGCC__
 INCLUDE_PATH          =
@@ -37,8 +35,7 @@ thred_exe_CXX_SRCS    = ./form.cpp \
 			./xt.cpp
 thred_exe_RC_SRCS     = ./thred.rc
 thred_exe_LDFLAGS     = -mwindows \
-			-mno-cygwin \
-			-m32
+			-mno-cygwin
 thred_exe_DLL_PATH    =
 thred_exe_DLLS        = odbc32 \
 			ole32 \
